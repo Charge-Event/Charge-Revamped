@@ -4,34 +4,83 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHARGE REVAMPED 2026 — The Electronics Club, SNIST</title>
+
   <style>
-    /* ---------- Base Setup ---------- */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", Arial, sans-serif; }
+    /* ---------- Base ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
     body {
-      background: radial-gradient(circle at top, #0b0b0b, #000);
-      color: #eaeaea;
+      background: radial-gradient(circle at top, #080808, #000);
+      color: #e0e0e0;
       text-align: center;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ---------- Animated Electric Background ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        60deg,
+        rgba(0, 255, 255, 0.03),
+        rgba(0, 255, 255, 0.03) 2px,
+        transparent 2px,
+        transparent 60px
+      ),
+      repeating-linear-gradient(
+        -60deg,
+        rgba(255, 255, 0, 0.02),
+        rgba(255, 255, 0, 0.02) 2px,
+        transparent 2px,
+        transparent 60px
+      );
+      animation: moveBg 15s linear infinite;
+      z-index: 0;
+      opacity: 0.7;
+    }
+
+    @keyframes moveBg {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 300px 600px, -300px -600px; }
     }
 
     /* ---------- Header ---------- */
     header {
-      background: rgba(20, 20, 20, 0.9);
+      background: rgba(20, 20, 20, 0.95);
       backdrop-filter: blur(10px);
-      border-bottom: 2px solid #f8d24b;
+      border-bottom: 2px solid #00ffe1;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
       padding: 1em 0;
       position: sticky;
       top: 0;
       z-index: 10;
-      box-shadow: 0 0 20px rgba(248,210,75,0.2);
     }
 
     header h2 {
-      color: #f8d24b;
       font-size: 2rem;
       letter-spacing: 1px;
       text-transform: uppercase;
-      text-shadow: 0 0 12px rgba(248,210,75,0.7);
+      color: #00ffe1;
+      text-shadow: 0 0 15px #00ffe1, 0 0 25px #00f0ff;
+      animation: flicker 3s infinite;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.4;
+      }
     }
 
     nav {
@@ -39,36 +88,58 @@
     }
 
     nav a {
-      color: #f8d24b;
+      color: #00ffe1;
       margin: 0 12px;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.3s ease;
+      position: relative;
+      transition: 0.3s;
     }
 
     nav a:hover {
       color: #fff;
+      text-shadow: 0 0 10px #00ffe1;
     }
 
     .divider {
-      color: #666;
+      color: #555;
     }
 
     /* ---------- Hero Section ---------- */
     .hero {
       padding: 80px 20px 60px;
-      background: linear-gradient(180deg, #111, #000);
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(10,10,10,0.95));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 200%;
+      height: 100%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(0,255,255,0.15) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
     }
 
     .hero h1 {
-      font-size: 3rem;
-      color: #f8d24b;
-      text-shadow: 0 0 25px rgba(248,210,75,0.8);
+      font-size: 3.2rem;
+      color: #00ffe1;
+      text-shadow: 0 0 30px #00ffff, 0 0 80px rgba(0,255,255,0.5);
     }
 
     .hero p {
-      color: #ccc;
-      font-size: 1.15rem;
+      color: #ddd;
+      font-size: 1.1rem;
       margin-top: 15px;
       max-width: 800px;
       margin-left: auto;
@@ -77,49 +148,50 @@
     }
 
     .btn {
-      background: #f8d24b;
-      color: #111;
+      background: linear-gradient(90deg, #00ffff, #00c3ff);
+      color: #000;
       font-weight: bold;
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 12px 26px;
+      border-radius: 10px;
       text-decoration: none;
       display: inline-block;
-      margin-top: 30px;
-      box-shadow: 0 0 15px rgba(248,210,75,0.6);
+      margin-top: 35px;
+      box-shadow: 0 0 25px rgba(0,255,255,0.6);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(248,210,75,0.9);
       background: #fff;
-      color: #000;
+      transform: scale(1.08);
+      box-shadow: 0 0 30px rgba(0,255,255,1);
     }
 
-    /* ---------- About Section ---------- */
+    /* ---------- Section Titles ---------- */
     .section {
       padding: 70px 20px;
       max-width: 1100px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
     .section h2 {
-      color: #f8d24b;
+      color: #00ffe1;
       font-size: 2rem;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(248,210,75,0.6);
+      text-shadow: 0 0 15px rgba(0,255,255,0.7);
     }
 
     .section p {
-      color: #ddd;
+      color: #ccc;
       font-size: 1.05rem;
       line-height: 1.8em;
       max-width: 900px;
       margin: 0 auto 20px;
     }
 
-    /* ---------- Event Cards ---------- */
+    /* ---------- Glowing Cards ---------- */
     .event-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -128,51 +200,49 @@
     }
 
     .event-card {
-      background: linear-gradient(145deg, #141414, #0c0c0c);
-      border: 1px solid #222;
+      background: rgba(10,10,10,0.9);
+      border: 1px solid rgba(0,255,255,0.3);
       padding: 25px 20px;
       border-radius: 12px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      box-shadow: 0 0 12px rgba(0,255,255,0.1);
     }
 
     .event-card:hover {
-      border: 1px solid #f8d24b;
-      box-shadow: 0 0 25px rgba(248,210,75,0.3);
+      border: 1px solid #00ffff;
+      box-shadow: 0 0 25px rgba(0,255,255,0.5);
       transform: translateY(-5px);
     }
 
     .event-card h3 {
-      color: #f8d24b;
+      color: #00ffe1;
       margin-bottom: 12px;
       font-size: 1.4rem;
     }
 
     .event-card p {
       font-size: 0.95rem;
-      color: #bbb;
+      color: #aaa;
       line-height: 1.6em;
     }
 
     /* ---------- Prize Section ---------- */
     .prize {
-      background: linear-gradient(180deg, #111, #000);
+      background: linear-gradient(180deg, #000, #0a0a0a);
       padding: 80px 20px;
-      border-top: 2px solid #f8d24b;
-      border-bottom: 2px solid #f8d24b;
-      box-shadow: inset 0 0 40px rgba(248,210,75,0.1);
+      border-top: 2px solid #00ffe1;
+      border-bottom: 2px solid #00ffe1;
+      box-shadow: inset 0 0 50px rgba(0,255,255,0.1);
     }
 
     .prize h2 {
+      color: #00ffe1;
+      text-shadow: 0 0 15px rgba(0,255,255,0.7);
       font-size: 2rem;
-      color: #f8d24b;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-      text-shadow: 0 0 10px rgba(248,210,75,0.8);
     }
 
     .prize p {
-      color: #eee;
+      color: #e0e0e0;
       font-size: 1.1rem;
       max-width: 850px;
       margin: 0 auto;
@@ -181,112 +251,100 @@
 
     /* ---------- Footer ---------- */
     footer {
-      background: #0b0b0b;
-      color: #888;
+      background: #050505;
+      color: #777;
       padding: 1em 0;
-      border-top: 2px solid #f8d24b;
-      margin-top: 40px;
+      border-top: 2px solid #00ffe1;
       font-size: 0.9rem;
+      letter-spacing: 0.5px;
     }
 
     footer strong {
-      color: #f8d24b;
+      color: #00ffe1;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.3rem; }
+      .section h2 { font-size: 1.6rem; }
+      .event-card { padding: 20px 15px; }
     }
-
-    .section, .event-card, .hero, .prize { animation: fadeIn 1s ease forwards; }
   </style>
 </head>
 
 <body>
-  <!-- ---------- Header ---------- -->
   <header>
-    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <h2>⚡ CHARGE REVAMPED 2026 ⚡</h2>
     <nav>
-      <a href="#">Home</a>
-      <span class="divider">|</span>
-      <a href="#">Workshop</a>
-      <span class="divider">|</span>
-      <a href="#">Hackathon</a>
-      <span class="divider">|</span>
-      <a href="#">Ideathon</a>
-      <span class="divider">|</span>
-      <a href="#">Project Expo</a>
-      <span class="divider">|</span>
-      <a href="#">Paper Presentation</a>
-      <span class="divider">|</span>
+      <a href="#">Home</a><span class="divider">|</span>
+      <a href="#">Workshop</a><span class="divider">|</span>
+      <a href="#">Hackathon</a><span class="divider">|</span>
+      <a href="#">Ideathon</a><span class="divider">|</span>
+      <a href="#">Project Expo</a><span class="divider">|</span>
+      <a href="#">Paper Presentation</a><span class="divider">|</span>
       <a href="#">Games</a>
     </nav>
   </header>
 
-  <!-- ---------- Hero ---------- -->
   <section class="hero">
-    <h1>Welcome to CHARGE REVAMPED 2026</h1>
+    <h1>Unleash the Power of Innovation ⚡</h1>
     <p>
-      A 3-day national-level technical fest organized by <strong>The Electronics Club (TEC)</strong>, under the
-      <strong>Department of ECE</strong>, at <strong>Sreenidhi Institute of Science and Technology (SNIST)</strong>.
+      Welcome to <strong>CHARGE REVAMPED 2026</strong> — a 3-day national-level technical fest organized by
+      <strong>The Electronics Club (TEC)</strong>, under the <strong>Department of ECE</strong>, at
+      <strong>Sreenidhi Institute of Science and Technology (SNIST)</strong>.
     </p>
     <a href="#" class="btn">Register Now</a>
   </section>
 
-  <!-- ---------- About ---------- -->
   <section class="section">
     <h2>About the Event</h2>
     <p>
-      CHARGE REVAMPED 2026 is a celebration of innovation and technology, uniting young minds and creative thinkers to shape the future of electronics and embedded systems.
-      From coding to circuits, from drones to design — this is where imagination becomes engineering.
+      CHARGE REVAMPED is where ideas spark, circuits connect, and imagination gets electrified. A celebration of innovation, coding, creativity, and pure engineering brilliance.
+      This fest redefines how technology meets imagination — from electronics to embedded systems and IoT marvels.
     </p>
     <p>
-      Dive into challenges, compete, learn, and collaborate with the brightest engineers from across the nation in an environment filled with energy, innovation, and passion.
+      Join thousands of visionaries as we combine <strong>hardware</strong>, <strong>software</strong>, and <strong>design thinking</strong> to create the next generation of technology.
     </p>
   </section>
 
-  <!-- ---------- Event Grid ---------- -->
   <section class="section">
     <h2>Major Attractions</h2>
     <div class="event-grid">
       <div class="event-card">
         <h3>⚙️ Workshop</h3>
-        <p>Hands-on industry-driven session on <strong>Embedded Systems</strong> — covering IoT hardware, firmware basics, and real-world project demos.</p>
+        <p>Hands-on session on <strong>Embedded Systems</strong> — learn sensors, boards, and firmware building directly from industry mentors.</p>
       </div>
       <div class="event-card">
         <h3>💡 Forge Hackathon</h3>
-        <p>24-hour hardware-based Hackathon focusing on <strong>Electronics, IoT, VLSI, PCB Design, and Drones</strong>. Compete, innovate, and prototype your vision.</p>
+        <p>24-hour innovation marathon in <strong>Electronics, IoT, PCB, and Drones</strong>. Build the impossible, wire by wire.</p>
       </div>
       <div class="event-card">
         <h3>🚀 Ideathon</h3>
-        <p>Pitch your next big idea in <strong>Electronics and Drones</strong>. Convince mentors and judges with innovation and feasibility.</p>
+        <p>Pitch groundbreaking ideas in electronics, drones, and embedded systems. It’s not just an idea — it’s the future waiting to happen.</p>
       </div>
       <div class="event-card">
         <h3>🧩 Project Expo</h3>
-        <p>Showcase your working projects live at the heart of SNIST. Inspire others with your innovation and teamwork.</p>
+        <p>Display your creations at the center of SNIST — from autonomous robots to IoT dashboards. Inspire the next big innovation.</p>
       </div>
       <div class="event-card">
         <h3>📑 Paper Presentation</h3>
-        <p>Present your research, reviews, and futuristic ideas in core ECE, IoT, and Embedded domains to a panel of academicians and experts.</p>
+        <p>Showcase your technical insights and research findings in ECE, IoT, and hardware technologies to industry experts.</p>
       </div>
       <div class="event-card">
         <h3>🎮 Games</h3>
-        <p>Relax, compete, and recharge with thrilling <strong>technical and fun games</strong>. A separate arena for entertainment and creativity.</p>
+        <p>Enjoy fun and tech-based games to recharge your energy. Compete, collaborate, and connect with peers!</p>
       </div>
     </div>
   </section>
 
-  <!-- ---------- Prize Section ---------- -->
   <section class="prize">
     <h2>Prize Pool & Rewards</h2>
     <p>
       Total Prize Pool: <strong>₹35,000 – ₹40,000</strong> (excluding games)<br><br>
-      Winners across events will receive not just cash prizes but also <strong>exclusive internship opportunities</strong> from partner industries.<br><br>
-      Recognition, networking, and innovation — the true rewards of CHARGE REVAMPED.
+      Winners receive <strong>cash prizes, industry internships, and recognition</strong> from top tech companies.<br><br>
+      When innovation meets competition, sparks fly — and ideas turn into impact.
     </p>
   </section>
 
-  <!-- ---------- Footer ---------- -->
   <footer>
     <p>© 2026 <strong>CHARGE REVAMPED</strong> | Organized by <strong>The Electronics Club (TEC)</strong>, Department of ECE, SNIST</p>
   </footer>
