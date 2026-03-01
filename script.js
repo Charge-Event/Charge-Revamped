@@ -1,104 +1,141 @@
-const canvas = document.getElementById("bgCanvas");
+const canvas = document.getElementById("circuitCanvas");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let width = canvas.width;
-let height = canvas.height;
+let particles = [];
+let lines = [];
 
-window.addEventListener("resize", ()=>{
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  width = canvas.width;
-  height = canvas.height;
-});
-
-// Random moving dots
-class Dot {
-  constructor() {
-    this.x = Math.random()*width;
-    this.y = Math.random()*height;
-    this.radius = Math.random()*2+1;
-    this.speedX = Math.random()*0.5-0.25;
-    this.speedY = Math.random()*0.5-0.25;
-  }
-  move() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.x<0||this.x>width)this.speedX*=-1;
-    if(this.y<0||this.y>height)this.speedY*=-1;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
-    ctx.fillStyle="#00ff99";
-    ctx.fill();
-  }
+function resize(){
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 }
 
-const dots = [];
-for(let i=0;i<150;i++) dots.push(new Dot());
+window.addEventListener("resize",resize);
 
-// Meteors
-class Meteor{
-  constructor(){
-    this.reset();
-  }
-  reset(){
-    this.x = Math.random()*width;
-    this.y = -10;
-    this.length = Math.random()*50+20;
-    this.speedY = Math.random()*4+2;
-    this.speedX = Math.random()*2-1;
-    this.opacity = Math.random()*0.5+0.5;
-  }
-  move(){
-    this.x += this.speedX;
-    this.y += this.speedY;
-    if(this.y>height+10)this.reset();
-  }
-  draw(){
-    ctx.beginPath();
-    ctx.moveTo(this.x,this.y);
-    ctx.lineTo(this.x-this.speedX*10,this.y-this.length);
-    ctx.strokeStyle = `rgba(0,255,153,${this.opacity})`;
-    ctx.stroke();
-  }
+/* create particles */
+for(let i=0;i<120;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.4,
+vy:(Math.random()-0.5)*0.4,
+size:Math.random()*2+1
+
+})
+
 }
 
-const meteors=[];
-for(let i=0;i<5;i++) meteors.push(new Meteor());
-
-// Lightning
-let lightningTimer = 0;
-function lightning(){
-  if(Math.random()<0.002){
-    lightningTimer = 5;
-  }
-}
-
-function drawLightning(){
-  if(lightningTimer>0){
-    ctx.fillStyle = "rgba(0,255,255,0.15)";
-    ctx.fillRect(0,0,width,height);
-    lightningTimer--;
-  }
-}
+/* animation loop */
 
 function animate(){
-  ctx.clearRect(0,0,width,height);
-  
-  // dots
-  for(let d of dots){ d.move(); d.draw(); }
-  
-  // meteors
-  for(let m of meteors){ m.move(); m.draw(); }
-  
-  // lightning
-  lightning();
-  drawLightning();
 
-  requestAnimationFrame(animate);
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+/* particles */
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="#00ffcc";
+ctx.fill();
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+/* wrap edges */
+
+if(p.x<0)p.x=canvas.width;
+if(p.x>canvas.width)p.x=0;
+if(p.y<0)p.y=canvas.height;
+if(p.y>canvas.height)p.y=0;
+
+});
+
+/* draw pcb style connections */
+
+for(let a=0;a<particles.length;a++){
+
+for(let b=a;b<particles.length;b++){
+
+let dx=particles[a].x-particles[b].x;
+let dy=particles[a].y-particles[b].y;
+
+let dist=Math.sqrt(dx*dx+dy*dy);
+
+if(dist<120){
+
+ctx.beginPath();
+ctx.strokeStyle="rgba(0,255,200,0.15)";
+ctx.lineWidth=1;
+ctx.moveTo(particles[a].x,particles[a].y);
+ctx.lineTo(particles[b].x,particles[b].y);
+ctx.stroke();
+
 }
+
+}
+
+}
+
+requestAnimationFrame(animate);
+
+}
+
 animate();
+
+/* electric click ripple */
+
+canvas.addEventListener("click",(e)=>{
+
+for(let i=0;i<15;i++){
+
+particles.push({
+
+x:e.clientX,
+y:e.clientY,
+vx:(Math.random()-0.5)*3,
+vy:(Math.random()-0.5)*3,
+size:Math.random()*3
+
+})
+
+}
+
+});
+
+/* lightning flash */
+
+setInterval(()=>{
+
+const flash=document.querySelector(".flash");
+
+flash.style.opacity=0.25;
+
+setTimeout(()=>{
+
+flash.style.opacity=0;
+
+},150);
+
+},9000);
+
+
+/* event toggle */
+
+function toggleEvent(id){
+
+const el=document.getElementById(id);
+
+if(el.style.display==="block"){
+el.style.display="none";
+}
+else{
+el.style.display="block";
+}
+
+}
