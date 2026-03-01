@@ -3,111 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARGE REVAMPED 2026 — The Electronics Club</title>
+  <title>CHARGE REVAMPED 2026 — The Electronics Club, SNIST</title>
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    /* ---------- Global Reset ---------- */
+    * {
       margin: 0;
       padding: 0;
-      text-align: center;
-      background: #f5f5f5;
-      color: #111;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
     }
 
+    /* ---------- Dark Theme Base ---------- */
+    body {
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      text-align: center;
+    }
+
+    /* ---------- Header ---------- */
     header {
-      background: #111;
-      color: #fff;
+      background: linear-gradient(90deg, #111, #1b1b1b);
       padding: 1em 0;
+      border-bottom: 2px solid #f8d24b;
+      box-shadow: 0 0 12px #000;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h2 {
+      color: #f8d24b;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(248,210,75,0.7);
+    }
+
+    /* ---------- Navigation ---------- */
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
     }
 
     nav a {
-      color: #ffcc00;
-      margin: 0 10px;
+      color: #f8d24b;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      padding: 6px 12px;
+      position: relative;
+      transition: 0.3s;
     }
 
+    .divider {
+      color: #444;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #f8d24b;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------- Hero Section ---------- */
     main {
-      padding: 2em;
+      padding: 3em 1em;
+      max-width: 1000px;
+      margin: 0 auto;
+      animation: fadeIn 1.2s ease-out;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.8rem;
       margin-bottom: 0.5em;
+      color: #f8d24b;
+      text-shadow: 0 0 15px rgba(248,210,75,0.6);
     }
 
     p {
       font-size: 1.1rem;
-      line-height: 1.6em;
-      max-width: 700px;
+      line-height: 1.7em;
+      color: #ccc;
       margin: 0 auto 1.5em;
+      max-width: 850px;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    em {
+      color: #f8d24b;
     }
 
     .btn {
-      background: #111;
-      color: #fff;
-      padding: 10px 20px;
+      background: #f8d24b;
+      color: #111;
+      font-weight: bold;
+      padding: 12px 24px;
       border-radius: 8px;
       text-decoration: none;
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(248,210,75,0.7);
+      transition: all 0.3s ease;
     }
 
+    .btn:hover {
+      background: #fff;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(248,210,75,1);
+    }
+
+    /* ---------- Footer ---------- */
     footer {
       background: #111;
-      color: #aaa;
+      color: #888;
       padding: 1em 0;
-      margin-top: 30px;
+      border-top: 2px solid #f8d24b;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #f8d24b;
+      text-decoration: none;
+    }
+
+    /* ---------- Animation ---------- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
- <header>
-  <h2>⚡ CHARGE REVAMPED 2026</h2>
-  <nav>
-    <a href="#">Home</a>
-    <span class="divider">|</span>
-    <a href="#">Workshops</a>
-    <span class="divider">|</span>
-    <a href="#">Hackathon</a>
-    <span class="divider">|</span>
-    <a href="#">Ideathon</a>
-    <span class="divider">|</span>
-    <a href="#">Project Expo</a>
-    <span class="divider">|</span>
-    <a href="#">Paper Presentation</a>
-    <span class="divider">|</span>
-    <a href="#">Games</a>
-  </nav>
-</header>
+  <header>
+    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <nav>
+      <a href="#">Home</a>
+      <span class="divider">|</span>
+      <a href="#">Workshop</a>
+      <span class="divider">|</span>
+      <a href="#">Hackathon</a>
+      <span class="divider">|</span>
+      <a href="#">Ideathon</a>
+      <span class="divider">|</span>
+      <a href="#">Project Expo</a>
+      <span class="divider">|</span>
+      <a href="#">Paper Presentation</a>
+      <span class="divider">|</span>
+      <a href="#">Games</a>
+    </nav>
+  </header>
 
   <main>
-    <h1>Welcome to CHARGE 2026</h1>
+    <h1>Welcome to CHARGE REVAMPED 2026</h1>
     <p>
-      Organized by <strong>The Electronics Club(TEC), SNIST</strong><br>
+      Organized by <strong>The Electronics Club (TEC)</strong>, under the <strong>Department of ECE</strong> at
+      <strong>Sreenidhi Institute of Science and Technology (SNIST)</strong>.<br><br>
       A celebration of innovation in <em>Electronics, Embedded Systems, IoT, VLSI, PCB Design, and Drones</em>.
     </p>
 
     <p>
-     <p>
-  Experience innovation and technology at <strong>CHARGE REVAMPED 2026</strong> — a 3-day national-level technical fest organized by <strong>The Electronics Club(TEC), SNIST</strong>.<br><br>
+      Experience cutting-edge technology and creativity at <strong>CHARGE REVAMPED 2026</strong> — a 3-day national-level
+      technical fest bringing together bright minds from across the country.<br><br>
 
-  The fest features an exciting lineup of events:
-  <em>Forge (24-hour Hackathon), Workshop on Embedded Systems, Ideathon, Project Expo, and Paper Presentation — plus fun technical and non-technical games.</em><br><br>
+      Featuring flagship events:
+      <em>Forge (24-hour Hackathon), Workshop on Embedded Systems, Ideathon, Project Expo, and Paper Presentation</em> — plus
+      exciting <strong>technical and non-technical games</strong> to recharge your competitive spirit.<br><br>
 
-  <strong>Prize Pool:</strong> ₹35,000 – ₹40,000 (excluding games)<br>
-  <strong>Expected Footfall:</strong> 7,000 + students (including participants from other universities)<br><br>
+      <strong>Prize Pool:</strong> ₹35,000 – ₹40,000 (excluding games)<br>
+      <strong>Expected Footfall:</strong> 7,000 + attendees including participants from various universities.<br><br>
 
-  Build, innovate and compete for internships and recognition at one of the most electrifying technical events of the year!
-</p>
+      Build, innovate, and compete for recognition, prizes, and exclusive internship opportunities at one of the most electrifying
+      technical fests of the year!
     </p>
 
     <a href="#" class="btn">Register Now</a>
   </main>
 
   <footer>
-    <p>©️ 2026 CHARGE | Organized by The Electronics Club, SNIST | Department of ECE </p>
+    <p>© 2026 CHARGE REVAMPED | Organized by The Electronics Club (TEC), Department of ECE, SNIST</p>
   </footer>
 </body>
 </html>
