@@ -1,3 +1,4 @@
+/* Body + Canvas setup */
 body, html {
   margin:0;
   padding:0;
@@ -5,21 +6,39 @@ body, html {
   overflow-x: hidden;
   background:#0b0f2d;
   color:#fff;
+  position: relative;
+  height: 100%;
 }
 
+#bgCanvas {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
 header {
   text-align:center;
   padding:20px 0;
 }
 
 header h2.glow-text {
-  font-size:2.5rem;
+  font-size:2.2rem;
   color:#00f0ff;
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+  text-shadow: 0 0 6px #00f0ff, 0 0 12px #00f0ff;
 }
 
 nav {
   margin-top:10px;
+  text-align:center;
 }
 
 nav a {
@@ -35,16 +54,18 @@ nav a:hover {
   color:#00ff99;
 }
 
+/* Main Content */
 main {
   max-width:1000px;
   margin: 0 auto;
   padding:40px 20px;
+  text-align:center;
 }
 
 .hero-heading {
   font-size:2rem;
   color:#00f0ff;
-  text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+  text-shadow: 0 0 6px #00f0ff, 0 0 12px #00f0ff;
   margin-bottom:20px;
 }
 
@@ -56,14 +77,16 @@ section {
 .section-heading {
   font-size:1.8rem;
   color:#00ffcc;
-  text-shadow: 0 0 10px #00ffcc;
+  text-shadow: 0 0 6px #00ffcc;
   margin-bottom:15px;
+  text-align:center;
 }
 
 .event-grid {
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap:20px;
+  justify-items:center;
 }
 
 .event-card {
