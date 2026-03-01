@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CHARGE REVAMPED 2026 — The Electronix Club</title>
 
 <link rel="stylesheet" href="style.css">
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-
 
 <body>
 
 <canvas id="circuitCanvas"></canvas>
-<div class="flash"></div>
 
 <header>
 
-<h2>⚡ CHARGE REVAMPED 2026</h2>
+<h2 class="logo">⚡ CHARGE REVAMPED 2026</h2>
 
 <nav>
 <a href="#">Home</a>
@@ -38,153 +34,78 @@
 <h1>Welcome to CHARGE REVAMPED 2026</h1>
 
 <p>
-
 Organized by <strong>The Electronix Club</strong>, CHARGE 2026 is a technology-driven event that brings together passionate innovators, engineers, and students who are eager to explore the world of electronics and modern engineering.
 
-Through interactive sessions, competitions, and collaborative learning experiences, CHARGE 2026 promotes innovation and technical excellence.
+Through interactive sessions, competitions, and collaborative learning experiences, CHARGE 2026 aims to promote innovation and technical excellence among students.
 
-The event focuses on exciting domains such as <em>Electronics System Design, Embedded Systems, IoT, PCB Design, Robotics, and Drone Technology</em>, creating an environment that inspires experimentation and technological advancement.
-
+The event focuses on exciting domains such as <em>Electronics System Design, Embedded Systems, Internet of Things (IoT), PCB Design, Robotics, and Drone Technology</em>.
 </p>
 
 <a href="#" class="btn">Register Now</a>
 
-</section>
-
-
-<section class="countdown">
-
-<h2>Event Begins In</h2>
-
-<div class="countdown-container">
-
-<div class="time-box">
-<span id="days">00</span>
-<p>Days</p>
-</div>
-
-<div class="time-box">
-<span id="hours">00</span>
-<p>Hours</p>
-</div>
-
-<div class="time-box">
-<span id="minutes">00</span>
-<p>Minutes</p>
-</div>
-
-<div class="time-box">
-<span id="seconds">00</span>
-<p>Seconds</p>
-</div>
-
+<div class="countdown">
+Event Begins In <span id="timer"></span>
 </div>
 
 </section>
-
 
 
 <section id="events">
 
-<h2>Events</h2>
+<h2 class="section-title">Events</h2>
 
 <div class="event-grid">
 
 <div class="event-card">
 <h3 onclick="toggleEvent('hackathon')">Hackathon</h3>
 <div id="hackathon" class="event-content">
-<p>
-The Hackathon challenges participants to develop innovative electronics solutions within a limited time. Teams will build smart systems using embedded platforms, sensors, and automation technologies while solving real-world problems.
-</p>
+<p>Participants build electronics-based solutions in limited time.</p>
 </div>
 </div>
-
 
 <div class="event-card">
 <h3 onclick="toggleEvent('workshops')">Workshops</h3>
 <div id="workshops" class="event-content">
-<p>
-Hands-on workshops introduce participants to technologies such as IoT development, PCB design, embedded programming, and hardware prototyping through guided practical sessions.
-</p>
+<p>Hands-on learning sessions on IoT, PCB design and embedded systems.</p>
 </div>
 </div>
-
 
 <div class="event-card">
 <h3 onclick="toggleEvent('expo')">Project Expo</h3>
 <div id="expo" class="event-content">
-<p>
-Students showcase their electronics innovations including robotics systems, automation solutions, IoT devices, and experimental hardware prototypes to visitors and industry experts.
-</p>
+<p>Students showcase electronics innovations and prototypes.</p>
 </div>
 </div>
-
 
 <div class="event-card">
 <h3 onclick="toggleEvent('paper')">Paper Presentation</h3>
 <div id="paper" class="event-content">
-<p>
-Participants present research papers and emerging technology ideas related to electronics, communication systems, and futuristic hardware innovations.
-</p>
+<p>Present research ideas in emerging technologies.</p>
 </div>
 </div>
-
 
 <div class="event-card">
 <h3 onclick="toggleEvent('ideathon')">Ideathon</h3>
 <div id="ideathon" class="event-content">
-<p>
-Teams propose creative technological ideas addressing real-world challenges using electronics and engineering concepts, evaluated based on innovation and feasibility.
-</p>
+<p>Innovative solutions for real world engineering problems.</p>
 </div>
 </div>
-
 
 <div class="event-card">
 <h3 onclick="toggleEvent('games')">Technical Games</h3>
 <div id="games" class="event-content">
-<p>
-Interactive electronics games test participants' logical thinking, circuit knowledge, and engineering creativity in a fun competitive environment.
-</p>
-</div>
-</div>
-
-
-<div class="event-card">
-<h3 onclick="toggleEvent('proto')">Prototyping Event</h3>
-<div id="proto" class="event-content">
-<p>
-Participants rapidly build working hardware models using electronic components and microcontrollers to demonstrate innovation and engineering creativity.
-</p>
+<p>Fun electronics challenges testing creativity and knowledge.</p>
 </div>
 </div>
 
 </div>
-
-
-
-<section class="event-info">
-
-<p>
-CHARGE 2026 features a total <strong>prize pool of ₹40,000</strong> across multiple competitions.
-</p>
-
-<p>
-More than <strong>7000+ visitors</strong> are expected to attend the event to explore projects, attend workshops, and experience emerging technologies.
-</p>
 
 </section>
-
-</section>
-
 
 
 <footer>
-
-<p>© 2026 CHARGE | Organised By The Electronix Club | Department Of ECE SNIST </p>
-
+<p>© 2026 CHARGE | Organised By The Electronix Club | Department Of ECE </p>
 </footer>
-
 
 <script src="script.js"></script>
 
