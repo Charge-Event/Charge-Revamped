@@ -1,54 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CHARGE REVAMPED 2026 — The Electronix Club</title>
 
-<link rel="stylesheet" href="style.css">
+<title>CHARGE REVAMPED 2026</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
+color:white;
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
+}
+
+/* background animation */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* header */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+}
+
+header h2{
+font-family:'Orbitron';
+color:#00fff2;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+font-size:15px;
+}
+
+nav a:hover{
+color:#00fff2;
+}
+
+/* hero */
+
+.hero{
+text-align:center;
+padding:120px 20px 80px;
+max-width:900px;
+margin:auto;
+}
+
+.hero h1{
+font-size:52px;
+font-family:'Orbitron';
+margin-bottom:25px;
+color:#00fff2;
+}
+
+.hero p{
+line-height:1.8;
+font-size:17px;
+margin-bottom:40px;
+}
+
+.btn{
+padding:16px 45px;
+background:#00fff2;
+color:black;
+border-radius:30px;
+font-weight:bold;
+text-decoration:none;
+display:inline-block;
+margin-bottom:40px;
+}
+
+/* countdown */
+
+.countdown{
+font-size:22px;
+font-weight:500;
+color:#00fff2;
+}
+
+/* events */
+
+#events{
+padding:80px 40px;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+font-family:'Orbitron';
+margin-bottom:60px;
+color:#00fff2;
+}
+
+/* grid */
+
+.event-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+max-width:1200px;
+margin:auto;
+
+}
+
+/* cards */
+
+.event-card{
+
+background:#0c0c0c;
+border-radius:15px;
+padding:30px;
+text-align:center;
+position:relative;
+cursor:pointer;
+transition:0.4s;
+
+box-shadow:
+0 0 20px rgba(0,255,242,0.1),
+0 0 40px rgba(0,255,242,0.05);
+
+}
+
+/* glow behind card */
+
+.event-card::before{
+
+content:"";
+position:absolute;
+top:-20px;
+left:-20px;
+right:-20px;
+bottom:-20px;
+
+background:radial-gradient(circle,#00fff2 0%,transparent 70%);
+opacity:0.08;
+z-index:-1;
+
+}
+
+.event-card:hover{
+
+transform:translateY(-10px);
+box-shadow:
+
+0 0 30px rgba(0,255,242,0.4),
+0 0 60px rgba(0,255,242,0.2);
+
+}
+
+.event-card h3{
+font-family:'Orbitron';
+margin-bottom:10px;
+}
+
+.event-content{
+display:none;
+font-size:14px;
+line-height:1.6;
+margin-top:15px;
+}
+
+/* info section */
+
+.info{
+
+text-align:center;
+max-width:900px;
+margin:80px auto;
+font-size:18px;
+line-height:1.8;
+
+}
+
+.info strong{
+color:#00fff2;
+}
+
+/* footer */
+
+footer{
+text-align:center;
+padding:40px;
+border-top:1px solid #222;
+margin-top:80px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<canvas id="circuitCanvas"></canvas>
+<canvas id="bg"></canvas>
 
 <header>
 
-<h2 class="logo">⚡ CHARGE REVAMPED 2026</h2>
+<h2>⚡ CHARGE REVAMPED 2026</h2>
 
 <nav>
 <a href="#">Home</a>
+<a href="#">Events</a>
 <a href="#">Workshops</a>
-<a href="#">Hackathon</a>
-<a href="#">Ideathon</a>
 <a href="#">Expo</a>
 </nav>
 
 </header>
-
 
 <section class="hero">
 
 <h1>Welcome to CHARGE REVAMPED 2026</h1>
 
 <p>
-Organized by <strong>The Electronix Club</strong>, CHARGE 2026 is a technology-driven event that brings together passionate innovators, engineers, and students who are eager to explore the world of electronics and modern engineering.
 
-Through interactive sessions, competitions, and collaborative learning experiences, CHARGE 2026 aims to promote innovation and technical excellence among students.
+Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
+CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators, engineers, and technology enthusiasts.
 
-The event focuses on exciting domains such as <em>Electronics System Design, Embedded Systems, Internet of Things (IoT), PCB Design, Robotics, and Drone Technology</em>.
+The event focuses on domains such as <em>Electronics System Design, Embedded Systems, Internet of Things (IoT), PCB Design, Robotics, and Drone Technology</em>.  
+Through competitions, workshops, and project exhibitions, participants get the opportunity to explore real-world engineering challenges and transform creative ideas into impactful solutions.
+
+CHARGE aims to create a platform where students collaborate, innovate, and showcase their technical abilities while learning from peers, mentors, and industry experts.
+
 </p>
 
 <a href="#" class="btn">Register Now</a>
 
 <div class="countdown">
-Event Begins In <span id="timer"></span>
+
+Event Begins In  
+<span id="timer"></span>
+
 </div>
 
 </section>
-
 
 <section id="events">
 
@@ -56,45 +263,45 @@ Event Begins In <span id="timer"></span>
 
 <div class="event-grid">
 
-<div class="event-card">
-<h3 onclick="toggleEvent('hackathon')">Hackathon</h3>
-<div id="hackathon" class="event-content">
-<p>Participants build electronics-based solutions in limited time.</p>
+<div class="event-card" onclick="toggle('hack')">
+<h3>Hackathon</h3>
+<div id="hack" class="event-content">
+Participants collaborate to design innovative electronics solutions within limited time, building prototypes using embedded systems, IoT modules, and hardware platforms.
 </div>
 </div>
 
-<div class="event-card">
-<h3 onclick="toggleEvent('workshops')">Workshops</h3>
-<div id="workshops" class="event-content">
-<p>Hands-on learning sessions on IoT, PCB design and embedded systems.</p>
+<div class="event-card" onclick="toggle('work')">
+<h3>Workshop</h3>
+<div id="work" class="event-content">
+Hands-on sessions led by experts covering IoT development, PCB design, embedded programming, and hardware prototyping.
 </div>
 </div>
 
-<div class="event-card">
-<h3 onclick="toggleEvent('expo')">Project Expo</h3>
+<div class="event-card" onclick="toggle('expo')">
+<h3>Project Expo</h3>
 <div id="expo" class="event-content">
-<p>Students showcase electronics innovations and prototypes.</p>
+Students showcase their innovative hardware and electronics projects to judges and visitors.
 </div>
 </div>
 
-<div class="event-card">
-<h3 onclick="toggleEvent('paper')">Paper Presentation</h3>
+<div class="event-card" onclick="toggle('paper')">
+<h3>Paper Presentation</h3>
 <div id="paper" class="event-content">
-<p>Present research ideas in emerging technologies.</p>
+Participants present research and technical ideas related to electronics and emerging technologies.
 </div>
 </div>
 
-<div class="event-card">
-<h3 onclick="toggleEvent('ideathon')">Ideathon</h3>
-<div id="ideathon" class="event-content">
-<p>Innovative solutions for real world engineering problems.</p>
+<div class="event-card" onclick="toggle('idea')">
+<h3>Ideathon</h3>
+<div id="idea" class="event-content">
+Creative event where teams pitch futuristic engineering ideas to solve real-world problems.
 </div>
 </div>
 
-<div class="event-card">
-<h3 onclick="toggleEvent('games')">Technical Games</h3>
-<div id="games" class="event-content">
-<p>Fun electronics challenges testing creativity and knowledge.</p>
+<div class="event-card" onclick="toggle('game')">
+<h3>Technical Games</h3>
+<div id="game" class="event-content">
+Fun engineering games designed to test circuit knowledge, logic, and quick thinking.
 </div>
 </div>
 
@@ -102,12 +309,126 @@ Event Begins In <span id="timer"></span>
 
 </section>
 
+<section class="info">
+
+<p>
+
+🏆 CHARGE 2026 features a massive <strong>Prize Pool of ₹40,000</strong> across multiple events rewarding the best innovations and performances.
+
+</p>
+
+<p>
+
+More than <strong>7000+ attendees</strong> including students, technology enthusiasts, and innovators are expected to visit the event, making it one of the biggest electronics technical fests at SNIST.
+
+</p>
+
+</section>
 
 <footer>
-<p>© 2026 CHARGE | Organised By The Electronix Club | Department Of ECE </p>
+
+© 2026 CHARGE | The Electronics Club, Department of ECE SNIST
+
 </footer>
 
-<script src="script.js"></script>
+<script>
+
+/* toggle events */
+
+function toggle(id){
+
+let x=document.getElementById(id)
+
+if(x.style.display==="block"){
+x.style.display="none"
+}
+else{
+x.style.display="block"
+}
+
+}
+
+/* countdown */
+
+const eventDate=new Date("April 10, 2026 09:00:00").getTime()
+
+setInterval(function(){
+
+const now=new Date().getTime()
+
+const distance=eventDate-now
+
+const days=Math.floor(distance/(1000*60*60*24))
+
+document.getElementById("timer").innerHTML=days+" Days"
+
+},1000)
+
+/* background animation */
+
+const canvas=document.getElementById("bg")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+p.x+=p.vx
+p.y+=p.vy
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1
+if(p.y<0||p.y>canvas.height)p.vy*=-1
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#00fff2"
+ctx.fill()
+
+particles.forEach(p2=>{
+
+let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
+
+if(dist<120){
+
+ctx.beginPath()
+ctx.moveTo(p.x,p.y)
+ctx.lineTo(p2.x,p2.y)
+ctx.strokeStyle="rgba(0,255,242,0.15)"
+ctx.stroke()
+
+}
+
+})
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+</script>
 
 </body>
 </html>
