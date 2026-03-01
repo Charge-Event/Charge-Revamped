@@ -1,65 +1,72 @@
-const canvas=document.getElementById("circuitCanvas");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+const canvas = document.getElementById('circuitCanvas');
+const ctx = canvas.getContext('2d');
 
-let particles=[];
-for(let i=0;i<150;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    size:Math.random()*2+0.4,
-    speedX:Math.random()*0.4-0.2,
-    speedY:Math.random()*0.4-0.2
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+// Dots & lines
+const dots = [];
+for(let i=0;i<120;i++){
+  dots.push({
+    x: Math.random()*width,
+    y: Math.random()*height,
+    vx: (Math.random()-0.5)*0.5,
+    vy: (Math.random()-0.5)*0.5,
+    size: Math.random()*2+1
   });
 }
 
-function drawParticles(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(0,255,180,0.8)";
-  particles.forEach(p=>{
+// Lightning flash
+function lightning(){
+  const flash = document.querySelector('.flash');
+  flash.style.opacity = 0.6;
+  setTimeout(()=> flash.style.opacity = 0, 100 + Math.random()*200);
+}
+
+// Animation
+function animate(){
+  ctx.clearRect(0,0,width,height);
+
+  // Diagonal streaks
+  for(let i=0;i<dots.length;i++){
+    let d = dots[i];
+    d.x += d.vx; d.y += d.vy;
+
+    if(d.x<0||d.x>width) d.vx*=-1;
+    if(d.y<0||d.y>height) d.vy*=-1;
+
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+    ctx.arc(d.x,d.y,d.size,0,Math.PI*2);
+    ctx.fillStyle = '#7fff00';
     ctx.fill();
-    p.x+=p.speedX;
-    p.y+=p.speedY;
-    if(p.x<0)p.x=canvas.width;
-    if(p.x>canvas.width)p.x=0;
-    if(p.y<0)p.y=canvas.height;
-    if(p.y>canvas.height)p.y=0;
-  });
-  requestAnimationFrame(drawParticles);
-}
-drawParticles();
-
-// ---------- MULTI-BOLT LIGHTNING ----------
-function lightningStrike(){
-  const count=Math.floor(Math.random()*3)+3; // 3–5 bolts
-  for(let i=0;i<count;i++){
-    const bolt=document.createElement("div");
-    bolt.classList.add("lightning-bolt");
-    bolt.style.left=`${Math.random()*100}%`;
-    bolt.style.top=`${Math.random()*70}%`;
-    document.body.appendChild(bolt);
-    setTimeout(()=>bolt.remove(),600);
+    ctx.closePath();
   }
-}
-setInterval(lightningStrike,11000);
 
-// ---------- INTERACTIVE RIPPLE ----------
-canvas.addEventListener("click",e=>{
-  for(let i=0;i<8;i++){
-    particles.push({
-      x:e.clientX,
-      y:e.clientY,
-      size:Math.random()*3,
-      speedX:Math.random()*2-1,
-      speedY:Math.random()*2-1
-    });
+  // Connect dots with lines if close
+  for(let i=0;i<dots.length;i++){
+    for(let j=i+1;j<dots.length;j++){
+      let d1 = dots[i], d2 = dots[j];
+      let dist = Math.hypot(d1.x-d2.x,d1.y-d2.y);
+      if(dist<120){
+        ctx.beginPath();
+        ctx.moveTo(d1.x,d1.y);
+        ctx.lineTo(d2.x,d2.y);
+        ctx.strokeStyle = 'rgba(127,255,0,'+(1-dist/120)+')';
+        ctx.stroke();
+      }
+    }
   }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Window resize
+window.addEventListener('resize', ()=>{
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 });
 
-window.addEventListener("resize",()=>{
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-});
+// Random lightning every 8-12 seconds
+setInterval(lightning, 8000 + Math.random()*4000);
