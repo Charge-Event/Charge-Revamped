@@ -6,7 +6,6 @@
   <title>CHARGE REVAMPED 2026 — The Electronics Club, SNIST</title>
 
   <style>
-    /* ---------- Base ---------- */
     * {
       margin: 0;
       padding: 0;
@@ -15,50 +14,43 @@
     }
 
     body {
-      background: radial-gradient(circle at top, #080808, #000);
+      background-color: #000;
       color: #e0e0e0;
       text-align: center;
       overflow-x: hidden;
       position: relative;
+      min-height: 100vh;
     }
 
-    /* ---------- Animated Electric Background ---------- */
+    /* ====== Circuit Wall Background (Optimized) ====== */
     body::before {
       content: "";
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: repeating-linear-gradient(
-        60deg,
-        rgba(0, 255, 255, 0.03),
-        rgba(0, 255, 255, 0.03) 2px,
-        transparent 2px,
-        transparent 60px
-      ),
-      repeating-linear-gradient(
-        -60deg,
-        rgba(255, 255, 0, 0.02),
-        rgba(255, 255, 0, 0.02) 2px,
-        transparent 2px,
-        transparent 60px
-      );
-      animation: moveBg 15s linear infinite;
+      background-image:
+        radial-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(rgba(0,255,255,0.04) 1px, transparent 1px);
+      background-size: 120px 120px, 40px 40px, 40px 40px;
+      animation: moveCircuit 30s linear infinite;
       z-index: 0;
-      opacity: 0.7;
+      opacity: 0.4;
     }
 
-    @keyframes moveBg {
-      from { background-position: 0 0, 0 0; }
-      to { background-position: 300px 600px, -300px -600px; }
+    @keyframes moveCircuit {
+      from { background-position: 0 0, 0 0, 0 0; }
+      to { background-position: 300px 300px, 100px 200px, -100px -200px; }
     }
 
-    /* ---------- Header ---------- */
+    /* ====== Header ====== */
     header {
-      background: rgba(20, 20, 20, 0.95);
+      background: rgba(10,10,10,0.95);
       backdrop-filter: blur(10px);
-      border-bottom: 2px solid #00ffe1;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      border-bottom: 2px solid #00eaff;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
       padding: 1em 0;
       position: sticky;
       top: 0;
@@ -66,107 +58,86 @@
     }
 
     header h2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #00eaff;
       font-size: 2rem;
-      letter-spacing: 1px;
       text-transform: uppercase;
-      color: #00ffe1;
-      text-shadow: 0 0 15px #00ffe1, 0 0 25px #00f0ff;
-      animation: flicker 3s infinite;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.6);
+      animation: glowPulse 4s ease-in-out infinite;
     }
 
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.4;
-      }
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 10px rgba(0,255,255,0.6); }
+      50% { text-shadow: 0 0 20px rgba(0,255,255,0.9); }
     }
 
     nav {
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     nav a {
-      color: #00ffe1;
-      margin: 0 12px;
+      color: #00eaff;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: 500;
-      position: relative;
       transition: 0.3s;
     }
 
     nav a:hover {
       color: #fff;
-      text-shadow: 0 0 10px #00ffe1;
+      text-shadow: 0 0 10px #00eaff;
     }
 
     .divider {
-      color: #555;
+      color: #444;
     }
 
-    /* ---------- Hero Section ---------- */
+    /* ====== Hero Section ====== */
     .hero {
       padding: 80px 20px 60px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(15,15,15,0.95));
       position: relative;
       z-index: 1;
-      background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(10,10,10,0.95));
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 200%;
-      height: 100%;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(0,255,255,0.15) 0%, transparent 70%);
-      animation: pulse 4s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
     }
 
     .hero h1 {
-      font-size: 3.2rem;
-      color: #00ffe1;
-      text-shadow: 0 0 30px #00ffff, 0 0 80px rgba(0,255,255,0.5);
+      font-size: 2.8rem;
+      color: #00eaff;
+      text-shadow: 0 0 25px rgba(0,255,255,0.7);
+      margin-bottom: 20px;
     }
 
     .hero p {
-      color: #ddd;
+      color: #ccc;
       font-size: 1.1rem;
-      margin-top: 15px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
       line-height: 1.7em;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .btn {
-      background: linear-gradient(90deg, #00ffff, #00c3ff);
+      background: linear-gradient(90deg, #00ffff, #00aaff);
       color: #000;
       font-weight: bold;
-      padding: 12px 26px;
+      padding: 12px 24px;
       border-radius: 10px;
       text-decoration: none;
       display: inline-block;
       margin-top: 35px;
-      box-shadow: 0 0 25px rgba(0,255,255,0.6);
+      box-shadow: 0 0 20px rgba(0,255,255,0.5);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      background: #fff;
-      transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(0,255,255,1);
+      transform: scale(1.07);
+      box-shadow: 0 0 30px rgba(0,255,255,0.9);
     }
 
-    /* ---------- Section Titles ---------- */
+    /* ====== Sections ====== */
     .section {
       padding: 70px 20px;
       max-width: 1100px;
@@ -176,11 +147,11 @@
     }
 
     .section h2 {
-      color: #00ffe1;
+      color: #00eaff;
       font-size: 2rem;
       margin-bottom: 25px;
       text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(0,255,255,0.7);
+      text-shadow: 0 0 15px rgba(0,255,255,0.6);
     }
 
     .section p {
@@ -191,53 +162,53 @@
       margin: 0 auto 20px;
     }
 
-    /* ---------- Glowing Cards ---------- */
+    /* ====== Event Grid ====== */
     .event-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
       margin-top: 40px;
     }
 
     .event-card {
-      background: rgba(10,10,10,0.9);
-      border: 1px solid rgba(0,255,255,0.3);
-      padding: 25px 20px;
+      background: rgba(10,10,10,0.85);
+      border: 1px solid rgba(0,255,255,0.2);
       border-radius: 12px;
+      padding: 25px 20px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.1);
       transition: all 0.3s ease;
-      box-shadow: 0 0 12px rgba(0,255,255,0.1);
     }
 
     .event-card:hover {
       border: 1px solid #00ffff;
-      box-shadow: 0 0 25px rgba(0,255,255,0.5);
+      box-shadow: 0 0 25px rgba(0,255,255,0.4);
       transform: translateY(-5px);
     }
 
     .event-card h3 {
-      color: #00ffe1;
+      color: #00eaff;
       margin-bottom: 12px;
       font-size: 1.4rem;
     }
 
     .event-card p {
-      font-size: 0.95rem;
       color: #aaa;
+      font-size: 0.95rem;
       line-height: 1.6em;
     }
 
-    /* ---------- Prize Section ---------- */
+    /* ====== Prize Section ====== */
     .prize {
-      background: linear-gradient(180deg, #000, #0a0a0a);
+      background: linear-gradient(180deg, #000, #0b0b0b);
       padding: 80px 20px;
-      border-top: 2px solid #00ffe1;
-      border-bottom: 2px solid #00ffe1;
-      box-shadow: inset 0 0 50px rgba(0,255,255,0.1);
+      border-top: 2px solid #00eaff;
+      border-bottom: 2px solid #00eaff;
+      box-shadow: inset 0 0 40px rgba(0,255,255,0.1);
     }
 
     .prize h2 {
-      color: #00ffe1;
-      text-shadow: 0 0 15px rgba(0,255,255,0.7);
+      color: #00eaff;
+      text-shadow: 0 0 15px rgba(0,255,255,0.6);
       font-size: 2rem;
     }
 
@@ -249,24 +220,25 @@
       line-height: 1.8em;
     }
 
-    /* ---------- Footer ---------- */
+    /* ====== Footer ====== */
     footer {
       background: #050505;
       color: #777;
       padding: 1em 0;
-      border-top: 2px solid #00ffe1;
+      border-top: 2px solid #00eaff;
       font-size: 0.9rem;
-      letter-spacing: 0.5px;
     }
 
     footer strong {
-      color: #00ffe1;
+      color: #00eaff;
     }
 
+    /* ====== Responsive ====== */
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.3rem; }
-      .section h2 { font-size: 1.6rem; }
-      .event-card { padding: 20px 15px; }
+      header h2 { font-size: 1.6rem; flex-wrap: wrap; }
+      .hero h1 { font-size: 2rem; line-height: 1.2em; }
+      .btn { padding: 10px 20px; font-size: 0.95rem; }
+      nav a { margin: 0 5px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -286,7 +258,7 @@
   </header>
 
   <section class="hero">
-    <h1>Unleash the Power of Innovation ⚡</h1>
+    <h1>Ignite the Future of Innovation</h1>
     <p>
       Welcome to <strong>CHARGE REVAMPED 2026</strong> — a 3-day national-level technical fest organized by
       <strong>The Electronics Club (TEC)</strong>, under the <strong>Department of ECE</strong>, at
@@ -298,41 +270,25 @@
   <section class="section">
     <h2>About the Event</h2>
     <p>
-      CHARGE REVAMPED is where ideas spark, circuits connect, and imagination gets electrified. A celebration of innovation, coding, creativity, and pure engineering brilliance.
-      This fest redefines how technology meets imagination — from electronics to embedded systems and IoT marvels.
+      CHARGE REVAMPED is a celebration of electronics, innovation, and futuristic design.
+      It’s a platform where circuits spark ideas, and ideas ignite revolutions.
     </p>
     <p>
-      Join thousands of visionaries as we combine <strong>hardware</strong>, <strong>software</strong>, and <strong>design thinking</strong> to create the next generation of technology.
+      Designed for creators, engineers, and dreamers — this fest unites tech enthusiasts
+      from across the nation to explore <strong>Embedded Systems</strong>, <strong>IoT</strong>, <strong>VLSI</strong>,
+      and <strong>Drone Technologies</strong>.
     </p>
   </section>
 
   <section class="section">
     <h2>Major Attractions</h2>
     <div class="event-grid">
-      <div class="event-card">
-        <h3>⚙️ Workshop</h3>
-        <p>Hands-on session on <strong>Embedded Systems</strong> — learn sensors, boards, and firmware building directly from industry mentors.</p>
-      </div>
-      <div class="event-card">
-        <h3>💡 Forge Hackathon</h3>
-        <p>24-hour innovation marathon in <strong>Electronics, IoT, PCB, and Drones</strong>. Build the impossible, wire by wire.</p>
-      </div>
-      <div class="event-card">
-        <h3>🚀 Ideathon</h3>
-        <p>Pitch groundbreaking ideas in electronics, drones, and embedded systems. It’s not just an idea — it’s the future waiting to happen.</p>
-      </div>
-      <div class="event-card">
-        <h3>🧩 Project Expo</h3>
-        <p>Display your creations at the center of SNIST — from autonomous robots to IoT dashboards. Inspire the next big innovation.</p>
-      </div>
-      <div class="event-card">
-        <h3>📑 Paper Presentation</h3>
-        <p>Showcase your technical insights and research findings in ECE, IoT, and hardware technologies to industry experts.</p>
-      </div>
-      <div class="event-card">
-        <h3>🎮 Games</h3>
-        <p>Enjoy fun and tech-based games to recharge your energy. Compete, collaborate, and connect with peers!</p>
-      </div>
+      <div class="event-card"><h3>⚙️ Workshop</h3><p>Master Embedded Systems in a hands-on, industry-led session with real hardware demos.</p></div>
+      <div class="event-card"><h3>💡 Forge Hackathon</h3><p>24-hour Hackathon on Electronics, IoT, PCB, and Drones — where innovation never sleeps.</p></div>
+      <div class="event-card"><h3>🚀 Ideathon</h3><p>Pitch and refine groundbreaking ideas in electronics and innovation-driven problem solving.</p></div>
+      <div class="event-card"><h3>🧩 Project Expo</h3><p>Showcase your engineering marvels at SNIST’s central hall. Inspire thousands with your innovation.</p></div>
+      <div class="event-card"><h3>📑 Paper Presentation</h3><p>Present research work and futuristic concepts before a panel of technical experts.</p></div>
+      <div class="event-card"><h3>🎮 Games</h3><p>Compete in exciting tech and fun games designed to spark your competitive spirit.</p></div>
     </div>
   </section>
 
@@ -340,8 +296,8 @@
     <h2>Prize Pool & Rewards</h2>
     <p>
       Total Prize Pool: <strong>₹35,000 – ₹40,000</strong> (excluding games)<br><br>
-      Winners receive <strong>cash prizes, industry internships, and recognition</strong> from top tech companies.<br><br>
-      When innovation meets competition, sparks fly — and ideas turn into impact.
+      Winners will receive <strong>cash prizes, internships, and national recognition</strong>.<br><br>
+      When innovation meets competition, the spark becomes unstoppable.
     </p>
   </section>
 
