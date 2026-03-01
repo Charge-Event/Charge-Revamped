@@ -179,3 +179,23 @@ footer {
   .hero h1 { font-size: 2.1rem; line-height: 1.3em; }
   .btn { padding: 10px 20px; font-size: 0.95rem; }
 }
+
+
+/* ---------- LIGHTNING BOLT EFFECT ---------- */
+.lightning-bolt {
+  position: fixed;
+  width: 2px;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(0,255,255,1), rgba(0,255,180,0));
+  filter: blur(1px);
+  opacity: 0.9;
+  animation: strike 0.6s ease-in-out forwards;
+  z-index: 5;
+}
+
+@keyframes strike {
+  0% { transform: rotate(25deg) scaleY(0); opacity: 0; }
+  20% { transform: rotate(25deg) scaleY(1.1); opacity: 1; }
+  40% { transform: rotate(25deg) scaleY(0.9); opacity: 0.8; }
+  100% { transform: rotate(25deg) scaleY(0); opacity: 0; }
+}
