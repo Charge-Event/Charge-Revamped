@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Charge Hackathon</title>
 
 <style>
@@ -14,13 +15,13 @@ box-sizing:border-box;
 }
 
 body{
-font-family: Arial, sans-serif;
+font-family:Arial, sans-serif;
 background:#0f172a;
 color:white;
 overflow-x:hidden;
 }
 
-/* animation canvas */
+/* Background canvas */
 
 canvas{
 position:fixed;
@@ -32,47 +33,142 @@ z-index:-1;
 /* sections */
 
 section{
-padding:60px 10%;
+padding:70px 10%;
 }
+
+/* titles */
 
 h1,h2{
 color:#38bdf8;
 }
 
+/* HERO */
+
 .hero{
+
 text-align:center;
-padding:100px 10%;
+padding:120px 10%;
 background:linear-gradient(135deg,#020617,#0f172a);
+position:relative;
+
+}
+
+/* glass hero card */
+
+.hero-box{
+
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:50px;
+border-radius:20px;
+max-width:700px;
+margin:auto;
+box-shadow:0 0 30px rgba(56,189,248,0.15);
+
 }
 
 .hero h1{
 font-size:48px;
+margin-bottom:10px;
+text-shadow:0 0 15px rgba(56,189,248,0.5);
 }
 
-.button{
+.hero p{
+opacity:0.9;
+line-height:1.6;
+}
+
+/* badge */
+
+.badge{
+
+display:inline-block;
 background:#38bdf8;
-padding:15px 30px;
+color:black;
+padding:6px 14px;
+border-radius:20px;
+font-size:14px;
+margin-bottom:15px;
+font-weight:bold;
+
+}
+
+/* button */
+
+.button{
+
+display:inline-block;
+margin-top:20px;
+background:#38bdf8;
+padding:15px 35px;
 border-radius:8px;
 text-decoration:none;
 color:black;
 font-weight:bold;
+transition:0.3s;
+
+}
+
+.button:hover{
+
+transform:scale(1.05);
+box-shadow:0 0 15px #38bdf8;
+
 }
 
 /* cards */
 
 .card-container{
+
 display:flex;
 gap:30px;
 flex-wrap:wrap;
 margin-top:30px;
+
 }
 
 .card{
+
 background:#1e293b;
 padding:25px;
 border-radius:12px;
 flex:1;
 min-width:220px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+}
+
+/* lists */
+
+ul{
+
+margin-top:15px;
+padding-left:20px;
+line-height:1.7;
+
+}
+
+/* responsive hero */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+.hero-box{
+padding:35px;
+}
+
 }
 
 </style>
@@ -80,34 +176,52 @@ min-width:220px;
 
 <body>
 
-<!-- background animation -->
 <canvas id="bg"></canvas>
+
+<!-- HERO -->
 
 <section class="hero">
 
+<div class="hero-box">
+
+<div class="badge">CHARGE REVAMPED 2026</div>
+
 <h1>24 Hour Hackathon</h1>
 
-<p>Build innovative solutions, collaborate with developers and compete for exciting prizes.</p>
+<p>
+Build innovative solutions, collaborate with developers, designers, and engineers,
+and compete for exciting prizes. Experience 24 hours of creativity,
+problem solving, learning, and networking with talented participants.
+</p>
 
-<br>
+<a class="button" href="#">
+Register Now – ₹1000
+</a>
 
-<a class="button" href="#">Register Now – ₹1200</a>
+</div>
 
 </section>
 
+<!-- ABOUT -->
 
 <section>
 
 <h2>About The Hackathon</h2>
 
 <p>
-This is a 24-hour innovation driven hackathon where participants collaborate in teams to solve real world problems using technology.
+This 24-hour hackathon is an innovation driven event where students collaborate
+in teams to develop technological solutions for real world challenges.
+Participants will brainstorm ideas, build prototypes, and present their
+projects to judges within the limited time frame.
 
-Participants will work continuously for 24 hours to design, build and present creative solutions. Apart from coding there will be networking opportunities, fun activities and exciting experiences throughout the event.
+Apart from coding and development, the event also encourages networking,
+knowledge sharing, and collaboration between participants from different
+technical backgrounds.
 </p>
 
 </section>
 
+<!-- PRIZES -->
 
 <section>
 
@@ -133,13 +247,14 @@ Participants will work continuously for 24 hours to design, build and present cr
 </div>
 
 <p style="margin-top:20px;">
-Total Prize Pool: ₹30,000  
-<br>
-Internship opportunities and exciting merchandise will also be provided.
+Total Prize Pool: ₹30,000 <br>
+Top performing teams may also receive internship opportunities,
+industry recognition and exciting merchandise.
 </p>
 
 </section>
 
+<!-- PROBLEMS -->
 
 <section>
 
@@ -147,73 +262,93 @@ Internship opportunities and exciting merchandise will also be provided.
 
 <p>
 Problem statements will be released <b>1–2 days before the event</b>.
+Participants will be required to choose one problem and build a working
+solution or prototype during the hackathon.
 </p>
 
-<p>
-Status: <b>Coming Soon</b>
-</p>
+<p>Status: <b>Coming Soon</b></p>
 
 </section>
 
+<!-- TEAM -->
 
 <section>
 
 <h2>Team Requirements</h2>
 
 <ul>
-<li>Team Size: 2 – 4 Members</li>
+
+<li>Team Size: <b>2 – 4 Members</b></li>
 <li>Participants must register as a team</li>
-<li>Each team must build a solution during the 24 hour hackathon</li>
+<li>Each team must develop their solution during the 24 hour hackathon</li>
+<li>Participants are encouraged to bring laptops and development tools</li>
+
 </ul>
 
 </section>
 
+<!-- REGISTRATION -->
 
 <section>
 
 <h2>Registration</h2>
 
-<p><b>Registration Fee:</b> ₹1200 per team</p>
+<p><b>Registration Fee:</b> ₹1000 per team</p>
 
 <p>Registration Includes:</p>
 
 <ul>
-<li>Meals</li>
-<li>Refreshments</li>
-<li>Participation Certificate</li>
-<li>Access to all activities</li>
+
+<li>Meals and refreshments</li>
+<li>Participation certificates</li>
+<li>Access to all hackathon activities</li>
+<li>Mentorship and technical guidance</li>
+
 </ul>
 
 </section>
 
+<!-- EXTRA -->
 
 <section>
 
 <h2>Extra Activities</h2>
 
 <ul>
-<li>🔥 Campfire</li>
-<li>🎮 Fun Games</li>
-<li>🤝 Networking Sessions</li>
-<li>🎁 Exciting Merchandise</li>
+
+<li>🔥 Campfire networking session</li>
+<li>🎮 Fun games and mini competitions</li>
+<li>🤝 Networking with developers and innovators</li>
+<li>🎁 Exciting merchandise and goodies</li>
+
 </ul>
 
 </section>
 
-
 <script>
 
-/* background animation */
+/* responsive particle animation */
 
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
 
+function resize(){
+
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
 
+}
+
+resize()
+window.addEventListener("resize",resize)
+
+/* adjust particles by device */
+
+let particleCount=window.innerWidth<768?30:80
+
 let particles=[]
 
-for(let i=0;i<80;i++){
+for(let i=0;i<particleCount;i++){
 
 particles.push({
 
@@ -240,7 +375,7 @@ if(p.y<0||p.y>canvas.height)p.vy*=-1
 
 ctx.beginPath()
 ctx.arc(p.x,p.y,2,0,Math.PI*2)
-ctx.fillStyle="#00fff2"
+ctx.fillStyle="#38bdf8"
 ctx.fill()
 
 particles.forEach(p2=>{
@@ -252,7 +387,7 @@ if(dist<120){
 ctx.beginPath()
 ctx.moveTo(p.x,p.y)
 ctx.lineTo(p2.x,p2.y)
-ctx.strokeStyle="rgba(0,255,242,0.15)"
+ctx.strokeStyle="rgba(56,189,248,0.15)"
 ctx.stroke()
 
 }
