@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,7 +25,7 @@ font-family:'Poppins',sans-serif;
 overflow-x:hidden;
 }
 
-/* background animation */
+/* background canvas */
 
 canvas{
 position:fixed;
@@ -60,7 +61,7 @@ nav a:hover{
 color:#00fff2;
 }
 
-/* hero section */
+/* hero */
 
 .hero{
 text-align:center;
@@ -101,10 +102,10 @@ font-weight:500;
 color:#00fff2;
 }
 
-/* events */
+/* events section */
 
 #events{
-padding:80px 40px;
+padding:80px 20px;
 }
 
 .section-title{
@@ -115,20 +116,24 @@ margin-bottom:60px;
 color:#00fff2;
 }
 
-/* GRID LAYOUT */
+/* RESPONSIVE GRID */
 
 .event-grid{
 
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:40px;
 
-max-width:900px;
+/* auto responsive columns */
+
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+gap:30px;
+
+max-width:1000px;
 margin:auto;
 
 }
 
-/* event cards */
+/* cards */
 
 .event-card{
 
@@ -146,7 +151,7 @@ box-shadow:
 
 }
 
-/* glow background */
+/* glow */
 
 .event-card::before{
 
@@ -163,7 +168,7 @@ z-index:-1;
 
 }
 
-/* hover effect */
+/* hover */
 
 .event-card:hover{
 
@@ -175,14 +180,14 @@ box-shadow:
 
 }
 
-/* heading */
+/* headings */
 
 .event-card h3{
 font-family:'Orbitron';
 margin-bottom:10px;
-color:#00fff2;   /* same neon blue as navbar */
-letter-spacing:1px;
+color:#00fff2;
 }
+
 /* preview text */
 
 .event-preview{
@@ -200,16 +205,14 @@ transition:0.3s;
 opacity:1;
 }
 
-/* info section */
+/* info */
 
 .info{
-
 text-align:center;
 max-width:900px;
 margin:80px auto;
 font-size:18px;
 line-height:1.8;
-
 }
 
 .info strong{
@@ -223,6 +226,47 @@ text-align:center;
 padding:40px;
 border-top:1px solid #222;
 margin-top:80px;
+}
+
+/* ======================= */
+/* MOBILE RESPONSIVE */
+/* ======================= */
+
+@media(max-width:768px){
+
+header{
+padding:15px 20px;
+}
+
+nav a{
+margin-left:15px;
+font-size:14px;
+}
+
+.hero{
+padding:90px 20px 60px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+.event-card{
+padding:22px;
+}
+
+.btn{
+padding:14px 30px;
+}
+
 }
 
 </style>
@@ -245,8 +289,7 @@ margin-top:80px;
 
 </header>
 
-
-<!-- HERO SECTION -->
+<!-- HERO -->
 
 <section id="home" class="hero">
 
@@ -255,11 +298,7 @@ margin-top:80px;
 <p>
 
 Organized by <strong>The Electronics Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
-CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators, engineers, and technology enthusiasts.
-
-The event focuses on domains such as <em>Electronics System Design, Embedded Systems, Internet of Things (IoT), PCB Design, Robotics, and Drone Technology</em>.  
-
-Through competitions, workshops, and project exhibitions, participants explore real-world engineering challenges and transform creative ideas into impactful solutions.
+CHARGE 2026 brings together innovators, engineers and technology enthusiasts to showcase creativity in electronics and embedded systems.
 
 </p>
 
@@ -272,7 +311,6 @@ Through competitions, workshops, and project exhibitions, participants explore r
 
 </section>
 
-
 <!-- EVENTS -->
 
 <section id="events">
@@ -282,66 +320,82 @@ Through competitions, workshops, and project exhibitions, participants explore r
 <div class="event-grid">
 
 <a href="hackathon.html" class="event-card">
+
 <h3>Hackathon</h3>
+
 <div class="event-preview">
 24-hour hardware hackathon where teams build innovative electronics solutions using IoT and embedded systems.
 </div>
+
 </a>
 
 <a href="workshop.html" class="event-card">
+
 <h3>Workshop</h3>
+
 <div class="event-preview">
-Hands-on sessions on IoT development, PCB design, embedded programming and hardware prototyping.
+Hands-on sessions on IoT development, PCB design and embedded programming.
 </div>
+
 </a>
 
 <a href="expo.html" class="event-card">
+
 <h3>Project Expo</h3>
+
 <div class="event-preview">
-Students showcase innovative electronics projects to judges, mentors and technology enthusiasts.
+Students showcase innovative electronics projects to judges and mentors.
 </div>
+
 </a>
 
 <a href="paper.html" class="event-card">
+
 <h3>Paper Presentation</h3>
+
 <div class="event-preview">
-Participants present research ideas and emerging technologies in electronics and communication engineering.
+Present research ideas and emerging technologies in electronics engineering.
 </div>
+
 </a>
 
 <a href="ideathon.html" class="event-card">
+
 <h3>Ideathon</h3>
+
 <div class="event-preview">
-Teams pitch futuristic engineering ideas solving real-world technical challenges.
+Pitch futuristic engineering ideas that solve real-world problems.
 </div>
+
 </a>
 
 <a href="games.html" class="event-card">
+
 <h3>Technical Games</h3>
+
 <div class="event-preview">
-Fun electronics challenges testing circuit knowledge, logic and quick thinking.
+Fun electronics challenges testing circuit knowledge and logic.
 </div>
+
 </a>
 
 </div>
 
 </section>
-
 
 <!-- INFO -->
 
 <section class="info">
 
 <p>
-🏆 CHARGE 2026 features a massive <strong>Prize Pool of ₹40,000</strong> across multiple events rewarding innovation and technical excellence.
+🏆 CHARGE 2026 features a massive <strong>Prize Pool of ₹50,000</strong> across multiple events rewarding innovation and technical excellence.
 </p>
 
 <p>
-More than <strong>7000+ attendees</strong> including students, innovators and technology enthusiasts are expected to visit the event.
+More than <strong>7000+ attendees</strong> including students and innovators are expected.
 </p>
 
 </section>
-
 
 <!-- ABOUT -->
 
@@ -352,33 +406,22 @@ More than <strong>7000+ attendees</strong> including students, innovators and te
 <div class="info">
 
 <p>
-<strong>CHARGE</strong> is the flagship technical event organized by  
-<strong>The Electronics Club, Department of ECE, Sreenidhi Institute of Science and Technology.</strong>
-</p>
-
-<p>
-For more than <strong>10+ years</strong>, CHARGE has served as a platform where engineering students showcase innovation and creativity.
-</p>
-
-<p>
-The event focuses on domains like Embedded Systems, IoT, Robotics, PCB Design and Electronics System Design.
+<strong>CHARGE</strong> is the flagship event of the Electronix Club at SNIST where students showcase innovation and creativity through technical competitions.
 </p>
 
 </div>
 
 </section>
 
-
 <footer>
 
-© 2026 CHARGE | The Electronics Club, Department of ECE SNIST
+© 2026 CHARGE | The Electronix Club, Department of ECE SNIST
 
 </footer>
 
-
 <script>
 
-/* background animation */
+/* particle animation */
 
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
@@ -388,14 +431,14 @@ canvas.height=window.innerHeight
 
 let particles=[]
 
-for(let i=0;i<80;i++){
+for(let i=0;i<120;i++){
 
 particles.push({
 
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
+vx:(Math.random()-0.5)*0.6,
+vy:(Math.random()-0.5)*0.6
 
 })
 
@@ -414,7 +457,7 @@ if(p.x<0||p.x>canvas.width)p.vx*=-1
 if(p.y<0||p.y>canvas.height)p.vy*=-1
 
 ctx.beginPath()
-ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.arc(p.x,p.y,2.5,0,Math.PI*2)
 ctx.fillStyle="#00fff2"
 ctx.fill()
 
@@ -427,7 +470,7 @@ if(dist<120){
 ctx.beginPath()
 ctx.moveTo(p.x,p.y)
 ctx.lineTo(p2.x,p2.y)
-ctx.strokeStyle="rgba(0,255,242,0.15)"
+ctx.strokeStyle="rgba(0,255,242,0.25)"
 ctx.stroke()
 
 }
@@ -442,7 +485,6 @@ requestAnimationFrame(animate)
 
 animate()
 
-
 /* TIMER */
 
 const eventDate = new Date("March 10, 2026 09:00:00").getTime();
@@ -453,17 +495,17 @@ const now = new Date().getTime();
 const distance = eventDate - now;
 
 if(distance < 0){
-document.getElementById("timer").innerHTML = "Event Started!";
+document.getElementById("timer").innerHTML="Event Started!";
 return;
 }
 
-const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-const seconds = Math.floor((distance % (1000*60)) / 1000);
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
 
-document.getElementById("timer").innerHTML =
-days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s";
+document.getElementById("timer").innerHTML=
+days+"d : "+hours+"h : "+minutes+"m : "+seconds+"s";
 
 }
 
