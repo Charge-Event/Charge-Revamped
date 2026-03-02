@@ -60,7 +60,7 @@ nav a:hover{
 color:#00fff2;
 }
 
-/* hero */
+/* hero section */
 
 .hero{
 text-align:center;
@@ -115,21 +115,20 @@ margin-bottom:60px;
 color:#00fff2;
 }
 
-/* grid */
+/* GRID LAYOUT */
 
 .event-grid{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,300px));
+grid-template-columns:repeat(2,1fr);
 gap:40px;
 
-max-width:1100px;
+max-width:900px;
 margin:auto;
 
-justify-content:center;
-
 }
-/* cards */
+
+/* event cards */
 
 .event-card{
 
@@ -147,22 +146,7 @@ box-shadow:
 
 }
 
-  /* preview text on hover */
-
-.event-preview{
-opacity:0;
-margin-top:12px;
-font-size:14px;
-line-height:1.5;
-color:#bbb;
-transition:0.3s;
-}
-
-.event-card:hover .event-preview{
-opacity:1;
-}
-
-/* glow behind card */
+/* glow background */
 
 .event-card::before{
 
@@ -179,26 +163,40 @@ z-index:-1;
 
 }
 
+/* hover effect */
+
 .event-card:hover{
 
 transform:translateY(-10px);
-box-shadow:
 
+box-shadow:
 0 0 30px rgba(0,255,242,0.4),
 0 0 60px rgba(0,255,242,0.2);
 
 }
+
+/* heading */
 
 .event-card h3{
 font-family:'Orbitron';
 margin-bottom:10px;
 }
 
-.event-content{
-display:none;
+/* preview text */
+
+.event-preview{
+
+opacity:0;
+margin-top:10px;
 font-size:14px;
-line-height:1.6;
-margin-top:15px;
+line-height:1.5;
+color:#bbb;
+transition:0.3s;
+
+}
+
+.event-card:hover .event-preview{
+opacity:1;
 }
 
 /* info section */
@@ -243,7 +241,11 @@ margin-top:80px;
 <a href="#events">Events</a>
 <a href="#about">About Us</a>
 </nav>
+
 </header>
+
+
+<!-- HERO SECTION -->
 
 <section id="home" class="hero">
 
@@ -251,25 +253,26 @@ margin-top:80px;
 
 <p>
 
-Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
+Organized by <strong>The Electronics Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
 CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators, engineers, and technology enthusiasts.
 
 The event focuses on domains such as <em>Electronics System Design, Embedded Systems, Internet of Things (IoT), PCB Design, Robotics, and Drone Technology</em>.  
-Through competitions, workshops, and project exhibitions, participants get the opportunity to explore real-world engineering challenges and transform creative ideas into impactful solutions.
 
-CHARGE aims to create a platform where students collaborate, innovate, and showcase their technical abilities while learning from peers, mentors, and industry experts.
+Through competitions, workshops, and project exhibitions, participants explore real-world engineering challenges and transform creative ideas into impactful solutions.
 
 </p>
+
 <a href="#" class="btn">Register Now</a>
-  <a href="hackathon.html" class="btn">Hackathon</a>
 
 <div class="countdown">
-  <p>Event Begins In</p>
-  <div id="timer">Loading...</div>
-
+<p>Event Begins In</p>
+<div id="timer">Loading...</div>
 </div>
 
 </section>
+
+
+<!-- EVENTS -->
 
 <section id="events">
 
@@ -277,21 +280,17 @@ CHARGE aims to create a platform where students collaborate, innovate, and showc
 
 <div class="event-grid">
 
-<div class="event-grid">
-
 <a href="hackathon.html" class="event-card">
 <h3>Hackathon</h3>
 <div class="event-preview">
-24-hour hardware hackathon where teams build innovative electronics solutions using IoT, embedded systems and hardware prototypes.
+24-hour hardware hackathon where teams build innovative electronics solutions using IoT and embedded systems.
 </div>
 </a>
 
-<div class="event-card" 
-     onclick="toggle('work')" 
-     ondblclick="window.location.href='workshop.html'">
+<a href="workshop.html" class="event-card">
 <h3>Workshop</h3>
 <div class="event-preview">
-Hands-on sessions on IoT development, PCB design, embedded programming and real-world hardware building.
+Hands-on sessions on IoT development, PCB design, embedded programming and hardware prototyping.
 </div>
 </a>
 
@@ -305,21 +304,21 @@ Students showcase innovative electronics projects to judges, mentors and technol
 <a href="paper.html" class="event-card">
 <h3>Paper Presentation</h3>
 <div class="event-preview">
-Present research ideas and emerging technologies in electronics and communication engineering.
+Participants present research ideas and emerging technologies in electronics and communication engineering.
 </div>
 </a>
 
 <a href="ideathon.html" class="event-card">
 <h3>Ideathon</h3>
 <div class="event-preview">
-Teams pitch futuristic engineering ideas that solve real-world technical challenges.
+Teams pitch futuristic engineering ideas solving real-world technical challenges.
 </div>
 </a>
 
 <a href="games.html" class="event-card">
 <h3>Technical Games</h3>
 <div class="event-preview">
-Fun electronics-based challenges testing circuit knowledge, logic and quick thinking.
+Fun electronics challenges testing circuit knowledge, logic and quick thinking.
 </div>
 </a>
 
@@ -327,24 +326,23 @@ Fun electronics-based challenges testing circuit knowledge, logic and quick thin
 
 </section>
 
+
+<!-- INFO -->
+
 <section class="info">
 
 <p>
-
-🏆 CHARGE 2026 features a massive <strong>Prize Pool of ₹40,000</strong> across multiple events rewarding the best innovations and performances.
-
+🏆 CHARGE 2026 features a massive <strong>Prize Pool of ₹40,000</strong> across multiple events rewarding innovation and technical excellence.
 </p>
 
 <p>
-
-More than <strong>7000+ attendees</strong> including students, technology enthusiasts, and innovators are expected to visit the event, making it one of the biggest electronics technical fests at SNIST.
-
+More than <strong>7000+ attendees</strong> including students, innovators and technology enthusiasts are expected to visit the event.
 </p>
 
 </section>
 
-  </section>
 
+<!-- ABOUT -->
 
 <section id="about">
 
@@ -353,63 +351,31 @@ More than <strong>7000+ attendees</strong> including students, technology enthus
 <div class="info">
 
 <p>
-
 <strong>CHARGE</strong> is the flagship technical event organized by  
 <strong>The Electronics Club, Department of ECE, Sreenidhi Institute of Science and Technology.</strong>
-
 </p>
 
 <p>
-
-For more than <strong>10+ years</strong>, CHARGE has served as a platform where engineering students showcase innovation, creativity, and technical excellence through competitions, project exhibitions, and workshops.
-
+For more than <strong>10+ years</strong>, CHARGE has served as a platform where engineering students showcase innovation and creativity.
 </p>
 
 <p>
-
-The event focuses on domains like:
-
-Embedded Systems  
-Internet of Things (IoT)  
-Robotics  
-PCB Design  
-Electronics System Design  
-
-</p>
-
-<p>
-
-Every year CHARGE attracts <strong>7000+ attendees</strong> including students, innovators, and technology enthusiasts making it one of the biggest electronics technical fests at SNIST.
-
+The event focuses on domains like Embedded Systems, IoT, Robotics, PCB Design and Electronics System Design.
 </p>
 
 </div>
 
 </section>
 
+
 <footer>
 
-© 2026 CHARGE | The Electronix Club, Department of ECE SNIST
+© 2026 CHARGE | The Electronics Club, Department of ECE SNIST
 
 </footer>
 
+
 <script>
-
-/* toggle events */
-
-function toggle(id){
-
-const allContent = document.querySelectorAll(".event-content")
-
-allContent.forEach(content=>{
-content.style.display="none"
-})
-
-const selected = document.getElementById(id)
-
-selected.style.display="block"
-
-}
 
 /* background animation */
 
@@ -475,8 +441,9 @@ requestAnimationFrame(animate)
 
 animate()
 
-</script>
-  <script>
+
+/* TIMER */
+
 const eventDate = new Date("March 10, 2026 09:00:00").getTime();
 
 function updateTimer(){
@@ -501,6 +468,7 @@ days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s";
 
 setInterval(updateTimer,1000);
 updateTimer();
+
 </script>
 
 </body>
