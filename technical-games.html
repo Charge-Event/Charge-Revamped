@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Games | The Electronix Club</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family: Arial, sans-serif;
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+/* animated background */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* sections */
+
+section{
+padding:60px 10%;
+}
+
+h1,h2{
+color:#38bdf8;
+}
+
+/* hero section */
+
+.hero{
+text-align:center;
+padding:100px 10%;
+background:linear-gradient(135deg,#020617,#0f172a);
+}
+
+.hero h1{
+font-size:44px;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:650px;
+margin:auto;
+line-height:1.6;
+}
+
+/* button */
+
+.button{
+display:inline-block;
+background:#38bdf8;
+padding:15px 30px;
+border-radius:8px;
+text-decoration:none;
+color:black;
+font-weight:bold;
+margin-top:25px;
+}
+
+/* cards */
+
+.card-container{
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+margin-top:35px;
+}
+
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+flex:1;
+min-width:240px;
+transition:0.3s;
+box-shadow:0 0 25px rgba(56,189,248,0.15);
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 35px rgba(56,189,248,0.45);
+}
+
+.card h3{
+margin-bottom:12px;
+color:#38bdf8;
+}
+
+.card p{
+line-height:1.6;
+}
+
+/* glow section */
+
+.glow-box{
+background:#020617;
+border-radius:15px;
+padding:40px;
+box-shadow:0 0 60px rgba(56,189,248,0.35);
+}
+
+/* list */
+
+ul{
+margin-top:15px;
+line-height:1.8;
+}
+
+/* mobile */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:32px;
+}
+
+.hero{
+padding:80px 8%;
+}
+
+section{
+padding:50px 8%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- background animation -->
+<canvas id="bg"></canvas>
+
+<!-- hero -->
+
+<section class="hero">
+
+<h1>Technical Games Arena</h1>
+
+<p>
+Experience electronics in the most exciting way through interactive technical games.  
+Test your knowledge, speed, creativity, and practical skills through fun engineering challenges designed by <b>The Electronix Club</b>.
+</p>
+
+<a class="button" href="#">Participate Now</a>
+
+</section>
+
+
+<!-- about -->
+
+<section>
+
+<h2>About The Event</h2>
+
+<p>
+The Technical Games Arena is designed to make electronics learning engaging, interactive, and competitive. 
+Participants will take part in short technical challenges that test practical circuit knowledge, debugging skills, logic thinking, and quick decision making.
+</p>
+
+<br>
+
+<p>
+Each activity combines fun with learning, allowing students to explore electronics concepts in a hands-on and competitive environment. 
+These games encourage creativity, teamwork, and confidence while helping participants improve their technical understanding.
+</p>
+
+</section>
+
+
+<!-- games -->
+
+<section class="glow-box">
+
+<h2>Technical Challenges</h2>
+
+<div class="card-container">
+
+<div class="card">
+<h3>⚡ Rapid Circuit Building</h3>
+<p>
+Participants must quickly assemble a working electronic circuit using components like breadboards, LEDs, resistors, batteries, and connecting wires. The challenge tests speed, accuracy, and hands-on circuit building ability.
+</p>
+</div>
+
+<div class="card">
+<h3>🔧 Fault Detection</h3>
+<p>
+A circuit will be intentionally built with hidden faults. Participants must carefully analyze the circuit and identify the errors within a limited time. This game strengthens debugging and troubleshooting skills.
+</p>
+</div>
+
+<div class="card">
+<h3>🧠 Logic Mapping</h3>
+<p>
+A grid containing multiple digital logic gates will be shown briefly to participants. After it disappears, they must recreate the exact arrangement of gates from memory, testing concentration and digital electronics knowledge.
+</p>
+</div>
+
+<div class="card">
+<h3>⚔ One-on-One Quiz</h3>
+<p>
+Two participants compete by answering the same technical question simultaneously. The first participant to answer correctly earns points, and the fastest thinker wins the challenge.
+</p>
+</div>
+
+<div class="card">
+<h3>💣 Capacitor Countdown Challenge</h3>
+<p>
+Participants must prevent a simulated bomb from exploding by correctly discharging a capacitor in a timing circuit. Using measurements and calculations, they must choose the correct method to stop the countdown.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- benefits -->
+
+<section>
+
+<h2>What You Will Gain</h2>
+
+<ul>
+<li>Hands-on exposure to real electronics concepts</li>
+<li>Practical circuit building and debugging experience</li>
+<li>Opportunity to compete with other engineering students</li>
+<li>Improved problem-solving and analytical thinking</li>
+<li>Networking with fellow innovators and tech enthusiasts</li>
+<li>Recognition and exciting rewards for winners</li>
+</ul>
+
+</section>
+
+
+<!-- extra activities -->
+
+<section>
+
+<h2>Additional Fun Activities</h2>
+
+<p>
+Apart from the technical challenges, the event will also include a few non-technical fun games to create a lively and enjoyable environment for all participants. 
+These activities ensure that everyone can participate and experience the energetic atmosphere of The Electronix Club events.
+</p>
+
+</section>
+
+
+
+<script>
+
+/* responsive background animation */
+
+const canvas=document.getElementById("bg")
+const ctx=canvas.getContext("2d")
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particleCount = window.innerWidth < 768 ? 30 : 70
+
+let particles=[]
+
+for(let i=0;i<particleCount;i++){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+p.x+=p.vx
+p.y+=p.vy
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1
+if(p.y<0||p.y>canvas.height)p.vy*=-1
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#38bdf8"
+ctx.fill()
+
+particles.forEach(p2=>{
+
+let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
+
+if(dist<120){
+
+ctx.beginPath()
+ctx.moveTo(p.x,p.y)
+ctx.lineTo(p2.x,p2.y)
+ctx.strokeStyle="rgba(56,189,248,0.15)"
+ctx.stroke()
+
+}
+
+})
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+</script>
+
+</body>
+</html>
