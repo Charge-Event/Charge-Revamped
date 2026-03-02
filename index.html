@@ -147,6 +147,21 @@ box-shadow:
 
 }
 
+  /* preview text on hover */
+
+.event-preview{
+opacity:0;
+margin-top:12px;
+font-size:14px;
+line-height:1.5;
+color:#bbb;
+transition:0.3s;
+}
+
+.event-card:hover .event-preview{
+opacity:1;
+}
+
 /* glow behind card */
 
 .event-card::before{
@@ -262,47 +277,49 @@ CHARGE aims to create a platform where students collaborate, innovate, and showc
 
 <div class="event-grid">
 
-<div class="event-card" onclick="toggle('hack')">
+<div class="event-grid">
+
+<a href="hackathon.html" class="event-card">
 <h3>Hackathon</h3>
-<div id="hack" class="event-content">
-Participants collaborate to design innovative electronics solutions within limited time, building prototypes using embedded systems, IoT modules, and hardware platforms.
+<div class="event-preview">
+24-hour hardware hackathon where teams build innovative electronics solutions using IoT, embedded systems and hardware prototypes.
 </div>
-</div>
+</a>
 
-<div class="event-card" onclick="toggle('work')">
+<a href="workshop.html" class="event-card">
 <h3>Workshop</h3>
-<div id="work" class="event-content">
-Hands-on sessions led by experts covering IoT development, PCB design, embedded programming, and hardware prototyping.
+<div class="event-preview">
+Hands-on sessions on IoT development, PCB design, embedded programming and real-world hardware building.
 </div>
-</div>
+</a>
 
-<div class="event-card" onclick="toggle('expo')">
+<a href="expo.html" class="event-card">
 <h3>Project Expo</h3>
-<div id="expo" class="event-content">
-Students showcase their innovative hardware and electronics projects to judges and visitors.
+<div class="event-preview">
+Students showcase innovative electronics projects to judges, mentors and technology enthusiasts.
 </div>
-</div>
+</a>
 
-<div class="event-card" onclick="toggle('paper')">
+<a href="paper.html" class="event-card">
 <h3>Paper Presentation</h3>
-<div id="paper" class="event-content">
-Participants present research and technical ideas related to electronics and emerging technologies.
+<div class="event-preview">
+Present research ideas and emerging technologies in electronics and communication engineering.
 </div>
-</div>
+</a>
 
-<div class="event-card" onclick="toggle('idea')">
+<a href="ideathon.html" class="event-card">
 <h3>Ideathon</h3>
-<div id="idea" class="event-content">
-Creative event where teams pitch futuristic engineering ideas to solve real-world problems.
+<div class="event-preview">
+Teams pitch futuristic engineering ideas that solve real-world technical challenges.
 </div>
-</div>
+</a>
 
-<div class="event-card" onclick="toggle('game')">
+<a href="games.html" class="event-card">
 <h3>Technical Games</h3>
-<div id="game" class="event-content">
-Fun engineering games designed to test circuit knowledge, logic, and quick thinking.
+<div class="event-preview">
+Fun electronics-based challenges testing circuit knowledge, logic and quick thinking.
 </div>
-</div>
+</a>
 
 </div>
 
