@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Charge Hackathon</title>
 
 <style>
@@ -15,13 +14,13 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Arial, sans-serif;
+font-family: Arial, sans-serif;
 background:#0f172a;
 color:white;
 overflow-x:hidden;
 }
 
-/* Background canvas */
+/* animated background */
 
 canvas{
 position:fixed;
@@ -33,99 +32,103 @@ z-index:-1;
 /* sections */
 
 section{
-padding:70px 10%;
+padding:60px 10%;
+max-width:1200px;
+margin:auto;
 }
-
-/* titles */
 
 h1,h2{
 color:#38bdf8;
+margin-bottom:15px;
 }
 
-/* HERO */
+/* hero section */
 
 .hero{
-
 text-align:center;
-padding:120px 10%;
-background:linear-gradient(135deg,#020617,#0f172a);
-position:relative;
-
+padding:100px 10%;
 }
 
-/* glass hero card */
+/* glowing hero box */
 
 .hero-box{
 
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(10px);
-padding:50px;
-border-radius:20px;
-max-width:700px;
-margin:auto;
-box-shadow:0 0 30px rgba(56,189,248,0.15);
+background:#020617;
+padding:50px 40px;
+border-radius:16px;
+position:relative;
+
+box-shadow:
+0 0 40px rgba(56,189,248,0.2),
+0 0 80px rgba(56,189,248,0.15);
+
+}
+
+/* glow background */
+
+.hero-box::before{
+
+content:"";
+position:absolute;
+
+top:-40px;
+left:-40px;
+right:-40px;
+bottom:-40px;
+
+background:radial-gradient(circle,#38bdf8 0%,transparent 70%);
+opacity:0.12;
+z-index:-1;
 
 }
 
 .hero h1{
 font-size:48px;
-margin-bottom:10px;
-text-shadow:0 0 15px rgba(56,189,248,0.5);
+margin-bottom:15px;
 }
 
 .hero p{
-opacity:0.9;
+margin-bottom:25px;
 line-height:1.6;
 }
 
-/* badge */
-
-.badge{
-
-display:inline-block;
-background:#38bdf8;
-color:black;
-padding:6px 14px;
-border-radius:20px;
-font-size:14px;
-margin-bottom:15px;
-font-weight:bold;
-
-}
-
-/* button */
+/* register button */
 
 .button{
 
-display:inline-block;
-margin-top:20px;
 background:#38bdf8;
-padding:15px 35px;
+padding:16px 32px;
 border-radius:8px;
 text-decoration:none;
 color:black;
 font-weight:bold;
+display:inline-block;
 transition:0.3s;
+text-align:center;
 
+}
+
+.button .price{
+display:block;
+font-size:14px;
+margin-top:3px;
+font-weight:600;
 }
 
 .button:hover{
 
 transform:scale(1.05);
-box-shadow:0 0 15px #38bdf8;
+box-shadow:0 0 20px #38bdf8;
 
 }
 
 /* cards */
 
 .card-container{
-
 display:flex;
 gap:30px;
 flex-wrap:wrap;
 margin-top:30px;
-
 }
 
 .card{
@@ -135,7 +138,8 @@ padding:25px;
 border-radius:12px;
 flex:1;
 min-width:220px;
-border:1px solid rgba(255,255,255,0.08);
+
+box-shadow:0 0 20px rgba(56,189,248,0.08);
 transition:0.3s;
 
 }
@@ -143,30 +147,40 @@ transition:0.3s;
 .card:hover{
 
 transform:translateY(-6px);
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
+box-shadow:0 0 30px rgba(56,189,248,0.25);
 
+}
+
+.card h3{
+margin-bottom:10px;
 }
 
 /* lists */
 
 ul{
-
 margin-top:15px;
-padding-left:20px;
-line-height:1.7;
-
+line-height:1.8;
+padding-left:18px;
 }
 
-/* responsive hero */
+/* mobile responsive */
 
-@media(max-width:768px){
+@media (max-width:768px){
+
+.hero{
+padding:80px 8%;
+}
+
+.hero-box{
+padding:35px 25px;
+}
 
 .hero h1{
 font-size:34px;
 }
 
-.hero-box{
-padding:35px;
+.button{
+padding:14px 28px;
 }
 
 }
@@ -178,29 +192,28 @@ padding:35px;
 
 <canvas id="bg"></canvas>
 
+
 <!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-box">
 
-<div class="badge">CHARGE REVAMPED 2026</div>
-
 <h1>24 Hour Hackathon</h1>
 
 <p>
-Build innovative solutions, collaborate with developers, designers, and engineers,
-and compete for exciting prizes. Experience 24 hours of creativity,
-problem solving, learning, and networking with talented participants.
+A 24-hour innovation challenge where developers, engineers, and innovators collaborate to build real-world technology solutions using electronics, embedded systems, and IoT.
 </p>
 
 <a class="button" href="#">
-Register Now – ₹1000
+Register Now
+<span class="price">₹1000 / Team</span>
 </a>
 
 </div>
 
 </section>
+
 
 <!-- ABOUT -->
 
@@ -209,19 +222,21 @@ Register Now – ₹1000
 <h2>About The Hackathon</h2>
 
 <p>
-This 24-hour hackathon is an innovation driven event where students collaborate
-in teams to develop technological solutions for real world challenges.
-Participants will brainstorm ideas, build prototypes, and present their
-projects to judges within the limited time frame.
+The CHARGE Hackathon is an intense 24-hour innovation challenge designed to encourage creativity, collaboration, and technical problem solving among engineering students.
+</p>
 
-Apart from coding and development, the event also encourages networking,
-knowledge sharing, and collaboration between participants from different
-technical backgrounds.
+<p>
+Participants will work in teams to design, prototype, and present innovative solutions for real-world problems using modern technologies such as IoT, Embedded Systems, Robotics, and Electronics System Design.
+</p>
+
+<p>
+Throughout the hackathon, teams will receive mentorship, interact with experts, and compete to build the most impactful and creative solution within the limited time.
 </p>
 
 </section>
 
-<!-- PRIZES -->
+
+<!-- PRIZE POOL -->
 
 <section>
 
@@ -247,30 +262,36 @@ technical backgrounds.
 </div>
 
 <p style="margin-top:20px;">
-Total Prize Pool: ₹30,000 <br>
-Top performing teams may also receive internship opportunities,
-industry recognition and exciting merchandise.
+Total Prize Pool: <b>₹30,000</b>  
+<br>
+Winners may also receive internship opportunities, mentorship, and exciting merchandise.
 </p>
 
 </section>
 
-<!-- PROBLEMS -->
+
+<!-- PROBLEM STATEMENTS -->
 
 <section>
 
 <h2>Problem Statements</h2>
 
 <p>
-Problem statements will be released <b>1–2 days before the event</b>.
-Participants will be required to choose one problem and build a working
-solution or prototype during the hackathon.
+The official problem statements will be released <b>1–2 days before the hackathon</b>.
 </p>
 
-<p>Status: <b>Coming Soon</b></p>
+<p>
+Teams will select a problem statement and develop a working prototype during the event.
+</p>
+
+<p>
+Status: <b>Coming Soon</b>
+</p>
 
 </section>
 
-<!-- TEAM -->
+
+<!-- TEAM REQUIREMENTS -->
 
 <section>
 
@@ -279,36 +300,46 @@ solution or prototype during the hackathon.
 <ul>
 
 <li>Team Size: <b>2 – 4 Members</b></li>
+
 <li>Participants must register as a team</li>
-<li>Each team must develop their solution during the 24 hour hackathon</li>
-<li>Participants are encouraged to bring laptops and development tools</li>
+
+<li>Each team must build their solution during the 24-hour hackathon</li>
+
+<li>Participants can use any hardware or software tools required for their solution</li>
 
 </ul>
 
 </section>
 
-<!-- REGISTRATION -->
+
+<!-- WHAT YOU WILL GAIN -->
 
 <section>
 
-<h2>Registration</h2>
-
-<p><b>Registration Fee:</b> ₹1000 per team</p>
-
-<p>Registration Includes:</p>
+<h2>What You Will Gain</h2>
 
 <ul>
 
-<li>Meals and refreshments</li>
-<li>Participation certificates</li>
-<li>Access to all hackathon activities</li>
-<li>Mentorship and technical guidance</li>
+<li>Real-world experience in solving engineering problems</li>
+
+<li>Opportunity to build innovative hardware or software prototypes</li>
+
+<li>Mentorship from experienced engineers and mentors</li>
+
+<li>Networking opportunities with talented developers and innovators</li>
+
+<li>Internship opportunities and recognition from industry professionals</li>
+
+<li>Certificate of Participation</li>
+
+<li>Experience of working in a high-energy collaborative environment</li>
 
 </ul>
 
 </section>
 
-<!-- EXTRA -->
+
+<!-- EXTRA ACTIVITIES -->
 
 <section>
 
@@ -316,37 +347,61 @@ solution or prototype during the hackathon.
 
 <ul>
 
-<li>🔥 Campfire networking session</li>
-<li>🎮 Fun games and mini competitions</li>
-<li>🤝 Networking with developers and innovators</li>
-<li>🎁 Exciting merchandise and goodies</li>
+<li>🔥 Campfire and fun midnight activities</li>
+
+<li>🎮 Technical games and challenges</li>
+
+<li>🤝 Networking sessions with mentors</li>
+
+<li>🎁 Exciting merchandise and surprise rewards</li>
 
 </ul>
 
 </section>
 
+
+<!-- REGISTRATION -->
+
+<section>
+
+<h2>Registration Details</h2>
+
+<p><b>Registration Fee:</b> ₹1000 per team</p>
+
+<p>Registration Includes:</p>
+
+<ul>
+
+<li>Meals and refreshments during the hackathon</li>
+
+<li>Access to the full 24-hour event</li>
+
+<li>Mentorship support</li>
+
+<li>Participation certificate</li>
+
+<li>Fun activities and networking sessions</li>
+
+</ul>
+
+</section>
+
+
 <script>
 
-/* responsive particle animation */
+/* background animation */
 
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
 
-function resize(){
-
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
 
-}
-
-resize()
-window.addEventListener("resize",resize)
-
-/* adjust particles by device */
-
-let particleCount=window.innerWidth<768?30:80
-
 let particles=[]
+
+/* fewer particles on phones */
+
+let particleCount = window.innerWidth < 768 ? 35 : 80
 
 for(let i=0;i<particleCount;i++){
 
