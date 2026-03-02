@@ -379,17 +379,17 @@ Every year CHARGE attracts <strong>7000+ attendees</strong> including students, 
 
 function toggle(id){
 
-let x=document.getElementById(id)
+const allContent = document.querySelectorAll(".event-content")
 
-if(x.style.display==="block"){
-x.style.display="none"
-}
-else{
-x.style.display="block"
-}
+allContent.forEach(content=>{
+content.style.display="none"
+})
+
+const selected = document.getElementById(id)
+
+selected.style.display="block"
 
 }
-
 
 /* background animation */
 
