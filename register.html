@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | CHARGE Revamped 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050505;color:white;font-family:'Poppins',sans-serif;overflow-x:hidden}
+canvas{position:fixed;top:0;left:0;z-index:-1}
+
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 60px;
+background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);flex-wrap:wrap;}
+header h2{font-family:'Orbitron';color:#00fff2;white-space:nowrap;font-size:22px}
+nav a{margin-left:25px;text-decoration:none;color:white;font-size:15px}
+nav a:hover{color:#00fff2}
+
+/* Main Section */
+section{padding:80px 40px;text-align:center}
+h1{font-size:42px;font-family:'Orbitron';color:#00fff2;margin-bottom:20px}
+p.subtitle{color:#ccc;margin-bottom:40px;font-size:18px}
+
+/* Event Cards */
+.event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;
+max-width:1100px;margin:auto}
+.event-card{background:#0c0c0c;border-radius:15px;padding:25px;text-align:center;position:relative;
+box-shadow:0 0 20px rgba(0,255,242,0.1);transition:0.4s}
+.event-card::before{content:"";position:absolute;top:-20px;left:-20px;right:-20px;bottom:-20px;
+background:radial-gradient(circle,#00fff2 0%,transparent 70%);opacity:0.08;z-index:-1}
+.event-card:hover{transform:translateY(-10px);box-shadow:0 0 30px rgba(0,255,242,0.4)}
+.event-card h3{font-family:'Orbitron';color:#00fff2;margin-bottom:15px}
+.event-card p{font-size:15px;color:#ccc;line-height:1.6;margin-bottom:25px}
+
+/* Register Button */
+.btn{background:#00fff2;color:black;padding:12px 30px;border-radius:25px;
+text-decoration:none;font-weight:bold;transition:0.3s}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 20px #00fff2}
+
+/* Modal */
+.modal{display:none;position:fixed;z-index:10;left:0;top:0;width:100%;height:100%;
+background:rgba(0,0,0,0.8);backdrop-filter:blur(6px);}
+.modal-content{background:#0f172a;margin:5% auto;padding:20px;border:2px solid #00fff2;
+width:90%;max-width:800px;border-radius:16px;box-shadow:0 0 30px rgba(0,255,242,0.3);}
+.close{color:#00fff2;float:right;font-size:28px;cursor:pointer}
+.close:hover{color:white}
+
+/* Responsive */
+@media(max-width:600px){
+header{padding:15px 25px}
+h1{font-size:32px}
+}
+</style>
+</head>
+
+<body>
+<canvas id="bg"></canvas>
+
+<header>
+  <h2>⚡ CHARGE REVAMPED 2026</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#events">Events</a>
+  </nav>
+</header>
+
+<section id="events">
+  <h1>Register for Events</h1>
+  <p class="subtitle">Choose your event below and complete your registration.</p>
+
+  <div class="event-grid">
+
+    <!-- Hackathon -->
+    <div class="event-card">
+      <h3>Hackathon</h3>
+      <p>Join a 24-hour innovation marathon building electronics and IoT-based prototypes that solve real-world problems.</p>
+      <a class="btn" onclick="openForm('hackathonForm')">Register</a>
+    </div>
+
+    <!-- Ideathon -->
+    <div class="event-card">
+      <h3>Ideathon</h3>
+      <p>Pitch your innovative ideas and concepts that could transform the future of technology and sustainability.</p>
+      <a class="btn" onclick="openForm('ideathonForm')">Register</a>
+    </div>
+
+    <!-- Project Expo -->
+    <div class="event-card">
+      <h3>Project Expo</h3>
+      <p>Showcase your working models, prototypes, or research projects before judges and industry experts.</p>
+      <a class="btn" onclick="openForm('expoForm')">Register</a>
+    </div>
+
+    <!-- Paper Presentation -->
+    <div class="event-card">
+      <h3>Paper Presentation</h3>
+      <p>Present your research or review papers on emerging electronics technologies and innovations.</p>
+      <a class="btn" onclick="openForm('paperForm')">Register</a>
+    </div>
+
+    <!-- Workshop -->
+    <div class="event-card">
+      <h3>Workshop</h3>
+      <p>Hands-on workshop on Embedded Systems & RTOS. Learn, build, and get certified by Vector India.</p>
+      <a class="btn" onclick="openForm('workshopForm')">Register</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODALS -->
+<div id="hackathonForm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm('hackathonForm')">&times;</span>
+    <iframe src="https://forms.gle/KudKg7R4L49LMuMaA" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<div id="ideathonForm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm('ideathonForm')">&times;</span>
+    <iframe src="https://forms.gle/BHTziTNfxaxDKCuP8" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<div id="expoForm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm('expoForm')">&times;</span>
+    <iframe src="https://forms.gle/618mES5TZSkfoFqE9" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<div id="paperForm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm('paperForm')">&times;</span>
+    <iframe src="https://forms.gle/XrnsRhpAqYtpTt8H8" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<div id="workshopForm" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm('workshopForm')">&times;</span>
+    <iframe src="https://forms.gle/uzoCSrNNGyr4zgHn7" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<script>
+/* Particle Background */
+const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+let particles=[],count=innerWidth<600?30:innerWidth<1024?50:80;
+for(let i=0;i<count;i++){particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});}
+function animate(){
+ctx.clearRect(0,0,innerWidth,innerHeight);
+particles.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>innerWidth)p.vx*=-1;if(p.y<0||p.y>innerHeight)p.vy*=-1;
+ctx.beginPath();ctx.arc(p.x,p.y,2,0,2*Math.PI);ctx.fillStyle="#00fff2";ctx.fill();
+particles.forEach(q=>{let d=Math.hypot(p.x-q.x,p.y-q.y);
+if(d<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+ctx.strokeStyle="rgba(0,255,242,0.15)";ctx.stroke();}});
+});
+requestAnimationFrame(animate);}
+animate();
+
+/* Modal Functions */
+function openForm(id){document.getElementById(id).style.display="block";}
+function closeForm(id){document.getElementById(id).style.display="none";}
+window.onclick=function(e){document.querySelectorAll('.modal').forEach(m=>{if(e.target==m)m.style.display='none';});}
+</script>
+
+</body>
+</html>
