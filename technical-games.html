@@ -317,6 +317,11 @@ requestAnimationFrame(animate)
 animate()
 
 </script>
-
+<script>
+/* Fix for double back-click issue */
+if (window.history && window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
+</script>
 </body>
 </html>
