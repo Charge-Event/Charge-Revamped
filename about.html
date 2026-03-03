@@ -10,175 +10,171 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-  background:#050505;
-  color:white;
-  font-family:'Poppins',sans-serif;
-  overflow-x:hidden;
+background:#050505;
+color:white;
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
 }
 canvas{position:fixed;top:0;left:0;z-index:-1}
 
 /* HEADER */
 header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 60px;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(10px);
-  flex-wrap:wrap;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+flex-wrap:wrap;
 }
 header h2{
-  font-family:'Orbitron';
-  color:#00fff2;
-  font-size:22px;
+font-family:'Orbitron';
+color:#00fff2;
+font-size:22px;
 }
 nav a{
-  margin-left:25px;
-  text-decoration:none;
-  color:white;
-  font-size:15px;
+margin-left:25px;
+text-decoration:none;
+color:white;
+font-size:15px;
 }
 nav a:hover{color:#00fff2}
 
 /* TOP CONTACT BAR */
 .top-info{
-  text-align:center;
-  padding:20px 10px;
-  background:rgba(0,255,242,0.05);
-  color:#ccc;
-  font-size:15px;
+text-align:center;
+padding:20px 10px;
+background:rgba(0,255,242,0.05);
+color:#ccc;
+font-size:15px;
 }
-.top-info a{
-  color:#00fff2;
-  text-decoration:none;
-  margin:0 8px;
-}
+.top-info a{color:#00fff2;text-decoration:none;margin:0 8px;}
 .top-info a:hover{text-decoration:underline;}
 
 /* HERO SECTION */
 .hero{
-  text-align:center;
-  padding:80px 20px 40px;
+text-align:center;
+padding:80px 20px 40px;
 }
 .logo-container{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:40px;
-  flex-wrap:wrap;
-  margin-bottom:30px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+flex-wrap:wrap;
+margin-bottom:30px;
 }
 .logo-container img{
-  height:120px;
-  width:auto;
-  filter:drop-shadow(0 0 20px rgba(0,255,242,0.4));
-  transition:0.3s;
+height:120px;
+width:auto;
+filter:drop-shadow(0 0 20px rgba(0,255,242,0.4));
+transition:0.3s;
 }
 .logo-container img:hover{
-  transform:scale(1.05);
+transform:scale(1.05);
 }
 .hero h1{
-  font-family:'Orbitron';
-  font-size:40px;
-  color:#00fff2;
-  margin-bottom:15px;
+font-family:'Orbitron';
+font-size:40px;
+color:#00fff2;
+margin-bottom:15px;
 }
 .hero p{
-  font-size:17px;
-  line-height:1.7;
-  max-width:900px;
-  margin:auto;
-  color:#ccc;
+font-size:17px;
+line-height:1.7;
+max-width:900px;
+margin:auto;
+color:#ccc;
 }
 
 /* GALLERY */
 .gallery{
-  padding:60px 40px;
-  text-align:center;
+padding:60px 40px;
+text-align:center;
 }
 .gallery h2{
-  font-family:'Orbitron';
-  font-size:36px;
-  color:#00fff2;
-  margin-bottom:40px;
+font-family:'Orbitron';
+font-size:36px;
+color:#00fff2;
+margin-bottom:40px;
 }
 .gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-  max-width:1000px;
-  margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+max-width:1000px;
+margin:auto;
 }
 .gallery-grid img{
-  width:100%;
-  border-radius:10px;
-  object-fit:cover;
-  box-shadow:0 0 20px rgba(0,255,242,0.1);
-  transition:0.3s;
+width:100%;
+border-radius:10px;
+object-fit:cover;
+box-shadow:0 0 20px rgba(0,255,242,0.1);
+transition:0.3s;
 }
 .gallery-grid img:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 30px rgba(0,255,242,0.3);
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(0,255,242,0.3);
 }
 
 /* ABOUT CONTENT */
 .about-section{
-  padding:60px 40px;
-  max-width:900px;
-  margin:auto;
-  line-height:1.8;
-  color:#ddd;
+padding:60px 40px;
+max-width:900px;
+margin:auto;
+line-height:1.8;
+color:#ddd;
 }
 .about-section h2{
-  color:#00fff2;
-  font-family:'Orbitron';
-  margin-bottom:20px;
-  text-align:center;
+color:#00fff2;
+font-family:'Orbitron';
+margin-bottom:20px;
+text-align:center;
 }
 
 /* CONTACT SECTION */
 .contact{
-  padding:60px 40px;
-  text-align:center;
+padding:60px 40px;
+text-align:center;
 }
 .contact h2{
-  font-family:'Orbitron';
-  color:#00fff2;
-  margin-bottom:20px;
+font-family:'Orbitron';
+color:#00fff2;
+margin-bottom:20px;
 }
 .contact p{color:#ccc;line-height:1.8;}
 .contact strong{color:#00fff2;}
 
 /* BUTTON */
 .btn{
-  background:#00fff2;
-  color:black;
-  padding:12px 30px;
-  border-radius:25px;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
-  display:inline-block;
-  margin-top:30px;
+background:#00fff2;
+color:black;
+padding:12px 30px;
+border-radius:25px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+display:inline-block;
+margin-top:30px;
 }
 .btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #00fff2;
+transform:scale(1.05);
+box-shadow:0 0 20px #00fff2;
 }
 
 /* FOOTER */
 footer{
-  text-align:center;
-  padding:30px;
-  border-top:1px solid #222;
-  margin-top:50px;
-  color:#999;
+text-align:center;
+padding:30px;
+border-top:1px solid #222;
+margin-top:50px;
+color:#999;
 }
 
 /* RESPONSIVE */
 @media(max-width:600px){
-  .logo-container img{height:80px;}
-  h1{font-size:32px;}
+.logo-container img{height:80px;}
+h1{font-size:32px;}
 }
 </style>
 </head>
@@ -196,15 +192,15 @@ footer{
 
 <div class="top-info">
 📸 Follow us on 
-<a href="https://instagram.com/theelectronixclubsnist" target="_blank">@theelectronixclubsnist</a> & 
-<a href="https://instagram.com/charge_revamped1.0" target="_blank">@charge_revamped1.0</a> | 
+<a href="https://www.instagram.com/theelectronixclubsnist" target="_blank">@theelectronixclubsnist</a> & 
+<a href="https://www.instagram.com/charge_revamped1.0" target="_blank">@charge_revamped1.0</a> | 
 📧 <a href="mailto:tecelectronixclub@sreenidhi.edu.in">tecelectronixclub@sreenidhi.edu.in</a>
 </div>
 
 <section class="hero">
 <div class="logo-container">
-  <img src="images/TEC Symbol.jpg" alt="The Electronix Club Logo">
-  <img src="images/charge revamped logo.jpg.jpg" alt="CHARGE Logo">
+  <img src="./TEC Symbol.jpg" alt="The Electronix Club Logo">
+  <img src="./charge revamped logo.jpg.jpg" alt="CHARGE Logo">
 </div>
 <h1>About CHARGE</h1>
 <p>
@@ -215,14 +211,14 @@ Organized by <strong>The Electronix Club, Department of ECE, SNIST</strong>, CHA
 <section class="gallery">
 <h2>Photo Gallery</h2>
 <div class="gallery-grid">
-  <img src="images/1.jpeg" alt="CHARGE Event Photo 1">
-  <img src="images/2.jpeg" alt="CHARGE Event Photo 2">
-  <img src="images/3.jpeg" alt="CHARGE Event Photo 3">
-  <img src="images/4.jpeg" alt="CHARGE Event Photo 4">
-  <img src="images/5.jpeg" alt="CHARGE Event Photo 5">
-  <img src="images/6.jpeg" alt="CHARGE Event Photo 6">
-  <img src="images/7.jpeg" alt="CHARGE Event Photo 7">
-  <img src="images/8.jpeg" alt="CHARGE Event Photo 8">
+  <img src="./1.jpeg" alt="CHARGE Event Photo 1">
+  <img src="./2.jpeg" alt="CHARGE Event Photo 2">
+  <img src="./3.jpeg" alt="CHARGE Event Photo 3">
+  <img src="./4.jpeg" alt="CHARGE Event Photo 4">
+  <img src="./5.jpeg" alt="CHARGE Event Photo 5">
+  <img src="./6.jpeg" alt="CHARGE Event Photo 6">
+  <img src="./7.jpeg" alt="CHARGE Event Photo 7">
+  <img src="./8.jpeg" alt="CHARGE Event Photo 8">
 </div>
 </section>
 
