@@ -33,95 +33,72 @@ margin-bottom:40px;
 }
 
 .event-box{
-
 background:#161b22;
 border-radius:12px;
 padding:35px;
 box-shadow:0px 0px 40px rgba(0,140,255,0.4);
 border:1px solid rgba(0,140,255,0.4);
 margin-bottom:40px;
-
 }
 
 .event-title{
-
 font-size:30px;
 margin-bottom:10px;
 color:#58a6ff;
-
 }
 
 .details{
-
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 margin-top:25px;
 margin-bottom:25px;
-
 }
 
 .detail-card{
-
 background:#0d1117;
 padding:20px;
 border-radius:8px;
 text-align:center;
 border:1px solid #30363d;
-
 }
 
 .detail-card h3{
-
 margin-bottom:5px;
 color:#58a6ff;
-
 }
 
 .description{
-
 line-height:1.7;
 color:#c9d1d9;
-
 }
 
 .benefits{
-
 margin-top:30px;
-
 }
 
 .benefits h2{
-
 margin-bottom:15px;
 color:#58a6ff;
-
 }
 
 .benefits ul{
-
 padding-left:20px;
 line-height:1.8;
-
 }
 
 .register-section{
-
 text-align:center;
 margin-top:40px;
-
 }
 
 .price{
-
 font-size:22px;
 margin-bottom:15px;
 color:#58a6ff;
-
 }
 
 .register-btn{
-
 background:#238636;
 padding:14px 30px;
 font-size:18px;
@@ -130,27 +107,60 @@ border-radius:8px;
 cursor:pointer;
 color:white;
 transition:0.3s;
-
 }
 
 .register-btn:hover{
-
 background:#2ea043;
+}
 
+/* Modal styling */
+.modal {
+display: none;
+position: fixed;
+z-index: 10;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0,0,0,0.75);
+backdrop-filter: blur(5px);
+}
+
+.modal-content {
+background-color: #161b22;
+margin: 5% auto;
+padding: 20px;
+border: 2px solid #58a6ff;
+width: 90%;
+max-width: 800px;
+border-radius: 12px;
+box-shadow: 0 0 30px rgba(88,166,255,0.3);
+}
+
+.close {
+color: #58a6ff;
+float: right;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close:hover {
+color: #fff;
 }
 
 @media(max-width:600px){
-
 h1{
 font-size:30px;
 }
-
 .event-title{
 font-size:24px;
 }
-
+.modal-content {
+width: 95%;
 }
-
+}
 </style>
 </head>
 
@@ -161,94 +171,88 @@ font-size:24px;
 <h1>IDEATHON</h1>
 <p class="subtitle">Innovate • Create • Transform Ideas into Reality</p>
 
-
 <div class="event-box">
 
-<div class="event-title">
-Ideathon Challenge
-</div>
+<div class="event-title">Ideathon Challenge</div>
 
 <p class="description">
-
 The Ideathon organized by <b>The Electronix Club</b> is a platform where creative thinkers, innovators, and problem-solvers come together to present powerful ideas that can shape the future of technology and society.
-
+<br><br>
 Participants will brainstorm, develop, and pitch innovative solutions to real-world problems across domains such as electronics, automation, AI, sustainability, healthcare technology, and smart systems.
-
-This event focuses on **concept creation, innovation thinking, and problem-solving skills** rather than building a complete product. Teams will present their ideas before a panel of judges who will evaluate them based on creativity, feasibility, impact, and presentation clarity.
-
+<br><br>
+This event focuses on <b>concept creation, innovation thinking, and problem-solving skills</b> rather than building a complete product. Teams will present their ideas before a panel of judges who will evaluate them based on creativity, feasibility, impact, and presentation clarity.
+<br><br>
 It is a great opportunity for students to showcase their imagination, explore technological possibilities, and gain exposure to real innovation processes.
-
 </p>
 
 <div class="details">
-
-<div class="detail-card">
-<h3>Team Size</h3>
-<p>2 – 3 Members</p>
+  <div class="detail-card">
+    <h3>Team Size</h3>
+    <p>2 – 3 Members</p>
+  </div>
+  <div class="detail-card">
+    <h3>Entry Fee</h3>
+    <p>₹250 per Team</p>
+  </div>
+  <div class="detail-card">
+    <h3>Prize</h3>
+    <p>₹3,000</p>
+  </div>
+  <div class="detail-card">
+    <h3>Event Type</h3>
+    <p>Idea Pitching</p>
+  </div>
 </div>
-
-<div class="detail-card">
-<h3>Entry Fee</h3>
-<p>₹250 per Team</p>
-</div>
-
-<div class="detail-card">
-<h3>Prize</h3>
-<p>₹3,000</p>
-</div>
-
-<div class="detail-card">
-<h3>Event Type</h3>
-<p>Idea Pitching</p>
-</div>
-
-</div>
-
 
 <div class="benefits">
-
 <h2>What Will You Gain?</h2>
-
 <ul>
-
 <li>Opportunity to present innovative ideas before experienced judges.</li>
-
 <li>Exposure to real-world problem solving and technology innovation.</li>
-
 <li>Recognition for creative thinking and impactful ideas.</li>
-
 <li>Interaction with students from multiple domains and departments.</li>
-
 <li>Networking opportunities with peers interested in startups and innovation.</li>
-
 <li>Certificates for all participants from <b>The Electronix Club</b>.</li>
-
 <li>Possibility of mentorship and guidance for developing your idea further.</li>
-
 <li>Boost to your resume through participation in a technical innovation event.</li>
-
 <li>Chance to transform a simple concept into a potentially impactful project.</li>
-
 </ul>
-
 </div>
-
 
 <div class="register-section">
-
-<div class="price">
-Entry Fee: ₹250 (Per Team)
-</div>
-
-<button class="register-btn">
-Register Now
-</button>
-
+  <div class="price">Entry Fee: ₹250 (Per Team)</div>
+  <button class="register-btn" id="openForm">Register Now</button>
 </div>
 
 </div>
-
 </div>
+
+<!-- Modal for Google Form -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeForm">&times;</span>
+    <iframe src="https://forms.gle/BHTziTNfxaxDKCuP8" width="100%" height="600" style="border:none; border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<script>
+// Modal controls
+const modal = document.getElementById("formModal");
+const openBtn = document.getElementById("openForm");
+const closeBtn = document.getElementById("closeForm");
+
+openBtn.onclick = function() {
+  modal.style.display = "block";
+}
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 </body>
 </html>
