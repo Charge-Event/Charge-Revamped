@@ -6,231 +6,60 @@
 <title>Charge Workshop</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family: Arial, sans-serif;
-background:#0f172a;
-color:white;
-overflow-x:hidden;
-}
-
-/* animated background */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
-
-/* sections */
-section{
-padding:60px 10%;
-max-width:1200px;
-margin:auto;
-}
-
-h1,h2{
-color:#38bdf8;
-margin-bottom:15px;
-}
-
-/* hero section */
-.hero{
-text-align:center;
-padding:100px 10%;
-}
-
-/* glowing hero box */
-.hero-box{
-background:#020617;
-padding:50px 40px;
-border-radius:16px;
-position:relative;
-box-shadow:
-0 0 40px rgba(56,189,248,0.2),
-0 0 80px rgba(56,189,248,0.15);
-}
-
-/* blue glow behind hero */
-.hero-box::before{
-content:"";
-position:absolute;
-top:-40px;
-left:-40px;
-right:-40px;
-bottom:-40px;
-background:radial-gradient(circle,#38bdf8 0%,transparent 70%);
-opacity:0.12;
-z-index:-1;
-}
-
-.hero h1{
-font-size:48px;
-margin-bottom:15px;
-}
-
-.hero p{
-margin-bottom:25px;
-line-height:1.6;
-}
-
-/* register button */
-.button{
-background:#38bdf8;
-padding:16px 32px;
-border-radius:8px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-display:inline-block;
-transition:0.3s;
-text-align:center;
-cursor:pointer;
-}
-
-.button .price{
-display:block;
-font-size:14px;
-margin-top:3px;
-font-weight:600;
-}
-
-.button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #38bdf8;
-}
-
-/* cards */
-.card-container{
-display:flex;
-gap:30px;
-flex-wrap:wrap;
-margin-top:30px;
-}
-
-.card{
-background:#1e293b;
-padding:25px;
-border-radius:12px;
-flex:1;
-min-width:220px;
-box-shadow:0 0 20px rgba(56,189,248,0.08);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 30px rgba(56,189,248,0.25);
-}
-
-.card h3{
-margin-bottom:10px;
-}
-
-/* lists */
-ul{
-margin-top:15px;
-line-height:1.8;
-padding-left:18px;
-}
-
-/* modal styling */
-.modal {
-display: none;
-position: fixed;
-z-index: 10;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-overflow: auto;
-background-color: rgba(0,0,0,0.75);
-backdrop-filter: blur(5px);
-}
-
-.modal-content {
-background-color: #0f172a;
-margin: 5% auto;
-padding: 20px;
-border: 2px solid #38bdf8;
-width: 90%;
-max-width: 800px;
-border-radius: 16px;
-box-shadow: 0 0 30px rgba(56,189,248,0.3);
-}
-
-.close {
-color: #38bdf8;
-float: right;
-font-size: 28px;
-font-weight: bold;
-cursor: pointer;
-}
-
-.close:hover {
-color: #fff;
-}
-
-/* responsive */
-@media (max-width:768px){
-.hero{
-padding:80px 8%;
-}
-.hero-box{
-padding:35px 25px;
-}
-.hero h1{
-font-size:34px;
-}
-.button{
-padding:14px 28px;
-}
-.modal-content {
-width: 95%;
-}
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#0f172a;color:white;overflow-x:hidden}
+canvas{position:fixed;top:0;left:0;z-index:-1}
+section{padding:60px 10%;max-width:1200px;margin:auto}
+h1,h2{color:#38bdf8;margin-bottom:15px}
+.hero{text-align:center;padding:100px 10%}
+.hero-box{background:#020617;padding:50px 40px;border-radius:16px;position:relative;
+box-shadow:0 0 40px rgba(56,189,248,0.2),0 0 80px rgba(56,189,248,0.15)}
+.hero-box::before{content:"";position:absolute;top:-40px;left:-40px;right:-40px;bottom:-40px;
+background:radial-gradient(circle,#38bdf8 0%,transparent 70%);opacity:0.12;z-index:-1}
+.hero h1{font-size:48px;margin-bottom:15px}
+.hero p{margin-bottom:25px;line-height:1.6}
+.button{background:#38bdf8;padding:16px 32px;border-radius:8px;text-decoration:none;color:black;
+font-weight:bold;display:inline-block;transition:0.3s;text-align:center;cursor:pointer}
+.button .price{display:block;font-size:14px;margin-top:3px;font-weight:600}
+.button:hover{transform:scale(1.05);box-shadow:0 0 20px #38bdf8}
+.card-container{display:flex;gap:30px;flex-wrap:wrap;margin-top:30px}
+.card{background:#1e293b;padding:25px;border-radius:12px;flex:1;min-width:220px;
+box-shadow:0 0 20px rgba(56,189,248,0.08);transition:0.3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 30px rgba(56,189,248,0.25)}
+.card h3{margin-bottom:10px}
+ul{margin-top:15px;line-height:1.8;padding-left:18px}
+.modal{display:none;position:fixed;z-index:10;left:0;top:0;width:100%;height:100%;overflow:auto;
+background-color:rgba(0,0,0,0.75);backdrop-filter:blur(5px)}
+.modal-content{background-color:#0f172a;margin:5% auto;padding:20px;border:2px solid #38bdf8;
+width:90%;max-width:800px;border-radius:16px;box-shadow:0 0 30px rgba(56,189,248,0.3)}
+.close{color:#38bdf8;float:right;font-size:28px;font-weight:bold;cursor:pointer}
+.close:hover{color:#fff}
+@media(max-width:768px){
+.hero{padding:80px 8%}
+.hero-box{padding:35px 25px}
+.hero h1{font-size:34px}
+.button{padding:14px 28px}
+.modal-content{width:95%}}
 </style>
 </head>
 
 <body>
-
 <canvas id="bg"></canvas>
 
-<!-- HERO -->
 <section class="hero">
 <div class="hero-box">
   <h1>Embedded Systems & RTOS Workshop</h1>
   <p>
   THE ELECTRONIX CLUB (TEC) presents an exclusive one-day Workshop on <b>Embedded Systems & RTOS</b>, conducted by industry leaders [xyz].  
-  Bridge the gap between classroom theory and silicon-level reality. This session dives deep into industry-standard protocols and real-time operating systems used in modern automotive and consumer electronics.
+  Bridge the gap between classroom theory and silicon-level reality. Dive deep into protocols and real-time systems used in modern automotive and consumer electronics.
   </p>
   <a class="button" id="openForm">
     Register Now
-    <span class="price">₹[Insert Amount]</span>
+    <span class="price">₹100</span>
   </a>
 </div>
 </section>
 
-<!-- ABOUT -->
-<section>
-<h2>About The Workshop</h2>
-<p>
-This workshop focuses on building practical understanding of Embedded Systems and Real-Time Operating Systems (RTOS) — essential technologies that power the automotive, consumer, and IoT industries.
-</p>
-<p>
-Participants will gain real-world insights into microcontroller architectures, task scheduling, interrupt handling, and embedded communication protocols such as CAN/LIN used in automotive systems.
-</p>
-<p>
-The session will be conducted by <b>industry experts from [xyz]</b> and certified by <b>Vector India</b>, ensuring high technical value and industrial relevance.
-</p>
-</section>
-
-<!-- KEY TAKEAWAYS -->
 <section>
 <h2>Key Takeaways</h2>
 <ul>
@@ -240,94 +69,55 @@ The session will be conducted by <b>industry experts from [xyz]</b> and certifie
 </ul>
 </section>
 
-<!-- CERTIFICATION -->
 <section>
 <h2>Certification</h2>
-<p>
-Participants will receive an <b>industry-recognized certificate</b> from <b>Vector India</b> upon successful completion of the workshop.
-</p>
+<p>Gain an <b>industry-recognized certificate</b> from <b>Vector India</b>.</p>
 </section>
 
-<!-- REGISTRATION DETAILS -->
 <section>
 <h2>Registration Details</h2>
 <ul>
-<li><b>Fee:</b> ₹[Insert Amount]</li>
+<li><b>Fee:</b> ₹100</li>
 <li><b>Venue:</b> [Insert Venue]</li>
 <li><b>Date:</b> [Insert Date]</li>
-<li><b>Registration Type:</b> Individual (enter a valid 10-digit phone number for updates)</li>
+<li><b>Type:</b> Individual Registration (enter valid 10-digit phone number)</li>
 </ul>
 <p>Seats are limited. Secure your spot in the future of Embedded Engineering.</p>
 </section>
 
-<!-- Modal -->
+<!-- MODAL -->
 <div id="formModal" class="modal">
   <div class="modal-content">
     <span class="close" id="closeForm">&times;</span>
-    <iframe src="https://forms.gle/uzoCSrNNGyr4zgHn7" width="100%" height="600" style="border:none; border-radius:10px;"></iframe>
+    <iframe src="https://forms.gle/uzoCSrNNGyr4zgHn7"
+      width="100%" height="600"
+      style="border:none;border-radius:10px;"></iframe>
   </div>
 </div>
 
 <script>
-/* background animation */
-const canvas=document.getElementById("bg")
-const ctx=canvas.getContext("2d")
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-let particles=[]
-let particleCount = window.innerWidth < 768 ? 35 : 80
+const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+let particles=[],n=innerWidth<768?35:80;
+for(let i=0;i<n;i++)particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});
+function draw(){
+ctx.clearRect(0,0,innerWidth,innerHeight);
+particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>innerWidth)p.vx*=-1;
+if(p.y<0||p.y>innerHeight)p.vy*=-1;
+ctx.beginPath();ctx.arc(p.x,p.y,2,0,2*Math.PI);ctx.fillStyle="#38bdf8";ctx.fill();
+particles.forEach(q=>{let d=Math.hypot(p.x-q.x,p.y-q.y);
+if(d<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle="rgba(56,189,248,0.15)";ctx.stroke();}});
+});
+requestAnimationFrame(draw);}
+draw();
 
-for(let i=0;i<particleCount;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
-})
-}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height)
-particles.forEach(p=>{
-p.x+=p.vx
-p.y+=p.vy
-if(p.x<0||p.x>canvas.width)p.vx*=-1
-if(p.y<0||p.y>canvas.height)p.vy*=-1
-ctx.beginPath()
-ctx.arc(p.x,p.y,2,0,Math.PI*2)
-ctx.fillStyle="#38bdf8"
-ctx.fill()
-particles.forEach(p2=>{
-let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
-if(dist<120){
-ctx.beginPath()
-ctx.moveTo(p.x,p.y)
-ctx.lineTo(p2.x,p2.y)
-ctx.strokeStyle="rgba(56,189,248,0.15)"
-ctx.stroke()
-}
-})
-})
-requestAnimationFrame(animate)
-}
-animate()
-
-/* modal controls */
-const modal = document.getElementById("formModal");
-const openBtn = document.getElementById("openForm");
-const closeBtn = document.getElementById("closeForm");
-
-openBtn.onclick = function() {
-  modal.style.display = "block";
-}
-closeBtn.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+const modal=document.getElementById("formModal"),
+open=document.getElementById("openForm"),
+close=document.getElementById("closeForm");
+open.onclick=()=>modal.style.display="block";
+close.onclick=()=>modal.style.display="none";
+window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
 </script>
 
 </body>
