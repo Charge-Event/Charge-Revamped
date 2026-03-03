@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | CHARGE Revamped 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#050505;
+color:white;
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
+}
+canvas{position:fixed;top:0;left:0;z-index:-1}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);
+flex-wrap:wrap;
+}
+header h2{
+font-family:'Orbitron';
+color:#00fff2;
+font-size:22px;
+}
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+font-size:15px;
+}
+nav a:hover{color:#00fff2}
+
+/* TOP CONTACT BAR */
+.top-info{
+text-align:center;
+padding:20px 10px;
+background:rgba(0,255,242,0.05);
+color:#ccc;
+font-size:15px;
+}
+.top-info a{color:#00fff2;text-decoration:none;margin:0 8px;}
+.top-info a:hover{text-decoration:underline;}
+
+/* HERO SECTION */
+.hero{
+text-align:center;
+padding:80px 20px 40px;
+}
+.logo-container{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+.logo-container img{
+height:120px;
+width:auto;
+filter:drop-shadow(0 0 20px rgba(0,255,242,0.4));
+transition:0.3s;
+}
+.logo-container img:hover{
+transform:scale(1.05);
+}
+.hero h1{
+font-family:'Orbitron';
+font-size:40px;
+color:#00fff2;
+margin-bottom:15px;
+}
+.hero p{
+font-size:17px;
+line-height:1.7;
+max-width:900px;
+margin:auto;
+color:#ccc;
+}
+
+/* GALLERY */
+.gallery{
+padding:60px 40px;
+text-align:center;
+}
+.gallery h2{
+font-family:'Orbitron';
+font-size:36px;
+color:#00fff2;
+margin-bottom:40px;
+}
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+max-width:1000px;
+margin:auto;
+}
+.gallery-grid img{
+width:100%;
+border-radius:10px;
+object-fit:cover;
+box-shadow:0 0 20px rgba(0,255,242,0.1);
+transition:0.3s;
+}
+.gallery-grid img:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(0,255,242,0.3);
+}
+
+/* ABOUT CONTENT */
+.about-section{
+padding:60px 40px;
+max-width:900px;
+margin:auto;
+line-height:1.8;
+color:#ddd;
+}
+.about-section h2{
+color:#00fff2;
+font-family:'Orbitron';
+margin-bottom:20px;
+text-align:center;
+}
+
+/* CONTACT SECTION */
+.contact{
+padding:60px 40px;
+text-align:center;
+}
+.contact h2{
+font-family:'Orbitron';
+color:#00fff2;
+margin-bottom:20px;
+}
+.contact p{color:#ccc;line-height:1.8;}
+.contact strong{color:#00fff2;}
+
+/* BUTTON */
+.btn{
+background:#00fff2;
+color:black;
+padding:12px 30px;
+border-radius:25px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+display:inline-block;
+margin-top:30px;
+}
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00fff2;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #222;
+margin-top:50px;
+color:#999;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.logo-container img{height:80px;}
+h1{font-size:32px;}
+}
+</style>
+</head>
+
+<body>
+<canvas id="bg"></canvas>
+
+<header>
+<h2>⚡ CHARGE REVAMPED 2026</h2>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="register.html">Register</a>
+</nav>
+</header>
+
+<div class="top-info">
+📸 Follow us on 
+<a href="https://instagram.com/theelectronixclub" target="_blank">@theelectronixclub</a> & 
+<a href="https://instagram.com/charge_snist" target="_blank">@charge_snist</a> | 
+📧 <a href="mailto:theelectronixclub@gmail.com">theelectronixclub@gmail.com</a>
+</div>
+
+<section class="hero">
+<div class="logo-container">
+  <img src="images/tec-logo.png" alt="The Electronix Club Logo">
+  <img src="images/charge-logo.png" alt="CHARGE Logo">
+</div>
+<h1>About CHARGE</h1>
+<p>
+Organized by <strong>The Electronix Club, Department of ECE, SNIST</strong>, CHARGE is the flagship technical festival that unites innovation, technology, and creativity under one electrifying platform.
+</p>
+</section>
+
+<section class="gallery">
+<h2>Photo Gallery</h2>
+<div class="gallery-grid">
+  <img src="images/charge1.jpg" alt="CHARGE Event Photo 1">
+  <img src="images/charge2.jpg" alt="CHARGE Event Photo 2">
+</div>
+</section>
+
+<section class="about-section">
+<h2>The Legacy of CHARGE</h2>
+<p>
+Over the years, CHARGE has evolved into one of SNIST’s most celebrated technical gatherings, inspiring thousands of students to explore the future of electronics, embedded systems, and innovation. Through its wide range of events — from workshops and paper presentations to project expos and hackathons — it fosters a culture of practical learning and technological excellence.
+</p>
+<p>
+The event not only provides a stage for innovation but also builds a community of passionate engineers ready to lead the world of emerging technologies.
+</p>
+</section>
+
+<section class="contact">
+<h2>Contact Us</h2>
+<p><strong>Coordinator 1:</strong> +91 XXXXX XXXXX<br>
+<strong>Coordinator 2:</strong> +91 XXXXX XXXXX<br>
+<strong>Coordinator 3:</strong> +91 XXXXX XXXXX</p>
+<a href="index.html" class="btn">Back to Home</a>
+</section>
+
+<footer>
+© 2026 CHARGE | The Electronix Club, Department of ECE SNIST
+</footer>
+
+<script>
+/* Particle Background */
+const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
+canvas.width=innerWidth;canvas.height=innerHeight;
+let particles=[],count=innerWidth<600?30:innerWidth<1024?50:80;
+for(let i=0;i<count;i++){
+  particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});
+}
+function animate(){
+ctx.clearRect(0,0,innerWidth,innerHeight);
+particles.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>innerWidth)p.vx*=-1;if(p.y<0||p.y>innerHeight)p.vy*=-1;
+ctx.beginPath();ctx.arc(p.x,p.y,2,0,2*Math.PI);ctx.fillStyle="#00fff2";ctx.fill();
+particles.forEach(q=>{let d=Math.hypot(p.x-q.x,p.y-q.y);
+if(d<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
+ctx.strokeStyle="rgba(0,255,242,0.15)";ctx.stroke();}});
+});
+requestAnimationFrame(animate);}
+animate();
+</script>
+
+</body>
+</html>
