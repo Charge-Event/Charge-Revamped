@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,13 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
 background:#050505;
 color:white;
@@ -26,16 +19,9 @@ overflow-x:hidden;
 }
 
 /* background canvas */
-
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
+canvas{position:fixed;top:0;left:0;z-index:-1;}
 
 /* HEADER */
-
 header{
 display:flex;
 justify-content:space-between;
@@ -45,52 +31,39 @@ background:rgba(0,0,0,0.4);
 backdrop-filter:blur(10px);
 flex-wrap:wrap;
 }
-
 header h2{
 font-family:'Orbitron';
 color:#00fff2;
 white-space:nowrap;
 font-size:22px;
 }
-
-nav{
-display:flex;
-flex-wrap:wrap;
-}
-
+nav{display:flex;flex-wrap:wrap;}
 nav a{
 margin-left:25px;
 text-decoration:none;
 color:white;
 font-size:15px;
 }
-
-nav a:hover{
-color:#00fff2;
-}
+nav a:hover{color:#00fff2;}
 
 /* HERO */
-
 .hero{
 text-align:center;
 padding:120px 20px 80px;
 max-width:900px;
 margin:auto;
 }
-
 .hero h1{
 font-size:52px;
 font-family:'Orbitron';
 margin-bottom:25px;
 color:#00fff2;
 }
-
 .hero p{
 line-height:1.8;
 font-size:17px;
 margin-bottom:40px;
 }
-
 .btn{
 padding:16px 45px;
 background:#00fff2;
@@ -100,10 +73,11 @@ font-weight:bold;
 text-decoration:none;
 display:inline-block;
 margin-bottom:40px;
+transition:0.3s;
 }
+.btn:hover{transform:scale(1.05);box-shadow:0 0 20px #00fff2;}
 
 /* COUNTDOWN */
-
 .countdown{
 font-size:22px;
 font-weight:500;
@@ -111,11 +85,7 @@ color:#00fff2;
 }
 
 /* EVENTS SECTION */
-
-#events{
-padding:80px 40px;
-}
-
+#events{padding:80px 40px;}
 .section-title{
 text-align:center;
 font-size:42px;
@@ -125,22 +95,16 @@ color:#00fff2;
 }
 
 /* EVENT GRID */
-
 .event-grid{
-
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:40px;
-
 max-width:1100px;
 margin:auto;
-
 }
 
 /* EVENT CARD */
-
 .event-card{
-
 background:#0c0c0c;
 border-radius:15px;
 padding:30px;
@@ -148,83 +112,40 @@ text-align:center;
 position:relative;
 cursor:pointer;
 transition:0.4s;
-
-box-shadow:
-0 0 20px rgba(0,255,242,0.1),
-0 0 40px rgba(0,255,242,0.05);
-
+box-shadow:0 0 20px rgba(0,255,242,0.1),0 0 40px rgba(0,255,242,0.05);
 }
-
-/* glow effect */
-
 .event-card::before{
-
 content:"";
 position:absolute;
-top:-20px;
-left:-20px;
-right:-20px;
-bottom:-20px;
-
+top:-20px;left:-20px;right:-20px;bottom:-20px;
 background:radial-gradient(circle,#00fff2 0%,transparent 70%);
-opacity:0.08;
-z-index:-1;
-
+opacity:0.08;z-index:-1;
 }
-
-/* hover */
-
 .event-card:hover{
-
 transform:translateY(-10px);
-
-box-shadow:
-0 0 30px rgba(0,255,242,0.4),
-0 0 60px rgba(0,255,242,0.2);
-
+box-shadow:0 0 30px rgba(0,255,242,0.4),0 0 60px rgba(0,255,242,0.2);
 }
-
 .event-card h3{
 font-family:'Orbitron';
 margin-bottom:10px;
 color:#00fff2;
 }
-
-/* preview */
-
 .event-preview{
-
-opacity:0;
-margin-top:10px;
-font-size:14px;
-line-height:1.5;
-color:#bbb;
-transition:0.3s;
-
+opacity:0;margin-top:10px;font-size:14px;line-height:1.5;color:#bbb;transition:0.3s;
 }
-
-.event-card:hover .event-preview{
-opacity:1;
-}
+.event-card:hover .event-preview{opacity:1;}
 
 /* INFO SECTION */
-
 .info{
-
 text-align:center;
 max-width:900px;
 margin:80px auto;
 font-size:18px;
 line-height:1.8;
-
 }
-
-.info strong{
-color:#00fff2;
-}
+.info strong{color:#00fff2;}
 
 /* FOOTER */
-
 footer{
 text-align:center;
 padding:40px;
@@ -233,305 +154,136 @@ margin-top:80px;
 }
 
 /* RESPONSIVE */
-
-/* tablet */
-
 @media(max-width:900px){
-
-.event-grid{
-grid-template-columns:repeat(2,1fr);
+.event-grid{grid-template-columns:repeat(2,1fr);}
+.hero h1{font-size:38px;}
 }
-
-.hero h1{
-font-size:38px;
-}
-
-}
-
-/* mobile */
-
 @media(max-width:600px){
-
-header{
-padding:15px 20px;
+header{padding:15px 20px;}
+header h2{font-size:18px;}
+nav a{margin-left:15px;font-size:14px;}
+.event-grid{grid-template-columns:1fr;gap:25px;}
+.hero{padding:80px 20px;}
+.hero h1{font-size:32px;}
 }
-
-header h2{
-font-size:18px;
-}
-
-nav a{
-margin-left:15px;
-font-size:14px;
-}
-
-.event-grid{
-grid-template-columns:1fr;
-gap:25px;
-}
-
-.hero{
-padding:80px 20px;
-}
-
-.hero h1{
-font-size:32px;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
-
 <canvas id="bg"></canvas>
 
 <header>
-
 <h2>⚡ CHARGE REVAMPED 2026</h2>
-
 <nav>
 <a href="#home">Home</a>
 <a href="#events">Events</a>
 <a href="about.html">About Us</a>
 </nav>
-
 </header>
 
-
 <!-- HERO -->
-
 <section id="home" class="hero">
-
 <h1>Welcome to CHARGE REVAMPED 2026</h1>
-
 <p>
-
 Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
 CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators, engineers, and technology enthusiasts.
-
 </p>
-
 <a href="register.html" class="btn">Register Now</a>
-
 <div class="countdown">
 <p>Event Begins In</p>
 <div id="timer">Loading...</div>
 </div>
-
 </section>
-
 
 <!-- EVENTS -->
-
 <section id="events">
-
 <h2 class="section-title">Events</h2>
-
 <div class="event-grid">
-
-<a href="hackathon.html" class="event-card">
-<h3>Hackathon</h3>
-<div class="event-preview">
-24-hour hardware hackathon building innovative electronics solutions using IoT and embedded systems.
+<a href="hackathon.html" class="event-card"><h3>Hackathon</h3><div class="event-preview">24-hour hardware hackathon building innovative electronics solutions using IoT and embedded systems.</div></a>
+<a href="workshop.html" class="event-card"><h3>Workshop</h3><div class="event-preview">Hands-on learning in IoT, PCB design, embedded systems and hardware development.</div></a>
+<a href="expo.html" class="event-card"><h3>Project Expo</h3><div class="event-preview">Showcase innovative electronics projects to judges and industry experts.</div></a>
+<a href="paper.html" class="event-card"><h3>Paper Presentation</h3><div class="event-preview">Present research and emerging technologies in electronics engineering.</div></a>
+<a href="ideathon.html" class="event-card"><h3>Ideathon</h3><div class="event-preview">Pitch innovative technical ideas solving real-world engineering challenges.</div></a>
+<a href="technical-games.html" class="event-card"><h3>Technical Games</h3><div class="event-preview">Fun engineering challenges testing logic and circuit knowledge.</div></a>
 </div>
-</a>
-
-<a href="workshop.html" class="event-card">
-<h3>Workshop</h3>
-<div class="event-preview">
-Hands-on learning in IoT, PCB design, embedded systems and hardware development.
-</div>
-</a>
-
-<a href="expo.html" class="event-card">
-<h3>Project Expo</h3>
-<div class="event-preview">
-Showcase innovative electronics projects to judges and industry experts.
-</div>
-</a>
-
-<a href="paper.html" class="event-card">
-<h3>Paper Presentation</h3>
-<div class="event-preview">
-Present research and emerging technologies in electronics engineering.
-</div>
-</a>
-
-<a href="ideathon.html" class="event-card">
-<h3>Ideathon</h3>
-<div class="event-preview">
-Pitch innovative technical ideas solving real-world engineering challenges.
-</div>
-</a>
-
-<a href="technical-games.html" class="event-card">
-<h3>Technical Games</h3>
-<div class="event-preview">
-Fun engineering challenges testing logic and circuit knowledge.
-</div>
-</a>
-
-</div>
-
 </section>
 
-
 <!-- INFO -->
-
 <section class="info">
-
 <p>
 🏆 <strong>CHARGE 2026</strong> boasts an extraordinary <strong>Prize Pool worth ₹50,000</strong>, recognizing the brightest minds who blend innovation with technical mastery. From circuit design to embedded systems and IoT challenges, every competition celebrates creativity, precision, and problem-solving excellence.
 </p>
-
 <p>
 Drawing a spectacular crowd of <strong>over 5,000+ students and tech enthusiasts</strong>, the event stands as one of the largest technology gatherings at <strong>Sreenidhi Institute of Science and Technology</strong>. Among them, nearly <strong>300+ passionate participants</strong> — forming <strong>50 to 70 dynamic teams</strong> — will compete head-to-head, representing the spirit and innovation of <strong>The Electronix Club</strong>.
 </p>
-
 </section>
-
 
 <!-- ABOUT -->
-
 <section id="about">
-
 <h2 class="section-title">About CHARGE</h2>
-
 <div class="info">
-
-<p>
-<p>
-<strong>CHARGE</strong> is the prestigious flagship technical event organized by <strong>The Electronix Club</strong> of the <strong>Department of Electronics and Communication Engineering, Sreenidhi Institute of Science and Technology (SNIST)</strong>. It stands as a symbol of innovation, collaboration, and excellence in the field of electronics and technology a grand celebration that unites passionate engineers, innovators, and thinkers under one electrifying platform.
-</p>
-
-<p>
-With a remarkable legacy of <strong>over 10 years</strong>, <strong>CHARGE</strong> has continually inspired generations of students to explore beyond textbooks, transforming creative ideas into real-world solutions. Through workshops, project exhibitions, competitions, and interactive experiences, it has evolved into a hub of technical brilliance that reflects the true spirit of <strong>The Electronix Club</strong> — fostering innovation, teamwork, and the pursuit of engineering excellence.
-</p>
+<p><strong>CHARGE</strong> is the prestigious flagship technical event organized by <strong>The Electronix Club</strong> of the <strong>Department of Electronics and Communication Engineering, Sreenidhi Institute of Science and Technology (SNIST)</strong>. It stands as a symbol of innovation, collaboration, and excellence in the field of electronics and technology, a grand celebration that unites passionate engineers, innovators, and thinkers under one electrifying platform.</p>
+<p>With a remarkable legacy of <strong>over 10 years</strong>, <strong>CHARGE</strong> has continually inspired generations of students to explore beyond textbooks, transforming creative ideas into real-world solutions. Through workshops, project exhibitions, competitions, and interactive experiences, it has evolved into a hub of technical brilliance that reflects the true spirit of <strong>The Electronix Club</strong> — fostering innovation, teamwork, and the pursuit of engineering excellence.</p>
+<!-- ✅ New Button -->
+<a href="about.html" class="btn">Know More →</a>
 </div>
-
 </section>
 
-
 <footer>
-
 © 2026 CHARGE | The Electronix Club, Department of ECE SNIST
-
 </footer>
 
-
 <script>
-
 /* PARTICLE BACKGROUND */
-
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
-
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
-
 let particles=[]
-
-let particleCount
-
-if(window.innerWidth < 600){
-particleCount = 30
-}
-else if(window.innerWidth < 1024){
-particleCount = 50
-}
-else{
-particleCount = 80
-}
-
-for(let i=0;i<particleCount;i++){
-
-particles.push({
-
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
-
-})
-
-}
-
+let particleCount=window.innerWidth<600?30:window.innerWidth<1024?50:80
+for(let i=0;i<particleCount;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5})}
 function animate(){
-
 ctx.clearRect(0,0,canvas.width,canvas.height)
-
 particles.forEach(p=>{
-
-p.x+=p.vx
-p.y+=p.vy
-
+p.x+=p.vx;p.y+=p.vy
 if(p.x<0||p.x>canvas.width)p.vx*=-1
 if(p.y<0||p.y>canvas.height)p.vy*=-1
-
 ctx.beginPath()
 ctx.arc(p.x,p.y,2,0,Math.PI*2)
 ctx.fillStyle="#00fff2"
 ctx.fill()
-
 particles.forEach(p2=>{
-
 let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
-
 if(dist<120){
-
 ctx.beginPath()
 ctx.moveTo(p.x,p.y)
 ctx.lineTo(p2.x,p2.y)
 ctx.strokeStyle="rgba(0,255,242,0.15)"
 ctx.stroke()
-
-}
-
+}})
 })
-
-})
-
 requestAnimationFrame(animate)
-
 }
-
 animate()
 
 /* TIMER */
-
-const eventDate = new Date("March 10, 2026 09:00:00").getTime();
-
+const eventDate=new Date("March 10, 2026 09:00:00").getTime();
 function updateTimer(){
-
-const now = new Date().getTime();
-const distance = eventDate - now;
-
-if(distance < 0){
-document.getElementById("timer").innerHTML = "Event Started!";
-return;
+const now=new Date().getTime()
+const distance=eventDate-now
+if(distance<0){document.getElementById("timer").innerHTML="Event Started!";return;}
+const days=Math.floor(distance/(1000*60*60*24))
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60))
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60))
+const seconds=Math.floor((distance%(1000*60))/1000)
+document.getElementById("timer").innerHTML=
+days+"d : "+hours+"h : "+minutes+"m : "+seconds+"s"
 }
+setInterval(updateTimer,1000);updateTimer();
 
-const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-const seconds = Math.floor((distance % (1000*60)) / 1000);
-
-document.getElementById("timer").innerHTML =
-days + "d : " + hours + "h : " + minutes + "m : " + seconds + "s";
-
-}
-
-setInterval(updateTimer,1000);
-updateTimer();
-
-</script>
-<script>
-/* Fix for double back-click issue */
-if (window.history && window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.href);
+/* Fix double-back issue */
+if(window.history&&window.history.replaceState){
+window.history.replaceState(null,null,window.location.href);
 }
 </script>
 </body>
