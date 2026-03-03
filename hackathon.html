@@ -6,13 +6,11 @@
 <title>Charge Hackathon</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 }
-
 body{
 font-family: Arial, sans-serif;
 background:#0f172a;
@@ -21,7 +19,6 @@ overflow-x:hidden;
 }
 
 /* animated background */
-
 canvas{
 position:fixed;
 top:0;
@@ -30,7 +27,6 @@ z-index:-1;
 }
 
 /* sections */
-
 section{
 padding:60px 10%;
 max-width:1200px;
@@ -43,43 +39,33 @@ margin-bottom:15px;
 }
 
 /* hero section */
-
 .hero{
 text-align:center;
 padding:100px 10%;
 }
 
 /* glowing hero box */
-
 .hero-box{
-
 background:#020617;
 padding:50px 40px;
 border-radius:16px;
 position:relative;
-
 box-shadow:
 0 0 40px rgba(56,189,248,0.2),
 0 0 80px rgba(56,189,248,0.15);
-
 }
 
 /* glow background */
-
 .hero-box::before{
-
 content:"";
 position:absolute;
-
 top:-40px;
 left:-40px;
 right:-40px;
 bottom:-40px;
-
 background:radial-gradient(circle,#38bdf8 0%,transparent 70%);
 opacity:0.12;
 z-index:-1;
-
 }
 
 .hero h1{
@@ -93,9 +79,7 @@ line-height:1.6;
 }
 
 /* register button */
-
 .button{
-
 background:#38bdf8;
 padding:16px 32px;
 border-radius:8px;
@@ -105,7 +89,7 @@ font-weight:bold;
 display:inline-block;
 transition:0.3s;
 text-align:center;
-
+cursor:pointer;
 }
 
 .button .price{
@@ -116,14 +100,11 @@ font-weight:600;
 }
 
 .button:hover{
-
 transform:scale(1.05);
 box-shadow:0 0 20px #38bdf8;
-
 }
 
 /* cards */
-
 .card-container{
 display:flex;
 gap:30px;
@@ -132,23 +113,18 @@ margin-top:30px;
 }
 
 .card{
-
 background:#1e293b;
 padding:25px;
 border-radius:12px;
 flex:1;
 min-width:220px;
-
 box-shadow:0 0 20px rgba(56,189,248,0.08);
 transition:0.3s;
-
 }
 
 .card:hover{
-
 transform:translateY(-6px);
 box-shadow:0 0 30px rgba(56,189,248,0.25);
-
 }
 
 .card h3{
@@ -156,35 +132,67 @@ margin-bottom:10px;
 }
 
 /* lists */
-
 ul{
 margin-top:15px;
 line-height:1.8;
 padding-left:18px;
 }
 
-/* mobile responsive */
+/* modal styling */
+.modal {
+display: none;
+position: fixed;
+z-index: 10;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0,0,0,0.75);
+backdrop-filter: blur(5px);
+}
 
+.modal-content {
+background-color: #0f172a;
+margin: 5% auto;
+padding: 20px;
+border: 2px solid #38bdf8;
+width: 90%;
+max-width: 800px;
+border-radius: 16px;
+box-shadow: 0 0 30px rgba(56,189,248,0.3);
+}
+
+.close {
+color: #38bdf8;
+float: right;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close:hover {
+color: #fff;
+}
+
+/* responsive */
 @media (max-width:768px){
-
 .hero{
 padding:80px 8%;
 }
-
 .hero-box{
 padding:35px 25px;
 }
-
 .hero h1{
 font-size:34px;
 }
-
 .button{
 padding:14px 28px;
 }
-
+.modal-content {
+width: 95%;
 }
-
+}
 </style>
 </head>
 
@@ -192,271 +200,192 @@ padding:14px 28px;
 
 <canvas id="bg"></canvas>
 
-
 <!-- HERO -->
-
 <section class="hero">
-
-<div class="hero-box">
-
-<h1>24 Hour Hackathon</h1>
-
-<p>
-A 24-hour innovation challenge where developers, engineers, and innovators collaborate to build real-world technology solutions using electronics, embedded systems, and IoT.
-</p>
-
-<a class="button" href="#">
-Register Now
-<span class="price">₹1000 / Team</span>
-</a>
-
-</div>
-
+  <div class="hero-box">
+    <h1>24 Hour Hackathon</h1>
+    <p>
+      A 24-hour innovation challenge where developers, engineers, and innovators collaborate to build real-world technology solutions using electronics, embedded systems, and IoT.
+    </p>
+    <a class="button" id="openForm">
+      Register Now
+      <span class="price">₹1000 / Team</span>
+    </a>
+  </div>
 </section>
 
-
 <!-- ABOUT -->
-
 <section>
-
 <h2>About The Hackathon</h2>
-
 <p>
 The CHARGE Hackathon is an intense 24-hour innovation challenge designed to encourage creativity, collaboration, and technical problem solving among engineering students.
 </p>
-
 <p>
 Participants will work in teams to design, prototype, and present innovative solutions for real-world problems using modern technologies such as IoT, Embedded Systems, Robotics, and Electronics System Design.
 </p>
-
 <p>
 Throughout the hackathon, teams will receive mentorship, interact with experts, and compete to build the most impactful and creative solution within the limited time.
 </p>
-
 </section>
 
-
 <!-- PRIZE POOL -->
-
 <section>
-
 <h2>Prize Pool</h2>
-
 <div class="card-container">
-
-<div class="card">
-<h3>🥇 First Prize</h3>
-<p>₹15,000</p>
+  <div class="card">
+    <h3>🥇 First Prize</h3>
+    <p>₹15,000</p>
+  </div>
+  <div class="card">
+    <h3>🥈 Second Prize</h3>
+    <p>₹10,000</p>
+  </div>
+  <div class="card">
+    <h3>🥉 Third Prize</h3>
+    <p>₹5,000</p>
+  </div>
 </div>
-
-<div class="card">
-<h3>🥈 Second Prize</h3>
-<p>₹10,000</p>
-</div>
-
-<div class="card">
-<h3>🥉 Third Prize</h3>
-<p>₹5,000</p>
-</div>
-
-</div>
-
 <p style="margin-top:20px;">
 Total Prize Pool: <b>₹30,000</b>  
 <br>
 Winners may also receive internship opportunities, mentorship, and exciting merchandise.
 </p>
-
 </section>
 
-
 <!-- PROBLEM STATEMENTS -->
-
 <section>
-
 <h2>Problem Statements</h2>
-
 <p>
 The official problem statements will be released <b>1–2 days before the hackathon</b>.
 </p>
-
 <p>
 Teams will select a problem statement and develop a working prototype during the event.
 </p>
-
 <p>
 Status: <b>Coming Soon</b>
 </p>
-
 </section>
-
 
 <!-- TEAM REQUIREMENTS -->
-
 <section>
-
 <h2>Team Requirements</h2>
-
 <ul>
-
 <li>Team Size: <b>2 – 4 Members</b></li>
-
 <li>Participants must register as a team</li>
-
 <li>Each team must build their solution during the 24-hour hackathon</li>
-
 <li>Participants can use any hardware or software tools required for their solution</li>
-
 </ul>
-
 </section>
-
 
 <!-- WHAT YOU WILL GAIN -->
-
 <section>
-
 <h2>What You Will Gain</h2>
-
 <ul>
-
 <li>Real-world experience in solving engineering problems</li>
-
 <li>Opportunity to build innovative hardware or software prototypes</li>
-
 <li>Mentorship from experienced engineers and mentors</li>
-
 <li>Networking opportunities with talented developers and innovators</li>
-
 <li>Internship opportunities and recognition from industry professionals</li>
-
 <li>Certificate of Participation</li>
-
 <li>Experience of working in a high-energy collaborative environment</li>
-
 </ul>
-
 </section>
-
 
 <!-- EXTRA ACTIVITIES -->
-
 <section>
-
 <h2>Extra Activities</h2>
-
 <ul>
-
 <li>🔥 Campfire and fun midnight activities</li>
-
 <li>🎮 Technical games and challenges</li>
-
 <li>🤝 Networking sessions with mentors</li>
-
 <li>🎁 Exciting merchandise and surprise rewards</li>
-
 </ul>
-
 </section>
-
 
 <!-- REGISTRATION -->
-
 <section>
-
 <h2>Registration Details</h2>
-
 <p><b>Registration Fee:</b> ₹1000 per team</p>
-
 <p>Registration Includes:</p>
-
 <ul>
-
 <li>Meals and refreshments during the hackathon</li>
-
 <li>Access to the full 24-hour event</li>
-
 <li>Mentorship support</li>
-
 <li>Participation certificate</li>
-
 <li>Fun activities and networking sessions</li>
-
 </ul>
-
 </section>
 
+<!-- Modal for Google Form -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeForm">&times;</span>
+    <iframe src="https://forms.gle/KudKg7R4L49LMuMaA" width="100%" height="600" style="border:none; border-radius:10px;"></iframe>
+  </div>
+</div>
 
 <script>
-
 /* background animation */
-
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
-
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
-
 let particles=[]
-
-/* fewer particles on phones */
-
 let particleCount = window.innerWidth < 768 ? 35 : 80
 
 for(let i=0;i<particleCount;i++){
-
 particles.push({
-
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 vx:(Math.random()-0.5)*0.5,
 vy:(Math.random()-0.5)*0.5
-
 })
-
 }
 
 function animate(){
-
 ctx.clearRect(0,0,canvas.width,canvas.height)
-
 particles.forEach(p=>{
-
 p.x+=p.vx
 p.y+=p.vy
-
 if(p.x<0||p.x>canvas.width)p.vx*=-1
 if(p.y<0||p.y>canvas.height)p.vy*=-1
-
 ctx.beginPath()
 ctx.arc(p.x,p.y,2,0,Math.PI*2)
 ctx.fillStyle="#38bdf8"
 ctx.fill()
-
 particles.forEach(p2=>{
-
 let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
-
 if(dist<120){
-
 ctx.beginPath()
 ctx.moveTo(p.x,p.y)
 ctx.lineTo(p2.x,p2.y)
 ctx.strokeStyle="rgba(56,189,248,0.15)"
 ctx.stroke()
-
 }
-
 })
-
 })
-
 requestAnimationFrame(animate)
-
 }
-
 animate()
 
+/* modal controls */
+const modal = document.getElementById("formModal");
+const openBtn = document.getElementById("openForm");
+const closeBtn = document.getElementById("closeForm");
+
+openBtn.onclick = function() {
+  modal.style.display = "block";
+}
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
 
 </body>
