@@ -119,6 +119,11 @@ open.onclick=()=>modal.style.display="block";
 close.onclick=()=>modal.style.display="none";
 window.onclick=e=>{if(e.target==modal)modal.style.display="none";}
 </script>
-
+<script>
+/* Fix for double back-click issue */
+if (window.history && window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.href);
+}
+</script>
 </body>
 </html>
