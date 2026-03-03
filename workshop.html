@@ -6,7 +6,6 @@
 <title>Charge Workshop</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -21,7 +20,6 @@ overflow-x:hidden;
 }
 
 /* animated background */
-
 canvas{
 position:fixed;
 top:0;
@@ -30,7 +28,6 @@ z-index:-1;
 }
 
 /* sections */
-
 section{
 padding:60px 10%;
 max-width:1200px;
@@ -43,43 +40,33 @@ margin-bottom:15px;
 }
 
 /* hero section */
-
 .hero{
 text-align:center;
 padding:100px 10%;
 }
 
 /* glowing hero box */
-
 .hero-box{
-
 background:#020617;
 padding:50px 40px;
 border-radius:16px;
 position:relative;
-
 box-shadow:
 0 0 40px rgba(56,189,248,0.2),
 0 0 80px rgba(56,189,248,0.15);
-
 }
 
 /* blue glow behind hero */
-
 .hero-box::before{
-
 content:"";
 position:absolute;
-
 top:-40px;
 left:-40px;
 right:-40px;
 bottom:-40px;
-
 background:radial-gradient(circle,#38bdf8 0%,transparent 70%);
 opacity:0.12;
 z-index:-1;
-
 }
 
 .hero h1{
@@ -93,9 +80,7 @@ line-height:1.6;
 }
 
 /* register button */
-
 .button{
-
 background:#38bdf8;
 padding:16px 32px;
 border-radius:8px;
@@ -105,7 +90,7 @@ font-weight:bold;
 display:inline-block;
 transition:0.3s;
 text-align:center;
-
+cursor:pointer;
 }
 
 .button .price{
@@ -116,14 +101,11 @@ font-weight:600;
 }
 
 .button:hover{
-
 transform:scale(1.05);
 box-shadow:0 0 20px #38bdf8;
-
 }
 
 /* cards */
-
 .card-container{
 display:flex;
 gap:30px;
@@ -132,23 +114,18 @@ margin-top:30px;
 }
 
 .card{
-
 background:#1e293b;
 padding:25px;
 border-radius:12px;
 flex:1;
 min-width:220px;
-
 box-shadow:0 0 20px rgba(56,189,248,0.08);
 transition:0.3s;
-
 }
 
 .card:hover{
-
 transform:translateY(-6px);
 box-shadow:0 0 30px rgba(56,189,248,0.25);
-
 }
 
 .card h3{
@@ -156,35 +133,67 @@ margin-bottom:10px;
 }
 
 /* lists */
-
 ul{
 margin-top:15px;
 line-height:1.8;
 padding-left:18px;
 }
 
-/* mobile responsive */
+/* modal styling */
+.modal {
+display: none;
+position: fixed;
+z-index: 10;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgba(0,0,0,0.75);
+backdrop-filter: blur(5px);
+}
 
+.modal-content {
+background-color: #0f172a;
+margin: 5% auto;
+padding: 20px;
+border: 2px solid #38bdf8;
+width: 90%;
+max-width: 800px;
+border-radius: 16px;
+box-shadow: 0 0 30px rgba(56,189,248,0.3);
+}
+
+.close {
+color: #38bdf8;
+float: right;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close:hover {
+color: #fff;
+}
+
+/* responsive */
 @media (max-width:768px){
-
 .hero{
 padding:80px 8%;
 }
-
 .hero-box{
 padding:35px 25px;
 }
-
 .hero h1{
 font-size:34px;
 }
-
 .button{
 padding:14px 28px;
 }
-
+.modal-content {
+width: 95%;
 }
-
+}
 </style>
 </head>
 
@@ -192,251 +201,133 @@ padding:14px 28px;
 
 <canvas id="bg"></canvas>
 
-
 <!-- HERO -->
-
 <section class="hero">
-
 <div class="hero-box">
-
-<h1>Technical Workshop</h1>
-
-<p>
-Hands-on learning experience guided by industry experts and mentors.  
-Explore real hardware development and gain practical knowledge in modern electronics technologies.
-</p>
-
-<a class="button" href="#">
-Register Now
-<span class="price">₹100</span>
-</a>
-
+  <h1>Embedded Systems & RTOS Workshop</h1>
+  <p>
+  THE ELECTRONIX CLUB (TEC) presents an exclusive one-day Workshop on <b>Embedded Systems & RTOS</b>, conducted by industry leaders [xyz].  
+  Bridge the gap between classroom theory and silicon-level reality. This session dives deep into industry-standard protocols and real-time operating systems used in modern automotive and consumer electronics.
+  </p>
+  <a class="button" id="openForm">
+    Register Now
+    <span class="price">₹[Insert Amount]</span>
+  </a>
 </div>
-
 </section>
-
 
 <!-- ABOUT -->
-
 <section>
-
 <h2>About The Workshop</h2>
-
 <p>
-This technical workshop is designed to provide practical exposure to modern electronics technologies such as Internet of Things (IoT), Embedded Systems, PCB Design, and Robotics.
+This workshop focuses on building practical understanding of Embedded Systems and Real-Time Operating Systems (RTOS) — essential technologies that power the automotive, consumer, and IoT industries.
 </p>
-
 <p>
-Participants will experience hands-on training sessions where they will interact with real hardware components, understand system design principles, and learn how modern electronic devices are developed.
+Participants will gain real-world insights into microcontroller architectures, task scheduling, interrupt handling, and embedded communication protocols such as CAN/LIN used in automotive systems.
 </p>
-
 <p>
-The workshop will be guided by experienced mentors who will help participants understand real-world engineering workflows used in industry.
+The session will be conducted by <b>industry experts from [xyz]</b> and certified by <b>Vector India</b>, ensuring high technical value and industrial relevance.
 </p>
-
 </section>
 
-
-<!-- WORKSHOP DOMAINS -->
-
+<!-- KEY TAKEAWAYS -->
 <section>
-
-<h2>Workshop Domains</h2>
-
-<div class="card-container">
-
-<div class="card">
-<h3>🔌 Embedded Systems</h3>
-<p>
-Learn microcontroller programming, hardware interfacing, and real-time system applications used in modern electronics devices.
-</p>
-</div>
-
-<div class="card">
-<h3>🌐 Internet of Things (IoT)</h3>
-<p>
-Build connected smart devices using sensors, communication modules, and cloud platforms.
-</p>
-</div>
-
-<div class="card">
-<h3>🖥 PCB Design</h3>
-<p>
-Understand how professional circuit boards are designed and manufactured using modern PCB design tools.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- WHAT YOU WILL GAIN -->
-
-<section>
-
-<h2>What You Will Gain</h2>
-
+<h2>Key Takeaways</h2>
 <ul>
-
-<li>Hands-on experience with electronic hardware and development boards</li>
-
-<li>Practical knowledge of Embedded Systems and IoT product development</li>
-
-<li>Understanding of PCB design and electronic circuit implementation</li>
-
-<li>Exposure to real-world engineering workflows</li>
-
-<li>Opportunity to interact with experienced mentors and industry professionals</li>
-
-<li>Certificate of Participation to strengthen your academic and technical profile</li>
-
-<li>Networking opportunities with students passionate about electronics and innovation</li>
-
-<li>Better preparation for hackathons, competitions, and technical projects</li>
-
+<li>8/16/32-bit Architecture</li>
+<li>RTOS Fundamentals</li>
+<li>Automotive Communication: CAN & LIN</li>
 </ul>
-
 </section>
 
-
-<!-- WHO SHOULD ATTEND -->
-
+<!-- CERTIFICATION -->
 <section>
-
-<h2>Who Should Attend</h2>
-
-<ul>
-
-<li>Students interested in electronics and hardware development</li>
-
-<li>Beginners who want to start building electronics projects</li>
-
-<li>Students preparing for hackathons and technical competitions</li>
-
-<li>Anyone curious about how modern electronic systems are designed</li>
-
-</ul>
-
+<h2>Certification</h2>
+<p>
+Participants will receive an <b>industry-recognized certificate</b> from <b>Vector India</b> upon successful completion of the workshop.
+</p>
 </section>
 
-
-<!-- REGISTRATION -->
-
+<!-- REGISTRATION DETAILS -->
 <section>
-
 <h2>Registration Details</h2>
-
-<p><b>Registration Fee:</b> ₹100 per participant</p>
-
-<p>Registration Includes:</p>
-
 <ul>
-
-<li>Workshop learning materials</li>
-
-<li>Hands-on practical training sessions</li>
-
-<li>Certificate of Participation</li>
-
-<li>Refreshments during the workshop</li>
-
-<li>Interaction with mentors and industry professionals</li>
-
+<li><b>Fee:</b> ₹[Insert Amount]</li>
+<li><b>Venue:</b> [Insert Venue]</li>
+<li><b>Date:</b> [Insert Date]</li>
+<li><b>Registration Type:</b> Individual (enter a valid 10-digit phone number for updates)</li>
 </ul>
-
+<p>Seats are limited. Secure your spot in the future of Embedded Engineering.</p>
 </section>
 
-
-<!-- SCHEDULE -->
-
-<section>
-
-<h2>Workshop Schedule</h2>
-
-<p>
-
-Date: To Be Announced  
-<br>
-Duration: 1 Full Day  
-<br>
-Venue: SNIST Campus
-
-</p>
-
-</section>
-
+<!-- Modal -->
+<div id="formModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeForm">&times;</span>
+    <iframe src="https://forms.gle/uzoCSrNNGyr4zgHn7" width="100%" height="600" style="border:none; border-radius:10px;"></iframe>
+  </div>
+</div>
 
 <script>
-
 /* background animation */
-
 const canvas=document.getElementById("bg")
 const ctx=canvas.getContext("2d")
-
 canvas.width=window.innerWidth
 canvas.height=window.innerHeight
-
 let particles=[]
-
-/* fewer particles for phones */
-
 let particleCount = window.innerWidth < 768 ? 35 : 80
 
 for(let i=0;i<particleCount;i++){
-
 particles.push({
-
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 vx:(Math.random()-0.5)*0.5,
 vy:(Math.random()-0.5)*0.5
-
 })
-
 }
 
 function animate(){
-
 ctx.clearRect(0,0,canvas.width,canvas.height)
-
 particles.forEach(p=>{
-
 p.x+=p.vx
 p.y+=p.vy
-
 if(p.x<0||p.x>canvas.width)p.vx*=-1
 if(p.y<0||p.y>canvas.height)p.vy*=-1
-
 ctx.beginPath()
 ctx.arc(p.x,p.y,2,0,Math.PI*2)
 ctx.fillStyle="#38bdf8"
 ctx.fill()
-
 particles.forEach(p2=>{
-
 let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
-
 if(dist<120){
-
 ctx.beginPath()
 ctx.moveTo(p.x,p.y)
 ctx.lineTo(p2.x,p2.y)
 ctx.strokeStyle="rgba(56,189,248,0.15)"
 ctx.stroke()
-
 }
-
 })
-
 })
-
 requestAnimationFrame(animate)
-
 }
-
 animate()
 
+/* modal controls */
+const modal = document.getElementById("formModal");
+const openBtn = document.getElementById("openForm");
+const closeBtn = document.getElementById("closeForm");
+
+openBtn.onclick = function() {
+  modal.style.display = "block";
+}
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
 
 </body>
