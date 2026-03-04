@@ -138,6 +138,26 @@ line-height:1.8;
 padding-left:18px;
 }
 
+/* total prize pool styling */
+.total-prize {
+  font-size: clamp(28px, 6vw, 56px);
+  font-weight: 800;
+  color: #facc15;
+  text-align: center;
+  margin: 40px 0 50px;
+  text-shadow: 0 0 25px rgba(250,204,21,0.5);
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #fbbf24, #facc15, #fde047);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.total-prize span {
+  display: block;
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: 900;
+}
+
 /* modal styling */
 .modal {
 display: none;
@@ -209,7 +229,7 @@ width: 95%;
     </p>
     <a class="button" id="openForm">
       Register Now
-      <span class="price">₹300 / Team (Max 3 Members)</span>
+      <span class="price">₹199 / Team (Max 3 Members)</span>
     </a>
   </div>
 </section>
@@ -230,20 +250,15 @@ This event encourages creativity, problem solving, and technical presentation sk
 
 <!-- PRIZE POOL -->
 <section>
-<h2>Prize Pool</h2>
-<div class="card-container">
-  <div class="card">
-    <h3>🥇 First Prize</h3>
-    <p>₹8,000</p>
+  <h2>Prize Pool</h2>
+
+  <div class="total-prize">
+    🏆 Prize Pool Worth <span>₹7,000</span>
   </div>
-  <div class="card">
-    <h3>🥈 Second Prize</h3>
-    <p>₹5,000</p>
-  </div>
-</div>
-<p style="margin-top:20px;">
-Outstanding projects may also receive recognition, mentorship opportunities, and exciting merchandise rewards.
-</p>
+
+  <p style="margin-top:20px;">
+    Outstanding projects may also receive recognition, mentorship opportunities, and exciting merchandise rewards.
+  </p>
 </section>
 
 <!-- PARTICIPATION -->
@@ -275,7 +290,7 @@ Outstanding projects may also receive recognition, mentorship opportunities, and
 <!-- REGISTRATION -->
 <section>
 <h2>Registration Details</h2>
-<p><b>Entry Fee:</b> ₹300 per team</p>
+<p><b>Entry Fee:</b> ₹199 per team</p>
 <p>Team Limit: Maximum <b>3 Members</b></p>
 <p>Registration Includes:</p>
 <ul>
