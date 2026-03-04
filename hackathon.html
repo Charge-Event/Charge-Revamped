@@ -133,26 +133,36 @@ padding-left:18px;
 }
 
 /* countdown timer */
-.countdown-box{
+.countdown-section{
 text-align:center;
-margin-top:25px;
-background:#1e293b;
-display:inline-block;
-padding:20px 40px;
-border-radius:12px;
-box-shadow:0 0 20px rgba(56,189,248,0.15);
+margin-top:40px;
 }
-#timer{
-font-size:28px;
-color:#38bdf8;
-font-weight:bold;
-letter-spacing:1px;
+.countdown-box{
+display:inline-block;
+padding:35px 70px;
+border-radius:18px;
+background:#1e293b;
+box-shadow:0 0 40px rgba(56,189,248,0.4), 0 0 80px rgba(56,189,248,0.2);
+border:2px solid rgba(56,189,248,0.5);
+animation:glowPulse 3s infinite ease-in-out;
+}
+@keyframes glowPulse{
+0%{box-shadow:0 0 25px rgba(56,189,248,0.3);}
+50%{box-shadow:0 0 60px rgba(56,189,248,0.7);}
+100%{box-shadow:0 0 25px rgba(56,189,248,0.3);}
 }
 .timer-label{
 color:#a5b4fc;
-font-size:16px;
-margin-bottom:8px;
+font-size:20px;
+margin-bottom:10px;
 display:block;
+}
+#timer{
+font-size:40px;
+color:#38bdf8;
+font-weight:900;
+letter-spacing:2px;
+text-shadow:0 0 25px rgba(56,189,248,0.8);
 }
 
 /* responsive */
@@ -161,7 +171,8 @@ display:block;
 .hero-box{padding:35px 25px}
 .hero h1{font-size:34px}
 .button{padding:14px 28px}
-#timer{font-size:22px}
+#timer{font-size:28px}
+.countdown-box{padding:25px 40px}
 }
 </style>
 </head>
@@ -207,12 +218,12 @@ This event provides a platform for students to demonstrate their expertise in ha
 </ul>
 </section>
 
-<!-- PROBLEM STATEMENTS + COUNTDOWN -->
-<section>
-  <h2>Problem Statements will be released soon.</h2>
-  
+<!-- PROBLEM STATEMENTS + GLOWING COUNTDOWN -->
+<section class="countdown-section">
+  <h2>Problem Statements will be released soon</h2>
+
   <div class="countdown-box">
-    <span class="timer-label">Time Remaining Until Announcement</span>
+    <span class="timer-label">⏳ Time Remaining Until Announcement</span>
     <div id="timer">Loading...</div>
   </div>
 
@@ -222,7 +233,6 @@ This event provides a platform for students to demonstrate their expertise in ha
     function updateTimer() {
       const now = new Date().getTime();
       const distance = eventDate - now;
-
       const timerElement = document.getElementById("timer");
 
       if (distance < 0) {
@@ -235,8 +245,7 @@ This event provides a platform for students to demonstrate their expertise in ha
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      timerElement.innerHTML =
-        `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+      timerElement.innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
     }
 
     updateTimer();
