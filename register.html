@@ -53,15 +53,15 @@ margin-bottom:40px;
 font-size:18px;
 }
 
-/* Event Grid - FIXED alignment */
+/* Event Grid */
 .event-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:40px;
 max-width:1100px;
 margin:auto;
-justify-content:center;      /* ✅ centers full grid */
-justify-items:center;        /* ✅ centers each card */
+justify-content:center;
+justify-items:center;
 align-items:stretch;
 }
 
@@ -131,12 +131,13 @@ backdrop-filter:blur(6px);
 }
 .modal-content{
 background:#0f172a;
-margin:5% auto;
-padding:20px;
+margin:8% auto;
+padding:30px 25px;
 border:2px solid #00fff2;
 width:90%;
-max-width:800px;
+max-width:600px;
 border-radius:16px;
+text-align:center;
 box-shadow:0 0 30px rgba(0,255,242,0.3);
 }
 .close{
@@ -146,6 +147,17 @@ font-size:28px;
 cursor:pointer;
 }
 .close:hover{color:white}
+.modal h2{
+color:#00fff2;
+font-family:'Orbitron';
+margin-bottom:10px;
+}
+.modal p{
+color:#ccc;
+font-size:16px;
+line-height:1.7;
+margin-bottom:25px;
+}
 
 /* Responsive */
 @media(max-width:600px){
@@ -168,81 +180,87 @@ h1{font-size:32px}
 
 <section id="events">
   <h1>Register for Events</h1>
-  <p class="subtitle">Choose your event below and complete your registration.</p>
+  <p class="subtitle">Click an event below to view details and register instantly.</p>
 
   <div class="event-grid">
 
-    <!-- Hackathon -->
     <div class="event-card">
       <h3>Hackathon</h3>
-      <p>Join a 24-hour innovation marathon building electronics and IoT-based prototypes that solve real-world problems.</p>
-      <a class="btn" onclick="openForm('hackathonForm')">Register</a>
+      <p>24-hour hardware-software innovation challenge. Build, code, and compete to create impactful IoT solutions.</p>
+      <a class="btn" onclick="openModal('hackathon')">Register</a>
     </div>
 
-    <!-- Ideathon -->
     <div class="event-card">
       <h3>Ideathon</h3>
-      <p>Pitch your innovative ideas and concepts that could transform the future of technology and sustainability.</p>
-      <a class="btn" onclick="openForm('ideathonForm')">Register</a>
+      <p>Pitch groundbreaking ideas in core electronics, communication, and robotics. Innovation starts here.</p>
+      <a class="btn" onclick="openModal('ideathon')">Register</a>
     </div>
 
-    <!-- Project Expo -->
     <div class="event-card">
       <h3>Project Expo</h3>
-      <p>Showcase your working models, prototypes, or research projects before judges and industry experts.</p>
-      <a class="btn" onclick="openForm('expoForm')">Register</a>
+      <p>Showcase your working prototypes and creative engineering solutions in front of judges and peers.</p>
+      <a class="btn" onclick="openModal('expo')">Register</a>
     </div>
 
-    <!-- Paper Presentation -->
     <div class="event-card">
       <h3>Paper Presentation</h3>
-      <p>Present your research or review papers on emerging electronics technologies and innovations.</p>
-      <a class="btn" onclick="openForm('paperForm')">Register</a>
+      <p>Present your research or innovative paper ideas in electronics, VLSI, or communication systems.</p>
+      <a class="btn" onclick="openModal('paper')">Register</a>
     </div>
 
-    <!-- Workshop -->
     <div class="event-card">
       <h3>Workshop</h3>
-      <p>Hands-on workshop on Embedded Systems & RTOS. Learn, build, and get certified by Vector India.</p>
-      <a class="btn" onclick="openForm('workshopForm')">Register</a>
+      <p>Hands-on session on Embedded Systems & RTOS by Vector India. Learn the industry standards.</p>
+      <a class="btn" onclick="openModal('workshop')">Register</a>
     </div>
 
   </div>
 </section>
 
-<!-- MODALS -->
-<div id="hackathonForm" class="modal">
+<!-- MODALS WITH DIRECT FORM LINKS -->
+
+<div id="hackathon" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeForm('hackathonForm')">&times;</span>
-    <iframe src="https://forms.gle/KudKg7R4L49LMuMaA" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+    <span class="close" onclick="closeModal('hackathon')">&times;</span>
+    <h2>Hackathon</h2>
+    <p>Team up (2–4 members) and compete in a 24-hour electronics and IoT-based innovation sprint at CHARGE 2026.</p>
+    <a href="https://forms.gle/KudKg7R4L49LMuMaA" target="_blank" class="btn">Register Now</a>
   </div>
 </div>
 
-<div id="ideathonForm" class="modal">
+<div id="ideathon" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeForm('ideathonForm')">&times;</span>
-    <iframe src="https://forms.gle/BHTziTNfxaxDKCuP8" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+    <span class="close" onclick="closeModal('ideathon')">&times;</span>
+    <h2>Ideathon</h2>
+    <p>Have a breakthrough idea? Present your theoretical innovation in electronics, communication, or robotics.</p>
+    <a href="https://forms.gle/zHn1Ngt6ZDVEKmUq9" target="_blank" class="btn">Register Now</a>
   </div>
 </div>
 
-<div id="expoForm" class="modal">
+<div id="expo" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeForm('expoForm')">&times;</span>
-    <iframe src="https://forms.gle/618mES5TZSkfoFqE9" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+    <span class="close" onclick="closeModal('expo')">&times;</span>
+    <h2>Project Expo</h2>
+    <p>Display your engineering prototypes, hardware models, or creative projects to judges and industry mentors.</p>
+    <a href="https://forms.gle/618mES5TZSkfoFqE9" target="_blank" class="btn">Register Now</a>
   </div>
 </div>
 
-<div id="paperForm" class="modal">
+<div id="paper" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeForm('paperForm')">&times;</span>
-    <iframe src="https://forms.gle/XrnsRhpAqYtpTt8H8" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+    <span class="close" onclick="closeModal('paper')">&times;</span>
+    <h2>Paper & Poster Presentation</h2>
+    <p>Showcase your research and technical depth. Present innovative papers and posters in core ECE domains.</p>
+    <a href="https://forms.gle/6nhWf1yR2sR74vrM9" target="_blank" class="btn">Register Now</a>
   </div>
 </div>
 
-<div id="workshopForm" class="modal">
+<div id="workshop" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeForm('workshopForm')">&times;</span>
-    <iframe src="https://forms.gle/uzoCSrNNGyr4zgHn7" width="100%" height="600" style="border:none;border-radius:10px;"></iframe>
+    <span class="close" onclick="closeModal('workshop')">&times;</span>
+    <h2>Embedded Systems & RTOS Workshop</h2>
+    <p>Join a one-day workshop by Vector India to learn RTOS fundamentals and embedded protocols (CAN, LIN).</p>
+    <a href="https://forms.gle/Pnr6RusgWbXwaG419" target="_blank" class="btn">Register Now</a>
   </div>
 </div>
 
@@ -266,20 +284,15 @@ requestAnimationFrame(animate);}
 animate();
 
 /* Modal Functions */
-function openForm(id){document.getElementById(id).style.display="block";}
-function closeForm(id){document.getElementById(id).style.display="none";}
+function openModal(id){document.getElementById(id).style.display="block";}
+function closeModal(id){document.getElementById(id).style.display="none";}
 window.onclick=function(e){document.querySelectorAll('.modal').forEach(m=>{if(e.target==m)m.style.display='none';});}
 
-/* ✅ Fix for double back-click issue */
+/* Fix for double back-click */
 if (window.history && window.history.replaceState) {
   window.history.replaceState(null, null, window.location.href);
 }
 </script>
-<script>
-/* Fix for double back click */
-if (window.history && window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.href);
-}
-</script>
+
 </body>
 </html>
