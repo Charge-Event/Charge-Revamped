@@ -158,43 +158,6 @@ padding-left:18px;
   font-weight: 900;
 }
 
-/* modal styling */
-.modal {
-display: none;
-position: fixed;
-z-index: 10;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-overflow: auto;
-background-color: rgba(0,0,0,0.75);
-backdrop-filter: blur(5px);
-}
-
-.modal-content {
-background-color: #0f172a;
-margin: 5% auto;
-padding: 20px;
-border: 2px solid #38bdf8;
-width: 90%;
-max-width: 800px;
-border-radius: 16px;
-box-shadow: 0 0 30px rgba(56,189,248,0.3);
-}
-
-.close {
-color: #38bdf8;
-float: right;
-font-size: 28px;
-font-weight: bold;
-cursor: pointer;
-}
-
-.close:hover {
-color: #fff;
-}
-
 /* responsive */
 @media (max-width:768px){
 .hero{
@@ -208,9 +171,6 @@ font-size:34px;
 }
 .button{
 padding:14px 28px;
-}
-.modal-content {
-width: 95%;
 }
 }
 </style>
@@ -227,7 +187,7 @@ width: 95%;
     <p>
       Showcase your innovative engineering projects, demonstrate your creativity, and present your ideas to judges, industry professionals, and fellow innovators.
     </p>
-    <a class="button" id="openForm">
+    <a class="button" href="https://forms.gle/618mES5TZSkfoFqE9" target="_blank">
       Register Now
       <span class="price">₹199 / Team (Max 3 Members)</span>
     </a>
@@ -302,14 +262,6 @@ This event encourages creativity, problem solving, and technical presentation sk
 </ul>
 </section>
 
-<!-- Modal for Google Form -->
-<div id="formModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeForm">&times;</span>
-    <iframe src="https://forms.gle/618mES5TZSkfoFqE9" width="100%" height="600" style="border:none; border-radius:10px;"></iframe>
-  </div>
-</div>
-
 <script>
 /* background animation */
 const canvas=document.getElementById("bg")
@@ -353,25 +305,6 @@ ctx.stroke()
 requestAnimationFrame(animate)
 }
 animate()
-
-/* modal controls */
-const modal = document.getElementById("formModal");
-const openBtn = document.getElementById("openForm");
-const closeBtn = document.getElementById("closeForm");
-
-openBtn.onclick = function() {
-  modal.style.display = "block";
-}
-
-closeBtn.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
 </script>
 <script>
 /* Fix for double back-click issue */
