@@ -6,7 +6,6 @@
 <title>Ideathon | The Electronix Club</title>
 
 <style>
-
 body{
 margin:0;
 font-family: Arial, Helvetica, sans-serif;
@@ -113,52 +112,12 @@ transition:0.3s;
 background:#2ea043;
 }
 
-/* Modal styling */
-.modal {
-display: none;
-position: fixed;
-z-index: 10;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-overflow: auto;
-background-color: rgba(0,0,0,0.75);
-backdrop-filter: blur(5px);
-}
-
-.modal-content {
-background-color: #161b22;
-margin: 5% auto;
-padding: 20px;
-border: 2px solid #58a6ff;
-width: 90%;
-max-width: 800px;
-border-radius: 12px;
-box-shadow: 0 0 30px rgba(88,166,255,0.3);
-}
-
-.close {
-color: #58a6ff;
-float: right;
-font-size: 28px;
-font-weight: bold;
-cursor: pointer;
-}
-
-.close:hover {
-color: #fff;
-}
-
 @media(max-width:600px){
 h1{
 font-size:30px;
 }
 .event-title{
 font-size:24px;
-}
-.modal-content {
-width: 95%;
 }
 }
 </style>
@@ -176,27 +135,25 @@ width: 95%;
 <div class="event-title">Ideathon Challenge</div>
 
 <p class="description">
-The Ideathon organized by <b>The Electronix Club</b> is a platform where creative thinkers, innovators, and problem-solvers come together to present powerful ideas that can shape the future of technology and society.
+Do you have a blueprint that can redefine the tech landscape? <b>THE ELECTRONIX CLUB (TEC)</b> invites you to the <b>Ideathon</b> — a battle of brains focused on theoretical innovation and system architecture.
 <br><br>
-Participants will brainstorm, develop, and pitch innovative solutions to real-world problems across domains such as electronics, automation, AI, sustainability, healthcare technology, and smart systems.
+No hardware? No problem. We’re looking for high-level solutions in <b>VLSI</b>, <b>Smart Communication</b>, and <b>Robotics</b> that tackle real-world bottlenecks through logic and design.
 <br><br>
-This event focuses on <b>concept creation, innovation thinking, and problem-solving skills</b> rather than building a complete product. Teams will present their ideas before a panel of judges who will evaluate them based on creativity, feasibility, impact, and presentation clarity.
-<br><br>
-It is a great opportunity for students to showcase their imagination, explore technological possibilities, and gain exposure to real innovation processes.
+This event emphasizes <b>problem identification, feasibility, and the technical “X-Factor”</b>. Participants will present their ideas before judges who’ll evaluate them based on creativity, impact, and innovation.
 </p>
 
 <div class="details">
+  <div class="detail-card">
+    <h3>Focus</h3>
+    <p>Innovation & System Design</p>
+  </div>
   <div class="detail-card">
     <h3>Team Size</h3>
     <p>2 – 3 Members</p>
   </div>
   <div class="detail-card">
     <h3>Entry Fee</h3>
-    <p>₹250 per Team</p>
-  </div>
-  <div class="detail-card">
-    <h3>Prize</h3>
-    <p>₹3,000</p>
+    <p>₹149 per Team</p>
   </div>
   <div class="detail-card">
     <h3>Event Type</h3>
@@ -207,57 +164,43 @@ It is a great opportunity for students to showcase their imagination, explore te
 <div class="benefits">
 <h2>What Will You Gain?</h2>
 <ul>
-<li>Opportunity to present innovative ideas before experienced judges.</li>
-<li>Exposure to real-world problem solving and technology innovation.</li>
-<li>Recognition for creative thinking and impactful ideas.</li>
-<li>Interaction with students from multiple domains and departments.</li>
-<li>Networking opportunities with peers interested in startups and innovation.</li>
-<li>Certificates for all participants from <b>The Electronix Club</b>.</li>
-<li>Possibility of mentorship and guidance for developing your idea further.</li>
-<li>Boost to your resume through participation in a technical innovation event.</li>
-<li>Chance to transform a simple concept into a potentially impactful project.</li>
+<li>Chance to pitch your innovative ideas to experienced judges.</li>
+<li>Exposure to real-world problem-solving and innovation processes.</li>
+<li>Recognition for creativity, clarity, and impactful ideas.</li>
+<li>Networking with peers and mentors across multiple domains.</li>
+<li>Certificate of participation from <b>The Electronix Club (TEC)</b>.</li>
+<li>Opportunity for mentorship to further develop your idea.</li>
+<li>Great addition to your resume and technical portfolio.</li>
+<li>Inspiration to turn your concept into a future project or startup.</li>
 </ul>
 </div>
 
 <div class="register-section">
-  <div class="price">Entry Fee: ₹250 (Per Team)</div>
-  <button class="register-btn" id="openForm">Register Now</button>
+  <div class="price">Entry Fee: ₹149 (Per Team)</div>
+  <a href="https://forms.gle/zHn1Ngt6ZDVEKmUq9" target="_blank">
+    <button class="register-btn">Register Now</button>
+  </a>
 </div>
 
 </div>
+
+<div class="event-box">
+  <div class="event-title">Event Details</div>
+  <ul style="line-height:1.8; color:#c9d1d9;">
+    <li><b>Venue:</b> SNIST College</li>
+    <li><b>Date:</b> 11 March 2026</li>
+    <li><b>Submission:</b> Brief abstract/pitch deck required during the event</li>
+    <li><b>Registration:</b> Only Team Leads should register on behalf of their team</li>
+  </ul>
+  <p style="margin-top:20px;">
+    For any queries, contact our student coordinator:<br>
+    <b>Rithwik:</b> 9392676311
+  </p>
+  <p style="margin-top:15px; color:#58a6ff; font-weight:bold;">
+    Innovation starts with an idea — pitch yours to the experts!
+  </p>
 </div>
 
-<!-- Modal for Google Form -->
-<div id="formModal" class="modal">
-  <div class="modal-content">
-    <span class="close" id="closeForm">&times;</span>
-    <iframe src="https://forms.gle/BHTziTNfxaxDKCuP8" width="100%" height="600" style="border:none; border-radius:10px;"></iframe>
-  </div>
 </div>
-
-<script>
-// Modal controls
-const modal = document.getElementById("formModal");
-const openBtn = document.getElementById("openForm");
-const closeBtn = document.getElementById("closeForm");
-
-openBtn.onclick = function() {
-  modal.style.display = "block";
-}
-closeBtn.onclick = function() {
-  modal.style.display = "none";
-}
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
-<script>
-/* Fix for double back-click issue */
-if (window.history && window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.href);
-}
-</script>
 </body>
 </html>
