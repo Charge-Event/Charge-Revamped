@@ -138,24 +138,23 @@ line-height:1.8;
 padding-left:18px;
 }
 
-/* total prize pool styling */
-.total-prize {
-  font-size: clamp(28px, 6vw, 56px);
-  font-weight: 800;
-  color: #facc15;
+/* prize box styling */
+.prize-box {
+  background: radial-gradient(circle at center, rgba(250, 204, 21, 0.15) 0%, rgba(250, 204, 21, 0.05) 70%);
+  border: 2px solid #facc15;
+  border-radius: 16px;
+  padding: 40px;
   text-align: center;
-  margin: 40px 0 50px;
-  text-shadow: 0 0 25px rgba(250,204,21,0.5);
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, #fbbf24, #facc15, #fde047);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin: 40px auto;
+  max-width: 400px;
+  box-shadow: 0 0 40px rgba(250, 204, 21, 0.25);
 }
 
-.total-prize span {
-  display: block;
-  font-size: clamp(36px, 8vw, 72px);
-  font-weight: 900;
+.prize-box h3 {
+  font-size: 34px;
+  color: #facc15;
+  font-weight: 800;
+  text-shadow: 0 0 25px rgba(250, 204, 21, 0.6);
 }
 
 /* responsive */
@@ -171,6 +170,9 @@ font-size:34px;
 }
 .button{
 padding:14px 28px;
+}
+.prize-box h3 {
+  font-size: 26px;
 }
 }
 </style>
@@ -211,12 +213,10 @@ This event encourages creativity, problem solving, and technical presentation sk
 <!-- PRIZE POOL -->
 <section>
   <h2>Prize Pool</h2>
-
-  <div class="total-prize">
-    🏆 Prize Pool Worth <span>₹7,000</span>
+  <div class="prize-box">
+    <h3>🏆 Prize Worth ₹7,000</h3>
   </div>
-
-  <p style="margin-top:20px;">
+  <p style="margin-top:20px;text-align:center;">
     Outstanding projects may also receive recognition, mentorship opportunities, and exciting merchandise rewards.
   </p>
 </section>
