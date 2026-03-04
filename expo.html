@@ -110,14 +110,15 @@ display:flex;
 gap:30px;
 flex-wrap:wrap;
 margin-top:30px;
+justify-content:center;
 }
 
 .card{
 background:#1e293b;
-padding:25px;
+padding:30px;
 border-radius:12px;
-flex:1;
-min-width:220px;
+min-width:250px;
+text-align:center;
 box-shadow:0 0 20px rgba(56,189,248,0.08);
 transition:0.3s;
 }
@@ -129,6 +130,13 @@ box-shadow:0 0 30px rgba(56,189,248,0.25);
 
 .card h3{
 margin-bottom:10px;
+color:#38bdf8;
+font-size:28px;
+}
+
+.card p{
+font-size:20px;
+font-weight:bold;
 }
 
 /* lists */
@@ -136,25 +144,6 @@ ul{
 margin-top:15px;
 line-height:1.8;
 padding-left:18px;
-}
-
-/* prize box styling */
-.prize-box {
-  background: radial-gradient(circle at center, rgba(250, 204, 21, 0.15) 0%, rgba(250, 204, 21, 0.05) 70%);
-  border: 2px solid #facc15;
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
-  margin: 40px auto;
-  max-width: 400px;
-  box-shadow: 0 0 40px rgba(250, 204, 21, 0.25);
-}
-
-.prize-box h3 {
-  font-size: 34px;
-  color: #facc15;
-  font-weight: 800;
-  text-shadow: 0 0 25px rgba(250, 204, 21, 0.6);
 }
 
 /* responsive */
@@ -171,8 +160,15 @@ font-size:34px;
 .button{
 padding:14px 28px;
 }
-.prize-box h3 {
-  font-size: 26px;
+.card{
+min-width:200px;
+padding:25px;
+}
+.card h3{
+font-size:24px;
+}
+.card p{
+font-size:18px;
 }
 }
 </style>
@@ -213,8 +209,11 @@ This event encourages creativity, problem solving, and technical presentation sk
 <!-- PRIZE POOL -->
 <section>
   <h2>Prize Pool</h2>
-  <div class="prize-box">
-    <h3>🏆 Prize Worth ₹7,000</h3>
+  <div class="card-container">
+    <div class="card">
+      <h3>🏆 Prize Worth</h3>
+      <p>₹7,000</p>
+    </div>
   </div>
   <p style="margin-top:20px;text-align:center;">
     Outstanding projects may also receive recognition, mentorship opportunities, and exciting merchandise rewards.
