@@ -104,23 +104,23 @@ transform:scale(1.05);
 box-shadow:0 0 20px #38bdf8;
 }
 
-/* cards */
+/* card container */
 .card-container{
 display:flex;
 gap:30px;
 flex-wrap:wrap;
 margin-top:30px;
-justify-content:center;
 }
 
+/* card style same as other pages */
 .card{
 background:#1e293b;
-padding:30px;
+padding:25px 40px;
 border-radius:12px;
-min-width:250px;
-text-align:center;
+flex:1;
 box-shadow:0 0 20px rgba(56,189,248,0.08);
 transition:0.3s;
+min-width:300px;
 }
 
 .card:hover{
@@ -131,7 +131,7 @@ box-shadow:0 0 30px rgba(56,189,248,0.25);
 .card h3{
 margin-bottom:10px;
 color:#38bdf8;
-font-size:28px;
+font-size:26px;
 }
 
 .card p{
@@ -161,11 +161,10 @@ font-size:34px;
 padding:14px 28px;
 }
 .card{
-min-width:200px;
 padding:25px;
 }
 .card h3{
-font-size:24px;
+font-size:22px;
 }
 .card p{
 font-size:18px;
@@ -215,7 +214,7 @@ This event encourages creativity, problem solving, and technical presentation sk
       <p>₹7,000</p>
     </div>
   </div>
-  <p style="margin-top:20px;text-align:center;">
+  <p style="margin-top:20px;">
     Outstanding projects may also receive recognition, mentorship opportunities, and exciting merchandise rewards.
   </p>
 </section>
@@ -305,6 +304,7 @@ requestAnimationFrame(animate)
 }
 animate()
 </script>
+
 <script>
 /* Fix for double back-click issue */
 if (window.history && window.history.replaceState) {
