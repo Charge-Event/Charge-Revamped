@@ -23,15 +23,8 @@
       --easing: cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Poppins', Arial, sans-serif;
@@ -42,23 +35,11 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      opacity: 0.8;
-    }
+    canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.8; }
 
-    section {
-      padding: 80px 10%;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-    }
+    section { padding: 80px 10%; max-width: 1200px; margin: auto; position: relative; }
 
-    h1,
-    h2 {
+    h1, h2 {
       color: var(--cyan);
       margin-bottom: 25px;
       font-family: 'Orbitron', sans-serif;
@@ -66,16 +47,14 @@
       letter-spacing: 1px;
     }
 
-    h2 {
-      font-size: 36px;
-    }
+    h2 { font-size: 36px; }
 
     /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
+      padding: 16px 60px;
       background: rgba(5, 5, 5, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -84,22 +63,40 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .logo-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(0, 255, 242, 0.15);
+      flex-shrink: 0;
     }
 
     header h2 {
       font-family: 'Orbitron', sans-serif;
       color: var(--cyan);
       white-space: nowrap;
-      font-size: 24px;
+      font-size: 22px;
       letter-spacing: 1px;
       text-shadow: 0 0 15px var(--cyan-glow);
       margin-bottom: 0;
     }
 
-    nav {
-      display: flex;
-      gap: 30px;
-    }
+    nav { display: flex; gap: 30px; }
 
     nav a {
       text-decoration: none;
@@ -124,19 +121,11 @@
       box-shadow: 0 0 10px var(--cyan);
     }
 
-    nav a:hover {
-      color: #ffffff;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover { color: #ffffff; }
+    nav a:hover::after { width: 100%; }
 
     /* HERO */
-    .hero {
-      text-align: center;
-      padding: 120px 10% 80px;
-    }
+    .hero { text-align: center; padding: 120px 10% 80px; }
 
     .hero-box {
       background: var(--glass-bg);
@@ -153,10 +142,7 @@
     .hero-box::before {
       content: "";
       position: absolute;
-      top: -40px;
-      left: -40px;
-      right: -40px;
-      bottom: -40px;
+      top: -40px; left: -40px; right: -40px; bottom: -40px;
       background: radial-gradient(circle at center, var(--cyan) 0%, transparent 70%);
       opacity: 0.1;
       z-index: -1;
@@ -172,16 +158,8 @@
     }
 
     @keyframes hover-drone {
-
-      0%,
-      100% {
-        transform: translateY(0px) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-15px) rotate(2deg);
-        filter: drop-shadow(0 20px 25px rgba(0, 255, 242, 0.8));
-      }
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(2deg); filter: drop-shadow(0 20px 25px rgba(0, 255, 242, 0.8)); }
     }
 
     .hero h1 {
@@ -205,7 +183,6 @@
       margin-right: auto;
     }
 
-    /* BUTTON */
     .button {
       background: linear-gradient(135deg, var(--cyan), var(--blue));
       color: #050505;
@@ -240,18 +217,11 @@
       box-shadow: 0 10px 30px rgba(0, 255, 242, 0.4), 0 0 60px rgba(56, 189, 248, 0.2);
     }
 
-    /* DAY GRID */
-    .day-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 40px;
-    }
+    .day-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
 
     .day-card {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border-radius: 16px;
       padding: 40px 30px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -264,25 +234,15 @@
     .day-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: radial-gradient(circle at top, rgba(0, 255, 242, 0.1) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.5s var(--easing);
       pointer-events: none;
     }
 
-    .day-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 255, 242, 0.15);
-      border-color: rgba(0, 255, 242, 0.4);
-    }
-
-    .day-card:hover::before {
-      opacity: 1;
-    }
+    .day-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(0,255,242,0.15); border-color: rgba(0,255,242,0.4); }
+    .day-card:hover::before { opacity: 1; }
 
     .day-badge {
       display: inline-block;
@@ -299,31 +259,14 @@
       box-shadow: 0 0 15px rgba(0, 255, 242, 0.1);
     }
 
-    .day-card h3 {
-      color: #ffffff;
-      margin-bottom: 15px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 24px;
-    }
+    .day-card h3 { color: #ffffff; margin-bottom: 15px; font-family: 'Orbitron', sans-serif; font-size: 24px; }
+    .day-card p { line-height: 1.8; color: var(--text-muted); font-size: 16px; }
 
-    .day-card p {
-      line-height: 1.8;
-      color: var(--text-muted);
-      font-size: 16px;
-    }
-
-    /* CARD CONTAINER */
-    .card-container {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
+    .card-container { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
 
     .card {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       padding: 35px 30px;
       border-radius: 16px;
       flex: 1;
@@ -339,68 +282,22 @@
     .card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: radial-gradient(circle at top, rgba(0, 255, 242, 0.1) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.5s var(--easing);
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 255, 242, 0.15);
-      border-color: rgba(0, 255, 242, 0.4);
-    }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(0,255,242,0.15); border-color: rgba(0,255,242,0.4); }
+    .card:hover::before { opacity: 1; }
+    .card h3 { margin-bottom: 15px; font-family: 'Orbitron', sans-serif; font-size: 20px; color: #ffffff; }
+    .card p { color: var(--text-muted); font-size: 16px; line-height: 1.8; }
 
-    .card:hover::before {
-      opacity: 1;
-    }
+    ul { margin-top: 20px; line-height: 1.9; padding-left: 20px; color: var(--text-muted); font-size: 16px; }
+    ul li { margin-bottom: 8px; list-style-type: none; position: relative; }
+    ul li::before { content: '⚡'; position: absolute; left: -25px; color: var(--cyan); font-size: 14px; top: 4px; }
+    ul li b { color: #ffffff; font-weight: 600; }
 
-    .card h3 {
-      margin-bottom: 15px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 20px;
-      color: #ffffff;
-    }
-
-    .card p {
-      color: var(--text-muted);
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    /* LISTS */
-    ul {
-      margin-top: 20px;
-      line-height: 1.9;
-      padding-left: 20px;
-      color: var(--text-muted);
-      font-size: 16px;
-    }
-
-    ul li {
-      margin-bottom: 8px;
-      list-style-type: none;
-      position: relative;
-    }
-
-    ul li::before {
-      content: '⚡';
-      position: absolute;
-      left: -25px;
-      color: var(--cyan);
-      font-size: 14px;
-      top: 4px;
-    }
-
-    ul li b {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    /* HIGHLIGHT BOX */
     .highlight-box {
       background: radial-gradient(ellipse at center, rgba(0, 255, 242, 0.08) 0%, transparent 80%);
       border: 1px solid rgba(0, 255, 242, 0.3);
@@ -412,53 +309,20 @@
       backdrop-filter: blur(10px);
     }
 
-    .highlight-box p {
-      color: var(--text-muted);
-      line-height: 2;
-      font-size: 18px;
-    }
+    .highlight-box p { color: var(--text-muted); line-height: 2; font-size: 18px; }
 
     @media (max-width:768px) {
-      header {
-        padding: 15px 20px;
-      }
-
-      header h2 {
-        font-size: 20px;
-      }
-
-      nav {
-        display: none;
-      }
-
-      section {
-        padding: 60px 8%;
-      }
-
-      .hero {
-        padding: 100px 5% 60px;
-      }
-
-      .hero-box {
-        padding: 40px 20px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .button {
-        padding: 16px 24px;
-        width: 100%;
-      }
-
-      .day-grid {
-        grid-template-columns: 1fr;
-      }
-
-      h2 {
-        font-size: 30px;
-      }
+      header { padding: 12px 16px; }
+      header h2 { font-size: 17px; }
+      .logo-img { width: 44px; height: 44px; }
+      nav { display: none; }
+      section { padding: 60px 8%; }
+      .hero { padding: 100px 5% 60px; }
+      .hero-box { padding: 40px 20px; }
+      .hero h1 { font-size: 36px; }
+      .button { padding: 16px 24px; width: 100%; }
+      .day-grid { grid-template-columns: 1fr; }
+      h2 { font-size: 30px; }
     }
   </style>
 </head>
@@ -467,7 +331,12 @@
   <canvas id="bg"></canvas>
 
   <header>
-    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <div class="header-left">
+      <img src="TEC_logo-removebg-preview.png" class="logo-img">
+      <div class="logo-divider"></div>
+      <img src="charge revamped logo.jpg.jpeg" class="logo-img">
+      <h2>CHARGE REVAMPED 2026</h2>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="index.html#events">Events</a>
@@ -484,7 +353,7 @@
         A 2-day hands-on workshop where teams learn drone fundamentals, <b>build their own drone from scratch</b>, and
         compete in a flying competition — with a chance to win a Drone Flying License worth ₹1,00,000!
       </p>
-     <a class="button" href="https://forms.gle/NT3kHmpAyUHrafbm9" target="_blank">
+      <a class="button" href="https://forms.gle/NT3kHmpAyUHrafbm9" target="_blank">
         Register Now
         <span class="price">₹300/person (can form a team of 3-5) · 2 Days</span>
       </a>
@@ -606,13 +475,13 @@
   <section>
     <h2>Contact</h2>
     <ul>
-      <li><b>For queries, contact:</b> </li>
+      <li><b>For queries, contact:</b></li>
     </ul>
     <ul>
-      <li> Amarnath : 7989223903 </li>
+      <li>Amarnath : 7989223903</li>
     </ul>
     <ul>
-      <li> Ajith Kumar : 9160237877</li>
+      <li>Ajith Kumar : 9160237877</li>
     </ul>
     <p style="margin-top:15px;color:#ccc;">Learn it. Build it. Fly it. Win it. 🚁🏆</p>
   </section>
