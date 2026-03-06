@@ -1,319 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CHARGE REVAMPED 2026</title>
+  <title>CHARGE REVAMPED 2026</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-background:#050505;
-color:white;
-font-family:'Poppins',sans-serif;
-overflow-x:hidden;
-}
+  <style>
+    :root {
+      --cyan: #00fff2;
+      --cyan-glow: rgba(0, 255, 242, 0.4);
+      --cyan-subtle: rgba(0, 255, 242, 0.1);
+      --blue: #38bdf8;
+      --bg-dark: #050505;
+      --glass-bg: rgba(10, 15, 20, 0.6);
+      --glass-border: rgba(0, 255, 242, 0.15);
+      --text-muted: #e2e8f0;
+      --easing: cubic-bezier(0.25, 1, 0.5, 1);
+    }
 
-/* background canvas */
-canvas{position:fixed;top:0;left:0;z-index:-1;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-flex-wrap:wrap;
-}
-header h2{
-font-family:'Orbitron';
-color:#00fff2;
-white-space:nowrap;
-font-size:22px;
-}
-nav{display:flex;flex-wrap:wrap;}
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:white;
-font-size:15px;
-}
-nav a:hover{color:#00fff2;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* HERO */
-.hero{
-text-align:center;
-padding:120px 20px 80px;
-max-width:900px;
-margin:auto;
-}
-.hero h1{
-font-size:52px;
-font-family:'Orbitron';
-margin-bottom:25px;
-color:#00fff2;
-}
-.hero p{
-line-height:1.8;
-font-size:17px;
-margin-bottom:40px;
-}
-.btn{
-padding:16px 45px;
-background:#00fff2;
-color:black;
-border-radius:30px;
-font-weight:bold;
-text-decoration:none;
-display:inline-block;
-margin-bottom:40px;
-transition:0.3s;
-}
-.btn:hover{transform:scale(1.05);box-shadow:0 0 20px #00fff2;}
+    body {
+      background: var(--bg-dark);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-/* COUNTDOWN */
-.countdown{
-font-size:22px;
-font-weight:500;
-color:#00fff2;
-}
+    /* background canvas */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.8;
+    }
 
-/* EVENTS SECTION */
-#events{padding:80px 40px;}
-.section-title{
-text-align:center;
-font-size:42px;
-font-family:'Orbitron';
-margin-bottom:60px;
-color:#00fff2;
-}
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-/* EVENT GRID — 3 cols, wraps to 4 on last row of 7 */
-.event-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
-max-width:1100px;
-margin:auto;
-}
+    header h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--cyan);
+      white-space: nowrap;
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px var(--cyan-glow);
+    }
 
-/* The 7th card (Drone Workshop) centered on its own row */
-.event-card:last-child:nth-child(3n+1){
-grid-column:2/3;
-}
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
 
-/* EVENT CARD */
-.event-card{
-background:#0c0c0c;
-border-radius:15px;
-padding:30px;
-text-align:center;
-position:relative;
-cursor:pointer;
-transition:0.4s;
-box-shadow:0 0 20px rgba(0,255,242,0.1),0 0 40px rgba(0,255,242,0.05);
-text-decoration:none;
-color:white;
-display:block;
-}
-.event-card::before{
-content:"";
-position:absolute;
-top:-20px;left:-20px;right:-20px;bottom:-20px;
-background:radial-gradient(circle,#00fff2 0%,transparent 70%);
-opacity:0.08;z-index:-1;
-}
-.event-card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px rgba(0,255,242,0.4),0 0 60px rgba(0,255,242,0.2);
-}
-.event-card h3{
-font-family:'Orbitron';
-margin-bottom:10px;
-color:#00fff2;
-}
-.event-preview{
-opacity:0;margin-top:10px;font-size:14px;line-height:1.5;color:#bbb;transition:0.3s;
-}
-.event-card:hover .event-preview{opacity:1;}
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s var(--easing);
+      position: relative;
+    }
 
-/* drone badge */
-.new-badge{
-display:inline-block;
-background:rgba(0,255,242,0.15);
-color:#00fff2;
-font-size:11px;
-padding:2px 10px;
-border-radius:20px;
-margin-bottom:8px;
-letter-spacing:1px;
-font-weight:600;
-}
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cyan);
+      transition: width 0.3s var(--easing);
+      box-shadow: 0 0 10px var(--cyan);
+    }
 
-/* INFO SECTION */
-.info{
-text-align:center;
-max-width:900px;
-margin:80px auto;
-font-size:18px;
-line-height:1.8;
-}
-.info strong{color:#00fff2;}
+    nav a:hover {
+      color: #ffffff;
+    }
 
-/* FOOTER */
-footer{
-text-align:center;
-padding:40px;
-border-top:1px solid #222;
-margin-top:80px;
-}
+    nav a:hover::after {
+      width: 100%;
+    }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-.event-grid{grid-template-columns:repeat(2,1fr);}
-.event-card:last-child:nth-child(3n+1){grid-column:auto;}
-.hero h1{font-size:38px;}
-}
-@media(max-width:600px){
-header{padding:15px 20px;}
-header h2{font-size:18px;}
-nav a{margin-left:15px;font-size:14px;}
-.event-grid{grid-template-columns:1fr;gap:25px;}
-.event-card:last-child:nth-child(3n+1){grid-column:auto;}
-.hero{padding:80px 20px;}
-.hero h1{font-size:32px;}
-}
-</style>
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 160px 20px 100px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 25px;
+      background: linear-gradient(to right, #ffffff, var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px rgba(0, 255, 242, 0.3);
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      line-height: 1.8;
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      padding: 16px 45px;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #050505;
+      border-radius: 30px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
+      transition: all 0.4s var(--easing);
+      border: 1px solid transparent;
+      box-shadow: 0 0 20px rgba(0, 255, 242, 0.2);
+    }
+
+    .btn[href="problem_statements.pdf"] {
+      background: rgba(0, 255, 242, 0.05) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--cyan) !important;
+      border: 1px solid var(--cyan-subtle) !important;
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 255, 242, 0.4), 0 0 60px rgba(56, 189, 248, 0.2);
+    }
+
+    .btn[href="problem_statements.pdf"]:hover {
+      background: rgba(0, 255, 242, 0.1) !important;
+      border-color: var(--cyan) !important;
+      box-shadow: 0 0 20px var(--cyan-glow) !important;
+    }
+
+    /* EVENTS SECTION */
+    #events {
+      padding: 100px 40px;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 48px;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 70px;
+      color: #ffffff;
+      text-shadow: 0 0 20px var(--cyan-glow);
+      letter-spacing: 1.5px;
+    }
+
+    /* EVENT GRID — 3 cols, wraps to 4 on last row of 7 */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 35px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* The 7th card (Drone Workshop) centered on its own row */
+    .event-card:last-child:nth-child(3n+1) {
+      grid-column: 2/3;
+    }
+
+    /* EVENT CARD */
+    .event-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.5s var(--easing);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Inner cinematic glow */
+    .event-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0, 255, 242, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s var(--easing);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 255, 242, 0.15);
+      border-color: rgba(0, 255, 242, 0.4);
+    }
+
+    .event-card:hover::before {
+      opacity: 1;
+    }
+
+    .event-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: var(--cyan);
+      position: relative;
+      z-index: 1;
+      letter-spacing: 1px;
+    }
+
+    .event-preview {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* drone badge */
+    .new-badge {
+      display: inline-block;
+      background: rgba(0, 255, 242, 0.1);
+      border: 1px solid rgba(0, 255, 242, 0.3);
+      color: var(--cyan);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 30px;
+      margin-bottom: 15px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(0, 255, 242, 0.1);
+    }
+
+    /* INFO SECTION */
+    .info {
+      text-align: center;
+      max-width: 900px;
+      margin: 100px auto;
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--text-muted);
+      background: radial-gradient(ellipse at center, rgba(15, 23, 30, 0.4) 0%, transparent 70%);
+      padding: 40px;
+      border-radius: 20px;
+    }
+
+    .info strong {
+      color: #ffffff;
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .info p {
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 60px;
+      color: #888;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1024px) {
+      .event-grid {
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .event-card {
+        padding: 30px 20px;
+      }
+    }
+
+    @media(max-width:900px) {
+      .event-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .event-card:last-child:nth-child(3n+1) {
+        grid-column: auto;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+    }
+
+    @media(max-width:600px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      header h2 {
+        font-size: 20px;
+      }
+
+      nav {
+        display: none;
+        /* Consider a hamburger menu for true mobile view, but hiding for simplicity if it was simple before */
+      }
+
+      .event-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .hero {
+        padding: 100px 20px 60px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<canvas id="bg"></canvas>
+  <canvas id="bg"></canvas>
 
-<header>
-<h2>⚡ CHARGE REVAMPED 2026</h2>
-<nav>
-<a href="#home">Home</a>
-<a href="#events">Events</a>
-<a href="about.html">About Us</a>
-</nav>
-</header>
+  <header>
+    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#events">Events</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
 
-<!-- HERO -->
-<section id="home" class="hero">
-<h1>Welcome to CHARGE REVAMPED 2026</h1>
-<p>
-Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
-CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators, engineers, and technology enthusiasts.
-</p>
-<div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
-<a href="register.html" class="btn" style="margin-bottom: 0;">Register Now</a>
-<a href="problem_statements.pdf" target="_blank" class="btn" style="margin-bottom: 0; background: transparent; color: #00fff2; border: 2px solid #00fff2;">Problem Statements</a>
-</div>
-</section>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <h1>Welcome to CHARGE REVAMPED 2026</h1>
+    <p>
+      Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and
+        Technology</strong>,
+      CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators,
+      engineers, and technology enthusiasts.
+    </p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+      <a href="register.html" class="btn" style="margin-bottom: 0;">Register Now</a>
+      <a href="problem_statements.pdf" target="_blank" class="btn"
+        style="margin-bottom: 0; background: transparent; color: #00fff2; border: 2px solid #00fff2;">Problem
+        Statements</a>
+    </div>
+  </section>
 
-<!-- EVENTS -->
-<section id="events">
-<h2 class="section-title">Events</h2>
-<div class="event-grid">
-  <a href="hackathon.html" class="event-card">
-    <h3>Hackathon</h3>
-    <div class="event-preview">24-hour hardware hackathon building innovative electronics solutions using IoT and embedded systems.</div>
-  </a>
-  <a href="workshop.html" class="event-card">
-    <h3>Workshop</h3>
-    <div class="event-preview">Hands-on learning in IoT, PCB design, embedded systems and hardware development.</div>
-  </a>
-  <a href="expo.html" class="event-card">
-    <h3>Project Expo</h3>
-    <div class="event-preview">Showcase innovative electronics projects to judges and industry experts.</div>
-  </a>
-  <a href="paper.html" class="event-card">
-    <h3>Paper Presentation</h3>
-    <div class="event-preview">Present research and emerging technologies in electronics engineering.</div>
-  </a>
-  <a href="ideathon.html" class="event-card">
-    <h3>Ideathon</h3>
-    <div class="event-preview">Pitch innovative technical ideas solving real-world engineering challenges.</div>
-  </a>
-  <a href="technical-games.html" class="event-card">
-    <h3>Technical Games</h3>
-    <div class="event-preview">Fun engineering challenges testing logic and circuit knowledge.</div>
-  </a>
-  <a href="drone-workshop.html" class="event-card">
-   
-    <h3>Build & Fly: Drone Workshop</h3>
-    <div class="event-preview">2-day hands-on workshop — build & fly your own drone as a team. Top 3 win a Drone Flying License worth ₹1,00,000. ₹1500 per team (3–5 members).</div>
-  </a>
-</div>
-</section>
+  <!-- EVENTS -->
+  <section id="events">
+    <h2 class="section-title">Events</h2>
+    <div class="event-grid">
+      <a href="hackathon.html" class="event-card">
+        <h3>Hackathon</h3>
+        <div class="event-preview">24-hour hardware hackathon building innovative electronics solutions using IoT and
+          embedded systems.</div>
+      </a>
+      <a href="workshop.html" class="event-card">
+        <h3>Workshop</h3>
+        <div class="event-preview">Hands-on learning in IoT, PCB design, embedded systems and hardware development.
+        </div>
+      </a>
+      <a href="expo.html" class="event-card">
+        <h3>Project Expo</h3>
+        <div class="event-preview">Showcase innovative electronics projects to judges and industry experts.</div>
+      </a>
+      <a href="paper.html" class="event-card">
+        <h3>Paper Presentation</h3>
+        <div class="event-preview">Present research and emerging technologies in electronics engineering.</div>
+      </a>
+      <a href="ideathon.html" class="event-card">
+        <h3>Ideathon</h3>
+        <div class="event-preview">Pitch innovative technical ideas solving real-world engineering challenges.</div>
+      </a>
+      <a href="technical-games.html" class="event-card">
+        <h3>Technical Games</h3>
+        <div class="event-preview">Fun engineering challenges testing logic and circuit knowledge.</div>
+      </a>
+      <a href="drone-workshop.html" class="event-card">
 
-<!-- INFO -->
-<section class="info">
-<p>
-🏆 <strong>CHARGE 2026</strong> boasts an extraordinary <strong>Prize Pool worth ₹50,000</strong>, recognizing the brightest minds who blend innovation with technical mastery. From circuit design to embedded systems and IoT challenges, every competition celebrates creativity, precision, and problem-solving excellence.
-</p>
-<p>
-Drawing a spectacular crowd of <strong>over 6,000+ students and tech enthusiasts</strong>, the event stands as one of the largest technology gatherings at <strong>Sreenidhi Institute of Science and Technology</strong>. Among them, nearly <strong>300+ passionate participants</strong> — forming <strong>50 to 70 dynamic teams</strong> — will compete head-to-head, representing the spirit and innovation of <strong>The Electronix Club</strong>.
-</p>
-</section>
+        <h3>Build & Fly: Drone Workshop</h3>
+        <div class="event-preview">2-day hands-on workshop — build & fly your own drone as a team. Top 3 win a Drone
+          Flying License worth ₹1,00,000. ₹1500 per team (3–5 members).</div>
+      </a>
+    </div>
+  </section>
 
-<!-- ABOUT -->
-<section id="about">
-<h2 class="section-title">About CHARGE</h2>
-<div class="info">
-<p><strong>CHARGE</strong> is the prestigious flagship technical event organized by <strong>The Electronix Club</strong> of the <strong>Department of Electronics and Communication Engineering, Sreenidhi Institute of Science and Technology (SNIST)</strong>. It stands as a symbol of innovation, collaboration, and excellence in the field of electronics and technology, a grand celebration that unites passionate engineers, innovators, and thinkers under one electrifying platform.</p>
-<p>With a remarkable legacy of <strong>over 10 years</strong>, <strong>CHARGE</strong> has continually inspired generations of students to explore beyond textbooks, transforming creative ideas into real-world solutions. Through workshops, project exhibitions, competitions, and interactive experiences, it has evolved into a hub of technical brilliance that reflects the true spirit of <strong>The Electronix Club</strong> — fostering innovation, teamwork, and the pursuit of engineering excellence.</p>
-<a href="about.html" class="btn" style="margin-top:25px;">Know More →</a>
-</div>
-</section>
+  <!-- INFO -->
+  <section class="info">
+    <p>
+      🏆 <strong>CHARGE 2026</strong> boasts an extraordinary <strong>Prize Pool worth ₹50,000</strong>, recognizing the
+      brightest minds who blend innovation with technical mastery. From circuit design to embedded systems and IoT
+      challenges, every competition celebrates creativity, precision, and problem-solving excellence.
+    </p>
+    <p>
+      Drawing a spectacular crowd of <strong>over 6,000+ students and tech enthusiasts</strong>, the event stands as one
+      of the largest technology gatherings at <strong>Sreenidhi Institute of Science and Technology</strong>. Among
+      them, nearly <strong>300+ passionate participants</strong> — forming <strong>50 to 70 dynamic teams</strong> —
+      will compete head-to-head, representing the spirit and innovation of <strong>The Electronix Club</strong>.
+    </p>
+  </section>
 
-<footer>
-© 2026 CHARGE | The Electronix Club, Department of ECE SNIST
-</footer>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About CHARGE</h2>
+    <div class="info">
+      <p><strong>CHARGE</strong> is the prestigious flagship technical event organized by <strong>The Electronix
+          Club</strong> of the <strong>Department of Electronics and Communication Engineering, Sreenidhi Institute of
+          Science and Technology (SNIST)</strong>. It stands as a symbol of innovation, collaboration, and excellence in
+        the field of electronics and technology, a grand celebration that unites passionate engineers, innovators, and
+        thinkers under one electrifying platform.</p>
+      <p>With a remarkable legacy of <strong>over 10 years</strong>, <strong>CHARGE</strong> has continually inspired
+        generations of students to explore beyond textbooks, transforming creative ideas into real-world solutions.
+        Through workshops, project exhibitions, competitions, and interactive experiences, it has evolved into a hub of
+        technical brilliance that reflects the true spirit of <strong>The Electronix Club</strong> — fostering
+        innovation, teamwork, and the pursuit of engineering excellence.</p>
+      <a href="about.html" class="btn" style="margin-top:25px;">Know More →</a>
+    </div>
+  </section>
 
-<script>
-/* PARTICLE BACKGROUND */
-const canvas=document.getElementById("bg")
-const ctx=canvas.getContext("2d")
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-let particles=[]
-let particleCount=window.innerWidth<600?30:window.innerWidth<1024?50:80
-for(let i=0;i<particleCount;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5})}
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height)
-particles.forEach(p=>{
-p.x+=p.vx;p.y+=p.vy
-if(p.x<0||p.x>canvas.width)p.vx*=-1
-if(p.y<0||p.y>canvas.height)p.vy*=-1
-ctx.beginPath()
-ctx.arc(p.x,p.y,2,0,Math.PI*2)
-ctx.fillStyle="#00fff2"
-ctx.fill()
-particles.forEach(p2=>{
-let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
-if(dist<120){
-ctx.beginPath()
-ctx.moveTo(p.x,p.y)
-ctx.lineTo(p2.x,p2.y)
-ctx.strokeStyle="rgba(0,255,242,0.15)"
-ctx.stroke()
-}})
-})
-requestAnimationFrame(animate)
-}
-animate()
+  <footer>
+    © 2026 CHARGE | The Electronix Club, Department of ECE SNIST
+  </footer>
+
+  <script>
+    /* PARTICLE BACKGROUND */
+    const canvas = document.getElementById("bg")
+    const ctx = canvas.getContext("2d")
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    let particles = []
+    let particleCount = window.innerWidth < 600 ? 30 : window.innerWidth < 1024 ? 50 : 80
+    for (let i = 0; i < particleCount; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 }) }
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
+        ctx.fillStyle = "#00fff2"
+        ctx.fill()
+        particles.forEach(p2 => {
+          let dist = Math.hypot(p.x - p2.x, p.y - p2.y)
+          if (dist < 120) {
+            ctx.beginPath()
+            ctx.moveTo(p.x, p.y)
+            ctx.lineTo(p2.x, p2.y)
+            ctx.strokeStyle = "rgba(0,255,242,0.15)"
+            ctx.stroke()
+          }
+        })
+      })
+      requestAnimationFrame(animate)
+    }
+    animate()
 
 
 
-if(window.history&&window.history.replaceState){
-window.history.replaceState(null,null,window.location.href);
-}
-</script>
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
 </body>
+
 </html>

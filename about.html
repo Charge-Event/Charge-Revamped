@@ -1,272 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About | CHARGE Revamped 2026</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | CHARGE Revamped 2026</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-background:#050505;
-color:white;
-font-family:'Poppins',sans-serif;
-overflow-x:hidden;
-}
-canvas{position:fixed;top:0;left:0;z-index:-1}
+  <style>
+    :root {
+      --cyan: #00fff2;
+      --cyan-glow: rgba(0, 255, 242, 0.4);
+      --cyan-subtle: rgba(0, 255, 242, 0.1);
+      --blue: #38bdf8;
+      --bg-dark: #050505;
+      --glass-bg: rgba(10, 15, 20, 0.6);
+      --glass-border: rgba(0, 255, 242, 0.15);
+      --text-muted: #e2e8f0;
+      --easing: cubic-bezier(0.25, 1, 0.5, 1);
+    }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
-flex-wrap:wrap;
-}
-header h2{
-font-family:'Orbitron';
-color:#00fff2;
-font-size:22px;
-}
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:white;
-font-size:15px;
-}
-nav a:hover{color:#00fff2}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* TOP CONTACT BAR */
-.top-info{
-text-align:center;
-padding:20px 10px;
-background:rgba(0,255,242,0.05);
-color:#ccc;
-font-size:15px;
-}
-.top-info a{color:#00fff2;text-decoration:none;margin:0 8px;}
-.top-info a:hover{text-decoration:underline;}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* HERO SECTION */
-.hero{
-text-align:center;
-padding:80px 20px 40px;
-}
-.logo-container{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:40px;
-flex-wrap:wrap;
-margin-bottom:30px;
-}
-.logo-container img{
-height:120px;
-width:auto;
-filter:drop-shadow(0 0 20px rgba(0,255,242,0.4));
-transition:0.3s;
-}
-.logo-container img:hover{
-transform:scale(1.05);
-}
-.hero h1{
-font-family:'Orbitron';
-font-size:40px;
-color:#00fff2;
-margin-bottom:15px;
-}
-.hero p{
-font-size:17px;
-line-height:1.7;
-max-width:900px;
-margin:auto;
-color:#ccc;
-}
+    body {
+      background: var(--bg-dark);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-/* GALLERY */
-.gallery{
-padding:60px 40px;
-text-align:center;
-}
-.gallery h2{
-font-family:'Orbitron';
-font-size:36px;
-color:#00fff2;
-margin-bottom:40px;
-}
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-max-width:1000px;
-margin:auto;
-}
-.gallery-grid img{
-width:100%;
-border-radius:10px;
-object-fit:cover;
-box-shadow:0 0 20px rgba(0,255,242,0.1);
-transition:0.3s;
-}
-.gallery-grid img:hover{
-transform:scale(1.05);
-box-shadow:0 0 30px rgba(0,255,242,0.3);
-}
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.8;
+    }
 
-/* ABOUT CONTENT */
-.about-section{
-padding:60px 40px;
-max-width:900px;
-margin:auto;
-line-height:1.8;
-color:#ddd;
-}
-.about-section h2{
-color:#00fff2;
-font-family:'Orbitron';
-margin-bottom:20px;
-text-align:center;
-}
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-/* CONTACT SECTION */
-.contact{
-padding:60px 40px;
-text-align:center;
-}
-.contact h2{
-font-family:'Orbitron';
-color:#00fff2;
-margin-bottom:20px;
-}
-.contact p{color:#ccc;line-height:1.8;}
-.contact strong{color:#00fff2;}
+    header h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--cyan);
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px var(--cyan-glow);
+    }
 
-/* BUTTON */
-.btn{
-background:#00fff2;
-color:black;
-padding:12px 30px;
-border-radius:25px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-display:inline-block;
-margin-top:30px;
-}
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #00fff2;
-}
+    nav {
+      display: flex;
+      gap: 30px;
+    }
 
-/* FOOTER */
-footer{
-text-align:center;
-padding:30px;
-border-top:1px solid #222;
-margin-top:50px;
-color:#999;
-}
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s var(--easing);
+      position: relative;
+    }
 
-/* RESPONSIVE */
-@media(max-width:600px){
-.logo-container img{height:80px;}
-h1{font-size:32px;}
-}
-</style>
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cyan);
+      transition: width 0.3s var(--easing);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    nav a:hover {
+      color: #ffffff;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* TOP CONTACT BAR */
+    .top-info {
+      text-align: center;
+      padding: 15px 10px;
+      background: rgba(0, 255, 242, 0.05);
+      border-bottom: 1px solid rgba(0, 255, 242, 0.1);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(10px);
+    }
+
+    .top-info a {
+      color: var(--cyan);
+      text-decoration: none;
+      margin: 0 6px;
+      font-weight: 500;
+      transition: text-shadow 0.3s ease;
+    }
+
+    .top-info a:hover {
+      text-decoration: underline;
+      text-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .logo-container img {
+      height: 140px;
+      width: auto;
+      filter: drop-shadow(0 0 25px rgba(0, 255, 242, 0.5));
+      transition: all 0.5s var(--easing);
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.08) translateY(-5px);
+      filter: drop-shadow(0 0 40px rgba(0, 255, 242, 0.8));
+    }
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      color: #ffffff;
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px var(--cyan-glow);
+      letter-spacing: 2px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: auto;
+      color: var(--text-muted);
+    }
+
+    .hero p strong {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    /* GALLERY */
+    .gallery {
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .gallery h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 40px;
+      color: #ffffff;
+      margin-bottom: 50px;
+      text-shadow: 0 0 20px var(--cyan-glow);
+      letter-spacing: 1.5px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 250px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.5s var(--easing);
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 255, 242, 0.3);
+      border-color: rgba(0, 255, 242, 0.4);
+    }
+
+    /* ABOUT CONTENT */
+    .about-section {
+      padding: 80px 40px;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.9;
+      color: var(--text-muted);
+      background: radial-gradient(ellipse at center, rgba(15, 23, 30, 0.4) 0%, transparent 70%);
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .about-section h2 {
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 30px;
+      font-size: 36px;
+      text-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .about-section p {
+      margin-bottom: 20px;
+    }
+
+    /* CONTACT SECTION */
+    .contact {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      margin-bottom: 30px;
+      font-size: 36px;
+      text-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .contact p {
+      color: var(--text-muted);
+      line-height: 2;
+      font-size: 18px;
+    }
+
+    .contact strong {
+      color: var(--cyan);
+      font-weight: 500;
+    }
+
+    /* BUTTON */
+    .btn {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #050505;
+      padding: 16px 45px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.4s var(--easing);
+      display: inline-block;
+      margin-top: 40px;
+      box-shadow: 0 0 20px rgba(0, 255, 242, 0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 255, 242, 0.4), 0 0 60px rgba(56, 189, 248, 0.2);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 60px;
+      color: #888;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) {
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .logo-container img {
+        height: 100px;
+      }
+    }
+
+    @media(max-width:600px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      header h2 {
+        font-size: 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .logo-container {
+        gap: 30px;
+      }
+
+      .logo-container img {
+        height: 80px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .gallery h2,
+      .about-section h2,
+      .contact h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<canvas id="bg"></canvas>
+  <canvas id="bg"></canvas>
 
-<header>
-<h2>⚡ CHARGE REVAMPED 2026</h2>
-<nav>
-  <a href="index.html">Home</a>
-  <a href="register.html">Register</a>
-</nav>
-</header>
+  <header>
+    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
 
-<div class="top-info">
-📸 Follow us on 
-<a href="https://www.instagram.com/theelectronixclubsnist" target="_blank">@theelectronixclubsnist</a> & 
-<a href="https://www.instagram.com/charge_revamped1.0" target="_blank">@charge_revamped1.0</a> | 
-📧 <a href="mailto:tecelectronixclub@sreenidhi.edu.in">tecelectronixclub@sreenidhi.edu.in</a>
-</div>
+  <div class="top-info">
+    📸 Follow us on
+    <a href="https://www.instagram.com/theelectronixclubsnist" target="_blank">@theelectronixclubsnist</a> &
+    <a href="https://www.instagram.com/charge_revamped1.0" target="_blank">@charge_revamped1.0</a> |
+    📧 <a href="mailto:tecelectronixclub@sreenidhi.edu.in">tecelectronixclub@sreenidhi.edu.in</a>
+  </div>
 
-<section class="hero">
-<div class="logo-container">
-  <img src="./TEC Symbol.jpg" alt="The Electronix Club Logo">
-  <img src="./charge revamped logo.jpg.jpg" alt="CHARGE Logo">
-</div>
-<h1>About CHARGE</h1>
-<p>
-Organized by <strong>The Electronix Club, Department of ECE, SNIST</strong>, CHARGE is the flagship technical festival that unites innovation, technology, and creativity under one electrifying platform.
-</p>
-</section>
+  <section class="hero">
+    <div class="logo-container">
+      <img src="./TEC Symbol.jpg" alt="The Electronix Club Logo">
+      <img src="./charge revamped logo.jpg.jpg" alt="CHARGE Logo">
+    </div>
+    <h1>About CHARGE</h1>
+    <p>
+      Organized by <strong>The Electronix Club, Department of ECE, SNIST</strong>, CHARGE is the flagship technical
+      festival that unites innovation, technology, and creativity under one electrifying platform.
+    </p>
+  </section>
 
-<section class="gallery">
-<h2>Photo Gallery</h2>
-<div class="gallery-grid">
-  <img src="./1.jpeg" alt="CHARGE Event Photo 1">
-  <img src="./2.jpeg" alt="CHARGE Event Photo 2">
-  <img src="./3.jpeg" alt="CHARGE Event Photo 3">
-  <img src="./4.jpeg" alt="CHARGE Event Photo 4">
-  <img src="./5.jpeg" alt="CHARGE Event Photo 5">
-  <img src="./6.jpeg" alt="CHARGE Event Photo 6">
-  <img src="./7.jpeg" alt="CHARGE Event Photo 7">
-  <img src="./8.jpeg" alt="CHARGE Event Photo 8">
-</div>
-</section>
+  <section class="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-grid">
+      <img src="./1.jpeg" alt="CHARGE Event Photo 1">
+      <img src="./2.jpeg" alt="CHARGE Event Photo 2">
+      <img src="./3.jpeg" alt="CHARGE Event Photo 3">
+      <img src="./4.jpeg" alt="CHARGE Event Photo 4">
+      <img src="./5.jpeg" alt="CHARGE Event Photo 5">
+      <img src="./6.jpeg" alt="CHARGE Event Photo 6">
+      <img src="./7.jpeg" alt="CHARGE Event Photo 7">
+      <img src="./8.jpeg" alt="CHARGE Event Photo 8">
+    </div>
+  </section>
 
-<section class="about-section">
-<h2>The Legacy of CHARGE</h2>
-<p>
-Over the years, CHARGE has evolved into one of SNIST’s most celebrated technical gatherings, inspiring thousands of students to explore the future of electronics, embedded systems, and innovation. Through its wide range of events — from workshops and paper presentations to project expos and hackathons — it fosters a culture of practical learning and technological excellence.
-</p>
-<p>
-The event not only provides a stage for innovation but also builds a community of passionate engineers ready to lead the world of emerging technologies.
-</p>
-</section>
+  <section class="about-section">
+    <h2>The Legacy of CHARGE</h2>
+    <p>
+      Over the years, CHARGE has evolved into one of SNIST’s most celebrated technical gatherings, inspiring thousands
+      of students to explore the future of electronics, embedded systems, and innovation. Through its wide range of
+      events — from workshops and paper presentations to project expos and hackathons — it fosters a culture of
+      practical learning and technological excellence.
+    </p>
+    <p>
+      The event not only provides a stage for innovation but also builds a community of passionate engineers ready to
+      lead the world of emerging technologies.
+    </p>
+  </section>
 
-<section class="contact">
-<h2>Contact Us</h2>
-<p>
-<strong>Sangeetha:</strong> 9908003560<br>
-<strong>Ajith Kumar:</strong> 9160237877 <br>
-<strong>Paul:</strong> 6302419012
-</p>
-<a href="index.html" class="btn">Back to Home</a>
-</section>
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>
+      <strong>Sangeetha:</strong> 9908003560<br>
+      <strong>Ajith Kumar:</strong> 9160237877 <br>
+      <strong>Paul:</strong> 6302419012
+    </p>
+    <a href="index.html" class="btn">Back to Home</a>
+  </section>
 
-<footer>
-© 2026 CHARGE | The Electronix Club, Department of ECE SNIST
-</footer>
+  <footer>
+    © 2026 CHARGE | The Electronix Club, Department of ECE SNIST
+  </footer>
 
-<script>
-/* Particle Background */
-const canvas=document.getElementById("bg"),ctx=canvas.getContext("2d");
-canvas.width=innerWidth;canvas.height=innerHeight;
-let particles=[],count=innerWidth<600?30:innerWidth<1024?50:80;
-for(let i=0;i<count;i++){
-  particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5});
-}
-function animate(){
-ctx.clearRect(0,0,innerWidth,innerHeight);
-particles.forEach(p=>{
-p.x+=p.vx;p.y+=p.vy;
-if(p.x<0||p.x>innerWidth)p.vx*=-1;if(p.y<0||p.y>innerHeight)p.vy*=-1;
-ctx.beginPath();ctx.arc(p.x,p.y,2,0,2*Math.PI);ctx.fillStyle="#00fff2";ctx.fill();
-particles.forEach(q=>{let d=Math.hypot(p.x-q.x,p.y-q.y);
-if(d<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
-ctx.strokeStyle="rgba(0,255,242,0.15)";ctx.stroke();}});
-});
-requestAnimationFrame(animate);}
-animate();
-</script>
+  <script>
+    /* Particle Background */
+    const canvas = document.getElementById("bg"), ctx = canvas.getContext("2d");
+    canvas.width = innerWidth; canvas.height = innerHeight;
+    let particles = [], count = innerWidth < 600 ? 30 : innerWidth < 1024 ? 50 : 80;
+    for (let i = 0; i < count; i++) {
+      particles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, vx: (Math.random() - .5) * .5, vy: (Math.random() - .5) * .5 });
+    }
+    function animate() {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > innerWidth) p.vx *= -1; if (p.y < 0 || p.y > innerHeight) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI); ctx.fillStyle = "#00fff2"; ctx.fill();
+        particles.forEach(q => {
+          let d = Math.hypot(p.x - q.x, p.y - q.y);
+          if (d < 120) {
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = "rgba(0,255,242,0.15)"; ctx.stroke();
+          }
+        });
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 
 </body>
+
 </html>

@@ -1,281 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Embedded Systems & RTOS Workshop | The Electronix Club</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Systems & RTOS Workshop | The Electronix Club</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+  <style>
+    :root {
+      --cyan: #00fff2;
+      --cyan-glow: rgba(0, 255, 242, 0.4);
+      --cyan-subtle: rgba(0, 255, 242, 0.1);
+      --blue: #38bdf8;
+      --blue-glow: rgba(56, 189, 248, 0.4);
+      --bg-dark: #0f172a;
+      --glass-bg: rgba(15, 23, 42, 0.6);
+      --glass-border: rgba(56, 189, 248, 0.2);
+      --text-muted: #cbd5e1;
+      --easing: cubic-bezier(0.25, 1, 0.5, 1);
+    }
 
-body{
-font-family: Arial, sans-serif;
-background:#0f172a;
-color:white;
-overflow-x:hidden;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* background animation */
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* sections */
-section{
-padding:60px 10%;
-max-width:1200px;
-margin:auto;
-}
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: var(--bg-dark);
+      color: white;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-h1,h2{
-color:#38bdf8;
-margin-bottom:15px;
-}
+    /* animated background */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0.8;
+    }
 
-/* hero */
-.hero{
-text-align:center;
-padding:100px 10%;
-}
+    /* sections */
+    section {
+      padding: 80px 10%;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
 
-.hero-box{
-background:#020617;
-padding:50px 40px;
-border-radius:16px;
-position:relative;
-box-shadow:
-0 0 40px rgba(56,189,248,0.2),
-0 0 80px rgba(56,189,248,0.15);
-}
+    h1,
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--blue);
+      margin-bottom: 25px;
+      text-shadow: 0 0 15px var(--blue-glow);
+      letter-spacing: 1px;
+    }
 
-/* glow */
-.hero-box::before{
-content:"";
-position:absolute;
-top:-40px;
-left:-40px;
-right:-40px;
-bottom:-40px;
-background:radial-gradient(circle,#38bdf8 0%,transparent 70%);
-opacity:0.12;
-z-index:-1;
-}
+    h2 {
+      font-size: 36px;
+    }
 
-.hero h1{
-font-size:48px;
-margin-bottom:15px;
-}
+    p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 18px;
+    }
 
-.hero p{
-margin-bottom:25px;
-line-height:1.6;
-}
+    b,
+    strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
 
-/* button */
-.button{
-background:#38bdf8;
-padding:16px 32px;
-border-radius:8px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-display:inline-block;
-transition:0.3s;
-text-align:center;
-cursor:pointer;
-}
+    /* hero section */
+    .hero {
+      text-align: center;
+      padding: 120px 10% 80px;
+    }
 
-.button .price{
-display:block;
-font-size:14px;
-margin-top:3px;
-font-weight:600;
-}
+    /* glowing hero box */
+    .hero-box {
+      background: rgba(2, 6, 23, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 60px 50px;
+      border-radius: 20px;
+      position: relative;
+      border: 1px solid rgba(56, 189, 248, 0.1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 80px rgba(56, 189, 248, 0.15);
+      transition: all 0.5s var(--easing);
+    }
 
-.button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #38bdf8;
-}
+    /* glow background */
+    .hero-box::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      right: -40px;
+      bottom: -40px;
+      background: radial-gradient(circle at center, var(--blue) 0%, transparent 70%);
+      opacity: 0.1;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-/* lists */
-ul{
-margin-top:15px;
-line-height:1.8;
-padding-left:18px;
-}
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff, var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0 0 20px var(--blue-glow));
+    }
 
-/* cards */
-.card-container{
-display:flex;
-gap:30px;
-flex-wrap:wrap;
-margin-top:30px;
-}
+    .hero p {
+      margin-bottom: 35px;
+      line-height: 1.8;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-.card{
-background:#1e293b;
-padding:25px;
-border-radius:12px;
-flex:1;
-min-width:220px;
-box-shadow:0 0 20px rgba(56,189,248,0.08);
-transition:0.3s;
-}
+    /* buttons */
+    .button {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      padding: 16px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      transition: all 0.4s var(--easing);
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      border: 1px solid transparent;
+    }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 30px rgba(56,189,248,0.25);
-}
+    .button .price {
+      display: block;
+      font-size: 14px;
+      margin-top: 5px;
+      font-weight: 700;
+      opacity: 0.9;
+    }
 
-.card h3{
-margin-bottom:10px;
-}
+    .button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(0, 255, 242, 0.2);
+    }
 
-/* responsive */
-@media (max-width:768px){
-.hero{
-padding:80px 8%;
-}
-.hero-box{
-padding:35px 25px;
-}
-.hero h1{
-font-size:34px;
-}
-.button{
-padding:14px 28px;
-}
-}
-</style>
+    /* lists */
+    ul {
+      margin-top: 20px;
+      line-height: 1.9;
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 18px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      list-style-type: none;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '⚡';
+      position: absolute;
+      left: -25px;
+      color: var(--cyan);
+      font-size: 14px;
+      top: 4px;
+    }
+
+    /* cards */
+    .card-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      padding: 35px 30px;
+      border-radius: 16px;
+      flex: 1;
+      min-width: 250px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.5s var(--easing);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s var(--easing);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 15px;
+      font-size: 22px;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .card p {
+      font-size: 16px;
+      position: relative;
+    }
+
+    /* responsive */
+    @media (max-width:768px) {
+      section {
+        padding: 60px 8%;
+      }
+
+      .hero {
+        padding: 100px 5% 60px;
+      }
+
+      .hero-box {
+        padding: 40px 20px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      .button {
+        padding: 14px 30px;
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+  <canvas id="bg"></canvas>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-box">
-    <h1>Embedded Systems & RTOS Workshop</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-box">
+      <h1>Embedded Systems & RTOS Workshop</h1>
+      <p>
+        <b>THE ELECTRONIX CLUB (TEC)</b> presents an exclusive one-day Workshop on <b>Embedded Systems & RTOS</b>,
+        conducted by industry giants.
+        Bridge the gap between classroom theory and silicon-level reality. Dive deep into industry-standard protocols
+        and real-time systems used in modern automotive and consumer electronics.
+      </p>
+      <a class="button" href="https://forms.gle/Pnr6RusgWbXwaG419" target="_blank">
+        Register Now
+        <span class="price">₹100 / Individual</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <h2>About the Workshop</h2>
     <p>
-      <b>THE ELECTRONIX CLUB (TEC)</b> presents an exclusive one-day Workshop on <b>Embedded Systems & RTOS</b>, conducted by industry giants.  
-      Bridge the gap between classroom theory and silicon-level reality. Dive deep into industry-standard protocols and real-time systems used in modern automotive and consumer electronics.
+      This hands-on session is designed to help students understand embedded architecture and real-time system behavior
+      used in modern applications. Learn the fundamentals of <b>RTOS scheduling</b>, <b>automotive communication (CAN &
+        LIN)</b>, and embedded architectures that power intelligent devices.
     </p>
-    <a class="button" href="https://forms.gle/Pnr6RusgWbXwaG419" target="_blank">
-      Register Now
-      <span class="price">₹100 / Individual</span>
-    </a>
-  </div>
-</section>
+    <p>
+      By the end of this workshop, participants will gain a clear understanding of how software interacts with hardware
+      in real-time embedded systems.
+    </p>
+  </section>
 
-<!-- ABOUT -->
-<section>
-<h2>About the Workshop</h2>
-<p>
-This hands-on session is designed to help students understand embedded architecture and real-time system behavior used in modern applications. Learn the fundamentals of <b>RTOS scheduling</b>, <b>automotive communication (CAN & LIN)</b>, and embedded architectures that power intelligent devices.
-</p>
-<p>
-By the end of this workshop, participants will gain a clear understanding of how software interacts with hardware in real-time embedded systems.
-</p>
-</section>
+  <!-- KEY TAKEAWAYS -->
+  <section>
+    <h2>Key Takeaways</h2>
+    <ul>
+      <li>8/16/32-bit Architecture and Peripheral Interface</li>
+      <li>RTOS Fundamentals and Scheduling Concepts</li>
+      <li>Automotive Communication: CAN & LIN Protocols</li>
+      <li>Real-time problem solving using embedded controllers</li>
+    </ul>
+  </section>
 
-<!-- KEY TAKEAWAYS -->
-<section>
-<h2>Key Takeaways</h2>
-<ul>
-<li>8/16/32-bit Architecture and Peripheral Interface</li>
-<li>RTOS Fundamentals and Scheduling Concepts</li>
-<li>Automotive Communication: CAN & LIN Protocols</li>
-<li>Real-time problem solving using embedded controllers</li>
-</ul>
-</section>
+  <!-- CERTIFICATION -->
+  <section>
+    <h2>Certification</h2>
+    <p>
+      Earn an <b>industry-recognized certificate</b> from <b>Vector India</b> upon successful participation.
+    </p>
+  </section>
 
-<!-- CERTIFICATION -->
-<section>
-<h2>Certification</h2>
-<p>
-Earn an <b>industry-recognized certificate</b> from <b>Vector India</b> upon successful participation.
-</p>
-</section>
+  <!-- REGISTRATION DETAILS -->
+  <section>
+    <h2>Registration Details</h2>
+    <ul>
+      <li><b>Fee:</b> ₹100 per participant</li>
+      <li><b>Venue:</b> SNIST College</li>
+      <li><b>Date:</b> 10 March 2026</li>
+      <li><b>Type:</b> Individual Registration (enter valid 10-digit phone number)</li>
+    </ul>
+    <p>
+      Seats are limited — secure your spot in the future of Embedded Engineering.
+    </p>
+  </section>
 
-<!-- REGISTRATION DETAILS -->
-<section>
-<h2>Registration Details</h2>
-<ul>
-<li><b>Fee:</b> ₹100 per participant</li>
-<li><b>Venue:</b> SNIST College</li>
-<li><b>Date:</b> 10 March 2026</li>
-<li><b>Type:</b> Individual Registration (enter valid 10-digit phone number)</li>
-</ul>
-<p>
-Seats are limited — secure your spot in the future of Embedded Engineering.
-</p>
-</section>
+  <!-- CONTACT -->
+  <section>
+    <h2>Contact</h2>
+    <ul>
+      <li><b>Gayathri:</b> 9177786486</li>
+      <li><b>Varnith:</b> 7780337674</li>
+    </ul>
+  </section>
 
-<!-- CONTACT -->
-<section>
-<h2>Contact</h2>
-<ul>
-<li><b>Gayathri:</b> 9177786486</li>
-<li><b>Varnith:</b> 7780337674</li>
-</ul>
-</section>
+  <script>
+    /* background animation */
+    const canvas = document.getElementById("bg")
+    const ctx = canvas.getContext("2d")
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    let particles = []
+    let particleCount = window.innerWidth < 768 ? 35 : 80
 
-<script>
-/* background animation */
-const canvas=document.getElementById("bg")
-const ctx=canvas.getContext("2d")
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-let particles=[]
-let particleCount = window.innerWidth < 768 ? 35 : 80
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      })
+    }
 
-for(let i=0;i<particleCount;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-vx:(Math.random()-0.5)*0.5,
-vy:(Math.random()-0.5)*0.5
-})
-}
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      particles.forEach(p => {
+        p.x += p.vx
+        p.y += p.vy
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
+        ctx.fillStyle = "#38bdf8"
+        ctx.fill()
+        particles.forEach(p2 => {
+          let dist = Math.hypot(p.x - p2.x, p.y - p2.y)
+          if (dist < 120) {
+            ctx.beginPath()
+            ctx.moveTo(p.x, p.y)
+            ctx.lineTo(p2.x, p2.y)
+            ctx.strokeStyle = "rgba(56,189,248,0.15)"
+            ctx.stroke()
+          }
+        })
+      })
+      requestAnimationFrame(animate)
+    }
+    animate()
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height)
-particles.forEach(p=>{
-p.x+=p.vx
-p.y+=p.vy
-if(p.x<0||p.x>canvas.width)p.vx*=-1
-if(p.y<0||p.y>canvas.height)p.vy*=-1
-ctx.beginPath()
-ctx.arc(p.x,p.y,2,0,Math.PI*2)
-ctx.fillStyle="#38bdf8"
-ctx.fill()
-particles.forEach(p2=>{
-let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
-if(dist<120){
-ctx.beginPath()
-ctx.moveTo(p.x,p.y)
-ctx.lineTo(p2.x,p2.y)
-ctx.strokeStyle="rgba(56,189,248,0.15)"
-ctx.stroke()
-}
-})
-})
-requestAnimationFrame(animate)
-}
-animate()
-
-/* Fix for double back-click issue */
-if (window.history && window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.href);
-}
-</script>
+    /* Fix for double back-click issue */
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
 </body>
+
 </html>
