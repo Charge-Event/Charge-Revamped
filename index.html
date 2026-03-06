@@ -57,7 +57,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
+      padding: 16px 60px;
       background: rgba(5, 5, 5, 0.7);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -66,13 +66,67 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      gap: 16px;
+    }
+
+    /* LEFT SIDE: logos + title */
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Logo placeholders */
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: rgba(0, 255, 242, 0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      flex-shrink: 0;
+      transition: border-color 0.3s var(--easing), box-shadow 0.3s var(--easing);
+    }
+
+    .logo-badge:hover {
+      border-color: rgba(0, 255, 242, 0.45);
+      box-shadow: 0 0 14px rgba(0, 255, 242, 0.2);
+    }
+
+    .logo-badge .logo-initials {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan);
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+
+    .logo-badge .logo-sub {
+      font-size: 7px;
+      color: rgba(0, 255, 242, 0.5);
+      letter-spacing: 0.5px;
+      line-height: 1;
+      font-weight: 500;
+    }
+
+    /* Thin divider between the two logos */
+    .logo-divider {
+      width: 1px;
+      height: 32px;
+      background: rgba(0, 255, 242, 0.15);
+      flex-shrink: 0;
     }
 
     header h2 {
       font-family: 'Orbitron', sans-serif;
       color: var(--cyan);
       white-space: nowrap;
-      font-size: 24px;
+      font-size: 22px;
       letter-spacing: 1px;
       text-shadow: 0 0 15px var(--cyan-glow);
     }
@@ -198,7 +252,6 @@
       letter-spacing: 1.5px;
     }
 
-    /* EVENT GRID — 3 cols, wraps to 4 on last row of 7 */
     .event-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -207,12 +260,10 @@
       margin: auto;
     }
 
-    /* The 7th card (Drone Workshop) centered on its own row */
     .event-card:last-child:nth-child(3n+1) {
       grid-column: 2/3;
     }
 
-    /* EVENT CARD */
     .event-card {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
@@ -233,7 +284,6 @@
       overflow: hidden;
     }
 
-    /* Inner cinematic glow */
     .event-card::before {
       content: "";
       position: absolute;
@@ -276,7 +326,6 @@
       z-index: 1;
     }
 
-    /* drone badge */
     .new-badge {
       display: inline-block;
       background: rgba(0, 255, 242, 0.1);
@@ -292,7 +341,6 @@
       box-shadow: 0 0 15px rgba(0, 255, 242, 0.1);
     }
 
-    /* INFO SECTION */
     .info {
       text-align: center;
       max-width: 900px;
@@ -315,7 +363,6 @@
       margin-bottom: 20px;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -354,16 +401,24 @@
 
     @media(max-width:600px) {
       header {
-        padding: 15px 20px;
+        padding: 12px 16px;
       }
 
       header h2 {
-        font-size: 20px;
+        font-size: 17px;
+      }
+
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+      }
+
+      .logo-badge .logo-initials {
+        font-size: 9px;
       }
 
       nav {
         display: none;
-        /* Consider a hamburger menu for true mobile view, but hiding for simplicity if it was simple before */
       }
 
       .event-grid {
@@ -398,7 +453,21 @@
   <canvas id="bg"></canvas>
 
   <header>
-    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <!-- LEFT: two logos + site title -->
+    <div class="header-left">
+      <!-- Logo 1: SNIST -->
+      <img src="TEC_logo-removebg-preview.png" class="logo-img">
+
+      <!-- Thin divider -->
+      <div class="logo-divider"></div>
+
+      <!-- Logo 2: Electronix Club -->
+     <img src="charge revamped logo.jpg.jpeg" class="logo-img">
+
+      <!-- Title -->
+      <h2>CHARGE REVAMPED 2026</h2>
+    </div>
+
     <nav>
       <a href="#home">Home</a>
       <a href="#events">Events</a>
@@ -454,7 +523,6 @@
         <div class="event-preview">Fun engineering challenges testing logic and circuit knowledge.</div>
       </a>
       <a href="drone-workshop.html" class="event-card">
-
         <h3>Build & Fly: Drone Workshop</h3>
         <div class="event-preview">2-day hands-on workshop — build & fly your own drone as a team. Top 3 win a Drone
           Flying License worth ₹1,00,000. ₹1500 per team (3–5 members).</div>
@@ -532,8 +600,6 @@
       requestAnimationFrame(animate)
     }
     animate()
-
-
 
     if (window.history && window.history.replaceState) {
       window.history.replaceState(null, null, window.location.href);
