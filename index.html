@@ -210,10 +210,9 @@ nav a{margin-left:15px;font-size:14px;}
 Organized by <strong>The Electronix Club, Department of ECE, Sreenidhi Institute of Science and Technology</strong>,  
 CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators, engineers, and technology enthusiasts.
 </p>
-<a href="register.html" class="btn">Register Now</a>
-<div class="countdown">
-<p>Event Begins In</p>
-<div id="timer">Loading...</div>
+<div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+<a href="register.html" class="btn" style="margin-bottom: 0;">Register Now</a>
+<a href="problem_statements.pdf" target="_blank" class="btn" style="margin-bottom: 0; background: transparent; color: #00fff2; border: 2px solid #00fff2;">Problem Statements</a>
 </div>
 </section>
 
@@ -310,19 +309,7 @@ requestAnimationFrame(animate)
 }
 animate()
 
-/* TIMER */
-const eventDate=new Date("March 10, 2026 09:00:00").getTime();
-function updateTimer(){
-const now=new Date().getTime()
-const distance=eventDate-now
-if(distance<0){document.getElementById("timer").innerHTML="Event Started!";return;}
-const days=Math.floor(distance/(1000*60*60*24))
-const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60))
-const minutes=Math.floor((distance%(1000*60*60))/(1000*60))
-const seconds=Math.floor((distance%(1000*60))/1000)
-document.getElementById("timer").innerHTML=days+"d : "+hours+"h : "+minutes+"m : "+seconds+"s"
-}
-setInterval(updateTimer,1000);updateTimer();
+
 
 if(window.history&&window.history.replaceState){
 window.history.replaceState(null,null,window.location.href);
