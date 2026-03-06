@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build & Fly: Drone Workshop | The Electronix Club</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+font-family:'Poppins',sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+canvas{position:fixed;top:0;left:0;z-index:-1;}
+section{padding:60px 10%;max-width:1200px;margin:auto;}
+h1,h2{color:#00fff2;margin-bottom:15px;font-family:'Orbitron',sans-serif;}
+
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 60px;background:rgba(0,0,0,0.4);
+backdrop-filter:blur(10px);flex-wrap:wrap;
+}
+header h2{font-family:'Orbitron';color:#00fff2;white-space:nowrap;font-size:22px;}
+nav{display:flex;flex-wrap:wrap;}
+nav a{margin-left:25px;text-decoration:none;color:white;font-size:15px;}
+nav a:hover{color:#00fff2;}
+
+.hero{text-align:center;padding:100px 10%;}
+.hero-box{
+background:#0c0c0c;padding:50px 40px;border-radius:16px;position:relative;
+box-shadow:0 0 40px rgba(0,255,242,0.2),0 0 80px rgba(0,255,242,0.15);
+}
+.hero-box::before{
+content:"";position:absolute;top:-40px;left:-40px;right:-40px;bottom:-40px;
+background:radial-gradient(circle,#00fff2 0%,transparent 70%);opacity:0.10;z-index:-1;
+}
+.drone-icon{
+font-size:64px;margin-bottom:20px;display:block;
+animation:hover-drone 3s ease-in-out infinite;
+}
+@keyframes hover-drone{
+0%,100%{transform:translateY(0px);}
+50%{transform:translateY(-12px);}
+}
+.hero h1{font-size:42px;margin-bottom:15px;}
+.hero p{margin-bottom:25px;line-height:1.8;font-size:16px;color:#ccc;}
+
+.button{
+background:#00fff2;padding:16px 32px;border-radius:8px;
+text-decoration:none;color:black;font-weight:bold;
+display:inline-block;transition:0.3s;text-align:center;cursor:pointer;
+font-family:'Orbitron',sans-serif;font-size:14px;
+}
+.button .price{display:block;font-size:13px;margin-top:3px;font-weight:600;font-family:'Poppins',sans-serif;}
+.button:hover{transform:scale(1.05);box-shadow:0 0 25px #00fff2;}
+
+.day-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px;}
+.day-card{
+background:#0c0c0c;border-radius:14px;padding:30px;
+box-shadow:0 0 20px rgba(0,255,242,0.08);transition:0.3s;
+border:1px solid rgba(0,255,242,0.1);
+}
+.day-card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 35px rgba(0,255,242,0.25);
+border-color:rgba(0,255,242,0.35);
+}
+.day-badge{
+display:inline-block;background:rgba(0,255,242,0.12);color:#00fff2;
+padding:4px 14px;border-radius:20px;font-size:13px;font-weight:600;
+margin-bottom:14px;font-family:'Orbitron',sans-serif;letter-spacing:1px;
+}
+.day-card h3{color:#00fff2;margin-bottom:10px;font-family:'Orbitron',sans-serif;font-size:17px;}
+.day-card p{line-height:1.7;color:#bbb;font-size:15px;}
+
+.card-container{display:flex;gap:30px;flex-wrap:wrap;margin-top:30px;}
+.card{
+background:#0c0c0c;padding:25px;border-radius:12px;flex:1;min-width:200px;
+box-shadow:0 0 20px rgba(0,255,242,0.08);transition:0.3s;
+border:1px solid rgba(0,255,242,0.08);
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 30px rgba(0,255,242,0.25);}
+.card h3{margin-bottom:10px;font-family:'Orbitron',sans-serif;font-size:15px;}
+.card p{color:#ccc;font-size:15px;}
+
+ul{margin-top:15px;line-height:1.9;padding-left:18px;color:#ccc;}
+ul li b{color:#00fff2;font-weight:500;}
+
+.highlight-box{
+background:rgba(0,255,242,0.05);border:1px solid rgba(0,255,242,0.2);
+border-radius:12px;padding:25px 30px;margin-top:20px;
+}
+.highlight-box p{color:#ccc;line-height:1.8;}
+
+@media (max-width:768px){
+header{padding:15px 20px;}
+header h2{font-size:18px;}
+nav a{margin-left:15px;font-size:14px;}
+.hero{padding:80px 8%;}
+.hero-box{padding:35px 20px;}
+.hero h1{font-size:28px;}
+.button{padding:14px 24px;}
+.day-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+<canvas id="bg"></canvas>
+
+<header>
+<h2>⚡ CHARGE REVAMPED 2026</h2>
+<nav>
+<a href="index.html">Home</a>
+<a href="index.html#events">Events</a>
+<a href="about.html">About Us</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-box">
+    <span class="drone-icon">🚁</span>
+    <h1>Build & Fly: Drone Workshop</h1>
+    <p>
+      A 2-day hands-on workshop where teams learn drone fundamentals, <b>build their own drone from scratch</b>, and compete in a flying competition — with a chance to win a Drone Flying License worth ₹1,00,000!
+    </p>
+    <a class="button" href="register.html">
+      Register Now
+      <span class="price">₹1500 / Team (3–5 Members) · 2 Days</span>
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+<h2>About the Workshop</h2>
+<div class="highlight-box">
+<p>
+Join <b>The Electronix Club (TEC)</b> for an electrifying 2-day drone workshop designed for students who want to explore the world of drones and aerial technology. Work in a team, build a real drone, fly it — and compete for a chance to earn a <b>Drone Flying License worth ₹1,00,000</b>. Open to students from all colleges.
+</p>
+</div>
+</section>
+
+<!-- SCHEDULE -->
+<section>
+<h2>Workshop Schedule</h2>
+<div class="day-grid">
+  <div class="day-card">
+    <span class="day-badge">DAY 1</span>
+    <h3>Learn & Start Building</h3>
+    <p><b style="color:#00fff2;">Morning — Theory Session</b></p>
+    <ul style="margin-top:8px;">
+      <li>Drone components and architecture</li>
+      <li>Flight principles and aerodynamics</li>
+      <li>How motors, ESCs & flight controllers work</li>
+    </ul>
+    <p style="margin-top:14px;"><b style="color:#00fff2;">Afternoon — Build Begins</b></p>
+    <ul style="margin-top:8px;">
+      <li>Receive drone components kit (worth ₹1200)</li>
+      <li>Start guided drone assembly with mentors</li>
+    </ul>
+  </div>
+  <div class="day-card">
+    <span class="day-badge">DAY 2</span>
+    <h3>Finish, Fly & Compete!</h3>
+    <p><b style="color:#00fff2;">Morning — Fine-Tuning</b></p>
+    <ul style="margin-top:8px;">
+      <li>Continue drone assembly and calibration</li>
+      <li>Testing and troubleshooting with mentors</li>
+    </ul>
+    <p style="margin-top:14px;"><b style="color:#00fff2;">Afternoon — Test, Fly & Compete 🏆</b></p>
+    <ul style="margin-top:8px;">
+      <li>First flight testing session</li>
+      <li>Drone flying competition among top teams</li>
+      <li>Top 3 flyers win Drone Flying License!</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section>
+<h2>What You Get</h2>
+<div class="card-container">
+  <div class="card">
+    <h3>🛠️ Drone Kit</h3>
+    <p>Components worth <b style="color:#00fff2;">₹1200</b> per team to build your own drone.</p>
+  </div>
+  <div class="card">
+    <h3>🎓 Certificate</h3>
+    <p>Certificate of participation from <b style="color:#00fff2;">The Electronix Club (TEC)</b>.</p>
+  </div>
+  <div class="card">
+    <h3>✈️ Fly & Compete</h3>
+    <p>Test, fly, and compete in the <b style="color:#00fff2;">drone flying competition</b> on Day 2.</p>
+  </div>
+  <div class="card">
+    <h3>🏆 Drone License</h3>
+    <p>Top 3 flyers win a <b style="color:#00fff2;">Drone Flying License worth ₹1,00,000</b>.</p>
+  </div>
+</div>
+</section>
+
+<!-- DETAILS -->
+<section>
+<h2>Workshop Details</h2>
+<ul>
+<li><b>Duration:</b> 2 Days</li>
+<li><b>Team Size:</b> 3–5 Members</li>
+<li><b>Registration Fee:</b> ₹1500 per team</li>
+<li><b>Components Kit:</b> Drone components worth ₹1200 per team (included)</li>
+<li><b>Eligibility:</b> Open to students from all colleges</li>
+<li><b>Venue:</b> SNIST College</li>
+<li><b>Date:</b> 10–11 March 2026</li>
+</ul>
+</section>
+
+<!-- SPECIAL REWARD -->
+<section>
+<h2>🏆 Special Reward</h2>
+<div class="highlight-box" style="border-color:rgba(0,255,242,0.4);background:rgba(0,255,242,0.07);">
+<p style="font-size:17px;text-align:center;">
+The <b style="color:#00fff2;">Top 3 teams</b> from the drone flying competition will receive an incredible opportunity to obtain a<br><br>
+<span style="font-size:26px;font-family:'Orbitron',sans-serif;color:#00fff2;">Drone Flying License</span><br>
+<span style="font-size:22px;font-weight:600;color:white;">worth ₹1,00,000</span>
+</p>
+</div>
+</section>
+
+<!-- WHO IS IT FOR -->
+<section>
+<h2>Who Should Join?</h2>
+<div class="highlight-box">
+<p>
+This workshop is open to <b>students from all colleges</b> — no prior experience required. Whether you're from ECE, EEE, CSE, Mechanical, or any other branch, if you're curious about drones, robotics, and aerial technology, this is the event for you. Form a team of 3–5, register, and get ready to build and fly.
+</p>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+<ul>
+<li><b>For queries, contact:</b> The Electronix Club, SNIST</li>
+</ul>
+<p style="margin-top:15px;color:#ccc;">Learn it. Build it. Fly it. Win it. 🚁🏆</p>
+</section>
+
+<script>
+const canvas=document.getElementById("bg")
+const ctx=canvas.getContext("2d")
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+let particles=[]
+let particleCount=window.innerWidth<600?30:window.innerWidth<1024?50:80
+for(let i=0;i<particleCount;i++){particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5})}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height)
+particles.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy
+if(p.x<0||p.x>canvas.width)p.vx*=-1
+if(p.y<0||p.y>canvas.height)p.vy*=-1
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#00fff2"
+ctx.fill()
+particles.forEach(p2=>{
+let dist=Math.hypot(p.x-p2.x,p.y-p2.y)
+if(dist<120){
+ctx.beginPath()
+ctx.moveTo(p.x,p.y)
+ctx.lineTo(p2.x,p2.y)
+ctx.strokeStyle="rgba(0,255,242,0.15)"
+ctx.stroke()
+}})
+})
+requestAnimationFrame(animate)
+}
+animate()
+if(window.history&&window.history.replaceState){window.history.replaceState(null,null,window.location.href);}
+</script>
+</body>
+</html>
