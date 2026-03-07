@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combo Deals | CHARGE Revamped 2026</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --cyan: #00fff2;
+      --cyan-glow: rgba(0, 255, 242, 0.4);
+      --cyan-subtle: rgba(0, 255, 242, 0.1);
+      --blue: #38bdf8;
+      --blue-glow: rgba(56, 189, 248, 0.4);
+      --gold: #ffd700;
+      --gold-glow: rgba(255, 215, 0, 0.4);
+      --gold-subtle: rgba(255, 215, 0, 0.08);
+      --bg-dark: #050505;
+      --glass-bg: rgba(10, 15, 20, 0.6);
+      --glass-border: rgba(0, 255, 242, 0.15);
+      --text-muted: #e2e8f0;
+      --easing: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-dark);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.8; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(5, 5, 5, 0.7);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--cyan);
+      white-space: nowrap;
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    nav { display: flex; gap: 30px; }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s var(--easing);
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--cyan);
+      transition: width 0.3s var(--easing);
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    nav a:hover { color: #ffffff; }
+    nav a:hover::after { width: 100%; }
+
+    section {
+      padding: 100px 10%;
+      text-align: center;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 52px;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff, var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 20px var(--cyan-glow));
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      margin-bottom: 60px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    /* SAVINGS BANNER */
+    .savings-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(255,215,0,0.12), rgba(255,215,0,0.04));
+      border: 1px solid rgba(255,215,0,0.35);
+      border-radius: 50px;
+      padding: 10px 28px;
+      margin-bottom: 60px;
+      font-size: 14px;
+      color: var(--gold);
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      box-shadow: 0 0 30px rgba(255,215,0,0.1);
+      animation: pulse-gold 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.1); }
+      50% { box-shadow: 0 0 40px rgba(255,215,0,0.25); }
+    }
+
+    .savings-banner span { font-size: 18px; }
+
+    /* COMBO GRID */
+    .combo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      width: 100%;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    /* COMBO CARD */
+    .combo-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: all 0.5s var(--easing);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .combo-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at top, rgba(0, 255, 242, 0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.5s var(--easing);
+      pointer-events: none;
+    }
+
+    .combo-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(0,255,242,0.15);
+      border-color: rgba(0,255,242,0.4);
+    }
+
+    .combo-card:hover::before { opacity: 1; }
+
+    /* ULTIMATE card gold treatment */
+    .combo-card.ultimate {
+      border-color: rgba(255,215,0,0.3);
+      background: linear-gradient(160deg, rgba(15,12,5,0.85) 0%, rgba(10,15,20,0.6) 100%);
+    }
+
+    .combo-card.ultimate::before {
+      background: radial-gradient(circle at top, rgba(255,215,0,0.1) 0%, transparent 60%);
+    }
+
+    .combo-card.ultimate:hover {
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 50px rgba(255,215,0,0.2);
+      border-color: rgba(255,215,0,0.6);
+    }
+
+    /* BADGE */
+    .combo-badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      letter-spacing: 1.8px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-cyan {
+      background: rgba(0, 255, 242, 0.1);
+      border: 1px solid rgba(0, 255, 242, 0.3);
+      color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0,255,242,0.1);
+    }
+
+    .badge-gold {
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      color: var(--gold);
+      box-shadow: 0 0 15px rgba(255,215,0,0.15);
+    }
+
+    /* CARD HEADER */
+    .combo-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-size: 20px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1;
+    }
+
+    .combo-card.ultimate h3 {
+      background: linear-gradient(135deg, #fff, var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 12px rgba(255,215,0,0.3));
+    }
+
+    .combo-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* FLOW PILLS */
+    .flow-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-pill {
+      background: rgba(0,255,242,0.06);
+      border: 1px solid rgba(0,255,242,0.2);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s var(--easing);
+    }
+
+    .combo-card:hover .flow-pill {
+      background: rgba(0,255,242,0.1);
+      border-color: rgba(0,255,242,0.35);
+    }
+
+    .combo-card.ultimate .flow-pill {
+      background: rgba(255,215,0,0.05);
+      border-color: rgba(255,215,0,0.2);
+    }
+
+    .combo-card.ultimate:hover .flow-pill {
+      background: rgba(255,215,0,0.1);
+      border-color: rgba(255,215,0,0.35);
+    }
+
+    .flow-pill .pill-icon { font-size: 11px; }
+
+    /* DIVIDER */
+    .card-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,255,242,0.2), transparent);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .combo-card.ultimate .card-divider {
+      background: linear-gradient(to right, transparent, rgba(255,215,0,0.25), transparent);
+    }
+
+    /* PRICING */
+    .pricing-block {
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+    }
+
+    .actual-price {
+      font-size: 14px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: line-through;
+      margin-bottom: 6px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .combo-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-shadow: 0 0 25px var(--cyan-glow);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .combo-card.ultimate .combo-price {
+      color: var(--gold);
+      text-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .savings-tag {
+      display: inline-block;
+      background: rgba(0,255,242,0.1);
+      border: 1px solid rgba(0,255,242,0.25);
+      color: var(--cyan);
+      font-size: 12px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .combo-card.ultimate .savings-tag {
+      background: rgba(255,215,0,0.1);
+      border-color: rgba(255,215,0,0.3);
+      color: var(--gold);
+    }
+
+    /* BUTTON */
+    .btn {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #050505;
+      padding: 14px 35px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: all 0.4s var(--easing);
+      display: inline-block;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      border: none;
+      box-shadow: 0 0 20px rgba(0,255,242,0.2);
+      position: relative;
+      z-index: 1;
+      font-size: 13px;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,255,242,0.4), 0 0 60px rgba(56,189,248,0.2);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold), #ffb300);
+      box-shadow: 0 0 20px rgba(255,215,0,0.25);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 10px 30px rgba(255,215,0,0.5), 0 0 60px rgba(255,180,0,0.2);
+    }
+
+    /* MOST POPULAR RIBBON */
+    .ribbon {
+      position: absolute;
+      top: 20px;
+      right: -1px;
+      background: linear-gradient(135deg, var(--gold), #ffb300);
+      color: #050505;
+      font-size: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 5px 16px;
+      border-radius: 4px 0 0 4px;
+      box-shadow: -4px 4px 15px rgba(255,215,0,0.3);
+      z-index: 2;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-content {
+      background: var(--glass-bg);
+      margin: 6% auto;
+      padding: 44px 38px;
+      border: 1px solid var(--glass-border);
+      width: 100%;
+      max-width: 560px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 60px rgba(0,255,242,0.12);
+      position: relative;
+      animation: modalFadeIn 0.4s var(--easing) forwards;
+    }
+
+    .modal-content.gold-modal {
+      border-color: rgba(255,215,0,0.25);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 60px rgba(255,215,0,0.12);
+    }
+
+    @keyframes modalFadeIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .close {
+      color: var(--text-muted);
+      position: absolute;
+      right: 25px; top: 20px;
+      font-size: 32px;
+      cursor: pointer;
+      transition: color 0.3s var(--easing);
+      line-height: 1;
+    }
+
+    .close:hover { color: var(--cyan); text-shadow: 0 0 10px var(--cyan-glow); }
+    .gold-modal .close:hover { color: var(--gold); }
+
+    .modal h2 {
+      color: #ffffff;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 8px;
+      font-size: 26px;
+      text-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .gold-modal h2 {
+      background: linear-gradient(135deg, #fff, var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0 0 12px rgba(255,215,0,0.3));
+    }
+
+    .modal-tagline {
+      color: rgba(255,255,255,0.4);
+      font-size: 13px;
+      font-style: italic;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-events {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .modal-pill {
+      background: rgba(0,255,242,0.08);
+      border: 1px solid rgba(0,255,242,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .gold-modal .modal-pill {
+      background: rgba(255,215,0,0.07);
+      border-color: rgba(255,215,0,0.2);
+    }
+
+    .modal-pricing {
+      background: radial-gradient(ellipse at center, rgba(0,255,242,0.06) 0%, transparent 80%);
+      border: 1px solid rgba(0,255,242,0.2);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+
+    .gold-modal .modal-pricing {
+      background: radial-gradient(ellipse at center, rgba(255,215,0,0.07) 0%, transparent 80%);
+      border-color: rgba(255,215,0,0.25);
+    }
+
+    .modal-actual {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .modal-combo-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-shadow: 0 0 25px var(--cyan-glow);
+      line-height: 1.1;
+    }
+
+    .gold-modal .modal-combo-price {
+      color: var(--gold);
+      text-shadow: 0 0 25px var(--gold-glow);
+    }
+
+    .modal-save {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 6px;
+    }
+
+    .modal-save strong { color: #4ade80; }
+
+    @media(max-width:768px) {
+      header { padding: 15px 20px; }
+      header h2 { font-size: 20px; }
+      nav { display: none; }
+      section { padding: 60px 8%; }
+      h1 { font-size: 36px; }
+      .combo-card { padding: 30px 20px; }
+      .modal-content { padding: 32px 20px; margin: 10% auto; }
+      .modal h2 { font-size: 22px; }
+      .modal-combo-price { font-size: 36px; }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg"></canvas>
+
+  <header>
+    <h2>⚡ CHARGE REVAMPED 2026</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="register.html">Events</a>
+      <a href="#combos">Combos</a>
+    </nav>
+  </header>
+
+  <section id="combos">
+    <h1>Combo Deals</h1>
+    <p class="subtitle">Bundle multiple events and save big. More events, more experience, less spend.</p>
+
+    <div class="savings-banner">
+      <span>🔥</span> SAVE UP TO 10% — LIMITED COMBO OFFERS
+    </div>
+
+    <div class="combo-grid">
+
+      <!-- COMBO 1: Innovation to Execution -->
+      <div class="combo-card">
+        <div class="combo-badge badge-cyan">COMBO DEAL</div>
+        <h3>Innovation to Execution</h3>
+        <p class="combo-tagline">Think → Build → Showcase</p>
+
+        <div class="flow-pills">
+          <div class="flow-pill"><span class="pill-icon">💡</span> Ideathon</div>
+          <div class="flow-pill"><span class="pill-icon">⚡</span> Hackathon</div>
+          <div class="flow-pill"><span class="pill-icon">🏗️</span> Project Expo</div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="pricing-block">
+          <div class="actual-price">Actual: ₹1,300</div>
+          <div class="combo-price">₹1,170</div>
+          <div class="savings-tag">SAVE ₹130</div>
+        </div>
+
+        <a class="btn" onclick="openModal('combo-innovation')">Register Now</a>
+      </div>
+
+      <!-- COMBO 2: Startup Combo -->
+      <div class="combo-card">
+        <div class="combo-badge badge-cyan">COMBO DEAL</div>
+        <h3>Startup Combo</h3>
+        <p class="combo-tagline">Ideate → Research → Present</p>
+
+        <div class="flow-pills">
+          <div class="flow-pill"><span class="pill-icon">💡</span> Ideathon</div>
+          <div class="flow-pill"><span class="pill-icon">📄</span> Paper Presentation</div>
+          <div class="flow-pill"><span class="pill-icon">🏗️</span> Project Expo</div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="pricing-block">
+          <div class="actual-price">Actual: ₹450</div>
+          <div class="combo-price">₹405</div>
+          <div class="savings-tag">SAVE ₹45</div>
+        </div>
+
+        <a class="btn" onclick="openModal('combo-startup')">Register Now</a>
+      </div>
+
+      <!-- COMBO 3: Ultimate CHARGE Pass -->
+      <div class="combo-card ultimate">
+        <div class="ribbon">⭐ BEST VALUE</div>
+        <div class="combo-badge badge-gold">ULTIMATE PASS</div>
+        <h3>Ultimate CHARGE Pass</h3>
+        <p class="combo-tagline">Everything. All at once.</p>
+
+        <div class="flow-pills">
+          <div class="flow-pill"><span class="pill-icon">🛠️</span> Workshop</div>
+          <div class="flow-pill"><span class="pill-icon">💡</span> Ideathon</div>
+          <div class="flow-pill"><span class="pill-icon">📄</span> Paper Presentation</div>
+          <div class="flow-pill"><span class="pill-icon">🚁</span> Drone Workshop</div>
+          <div class="flow-pill"><span class="pill-icon">⚡</span> Hackathon</div>
+          <div class="flow-pill"><span class="pill-icon">🏗️</span> Project Expo</div>
+        </div>
+
+        <div class="card-divider"></div>
+
+        <div class="pricing-block">
+          <div class="actual-price">Actual: ₹1,850</div>
+          <div class="combo-price">₹1,665</div>
+          <div class="savings-tag">SAVE ₹185</div>
+        </div>
+
+        <a class="btn btn-gold" onclick="openModal('combo-ultimate')">Register Now</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODALS -->
+
+  <div id="combo-innovation" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('combo-innovation')">&times;</span>
+      <div class="combo-badge badge-cyan" style="margin-bottom:14px;">COMBO DEAL</div>
+      <h2>Innovation to Execution</h2>
+      <p class="modal-tagline">Think → Build → Showcase</p>
+
+      <div class="modal-events">
+        <div class="modal-pill">💡 Ideathon</div>
+        <div class="modal-pill">⚡ Hackathon</div>
+        <div class="modal-pill">🏗️ Project Expo</div>
+      </div>
+
+      <div class="modal-pricing">
+        <div class="modal-actual">Actual Price: ₹1,300</div>
+        <div class="modal-combo-price">₹1,170</div>
+        <div class="modal-save">You save <strong>₹130</strong> with this combo</div>
+      </div>
+
+      <a href="https://forms.gle/REPLACE_WITH_COMBO1_LINK" target="_blank" class="btn">Register Now</a>
+    </div>
+  </div>
+
+  <div id="combo-startup" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('combo-startup')">&times;</span>
+      <div class="combo-badge badge-cyan" style="margin-bottom:14px;">COMBO DEAL</div>
+      <h2>Startup Combo</h2>
+      <p class="modal-tagline">Ideate → Research → Present</p>
+
+      <div class="modal-events">
+        <div class="modal-pill">💡 Ideathon</div>
+        <div class="modal-pill">📄 Paper Presentation</div>
+        <div class="modal-pill">🏗️ Project Expo</div>
+      </div>
+
+      <div class="modal-pricing">
+        <div class="modal-actual">Actual Price: ₹450</div>
+        <div class="modal-combo-price">₹405</div>
+        <div class="modal-save">You save <strong>₹45</strong> with this combo</div>
+      </div>
+
+      <a href="https://forms.gle/REPLACE_WITH_COMBO2_LINK" target="_blank" class="btn">Register Now</a>
+    </div>
+  </div>
+
+  <div id="combo-ultimate" class="modal">
+    <div class="modal-content gold-modal">
+      <span class="close" onclick="closeModal('combo-ultimate')">&times;</span>
+      <div class="combo-badge badge-gold" style="margin-bottom:14px;">⭐ ULTIMATE PASS</div>
+      <h2>Ultimate CHARGE Pass</h2>
+      <p class="modal-tagline">Every event. Maximum experience.</p>
+
+      <div class="modal-events">
+        <div class="modal-pill">🛠️ Workshop</div>
+        <div class="modal-pill">💡 Ideathon</div>
+        <div class="modal-pill">📄 Paper Presentation</div>
+        <div class="modal-pill">🚁 Drone Workshop</div>
+        <div class="modal-pill">⚡ Hackathon</div>
+        <div class="modal-pill">🏗️ Project Expo</div>
+      </div>
+
+      <div class="modal-pricing">
+        <div class="modal-actual">Actual Price: ₹1,850</div>
+        <div class="modal-combo-price">₹1,665</div>
+        <div class="modal-save">You save <strong>₹185</strong> with this combo</div>
+      </div>
+
+      <a href="https://forms.gle/REPLACE_WITH_ULTIMATE_LINK" target="_blank" class="btn btn-gold">Register Now</a>
+    </div>
+  </div>
+
+  <script>
+    // Canvas particle background
+    const canvas = document.getElementById("bg"), ctx = canvas.getContext("2d");
+    canvas.width = innerWidth; canvas.height = innerHeight;
+    let particles = [], count = innerWidth < 600 ? 30 : innerWidth < 1024 ? 50 : 80;
+    for (let i = 0; i < count; i++) {
+      particles.push({ x: Math.random() * innerWidth, y: Math.random() * innerHeight, vx: (Math.random() - .5) * .5, vy: (Math.random() - .5) * .5 });
+    }
+    function animate() {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > innerWidth) p.vx *= -1;
+        if (p.y < 0 || p.y > innerHeight) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI);
+        ctx.fillStyle = "#00fff2"; ctx.fill();
+        particles.forEach(q => {
+          let d = Math.hypot(p.x - q.x, p.y - q.y);
+          if (d < 120) {
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = "rgba(0,255,242,0.15)"; ctx.stroke();
+          }
+        });
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+
+    function openModal(id) { document.getElementById(id).style.display = "block"; }
+    function closeModal(id) { document.getElementById(id).style.display = "none"; }
+    window.onclick = function(e) {
+      document.querySelectorAll('.modal').forEach(m => { if (e.target == m) m.style.display = 'none'; });
+    }
+  </script>
+
+</body>
+</html>
