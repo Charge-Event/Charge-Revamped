@@ -380,26 +380,8 @@
       color: var(--gold);
       text-shadow: 0 0 25px var(--gold-glow);
     }
-
-    .savings-tag {
-      display: inline-block;
-      background: rgba(0,255,242,0.1);
-      border: 1px solid rgba(0,255,242,0.25);
-      color: var(--cyan);
-      font-size: 12px;
-      padding: 3px 12px;
-      border-radius: 20px;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.5px;
-    }
-
-    .combo-card.ultimate .savings-tag {
-      background: rgba(255,215,0,0.1);
-      border-color: rgba(255,215,0,0.3);
-      color: var(--gold);
-    }
-
-    /* BUTTON */
+.combo-card.ultimate
+/* BUTTON */
     .btn {
       background: linear-gradient(135deg, var(--cyan), var(--blue));
       color: #050505;
@@ -582,13 +564,11 @@
       text-shadow: 0 0 25px var(--gold-glow);
     }
 
-    .modal-save {
       font-size: 13px;
       color: rgba(255,255,255,0.5);
       margin-top: 6px;
     }
 
-    .modal-save strong { color: #4ade80; }
 
     @media(max-width:768px) {
       header { padding: 15px 20px; }
@@ -618,7 +598,7 @@
 
   <section id="combos">
     <h1>Combo Deals</h1>
-    <p class="subtitle">Bundle multiple events and save big. More events, more experience, less spend.</p>
+    <p class="subtitle">Bundle multiple events for the ultimate CHARGE 2026 experience.</p>
 
     <!-- ANIMATED TICKER -->
     <div class="ticker-wrap">
@@ -657,7 +637,6 @@
         <div class="pricing-block">
           <div class="actual-price">Actual: ₹1,300</div>
           <div class="combo-price">₹1,170</div>
-          <div class="savings-tag">SAVE ₹130</div>
         </div>
 
         <a class="btn" onclick="openModal('combo-innovation')">Register Now</a>
@@ -680,7 +659,6 @@
         <div class="pricing-block">
           <div class="actual-price">Actual: ₹450</div>
           <div class="combo-price">₹405</div>
-          <div class="savings-tag">SAVE ₹45</div>
         </div>
 
         <a class="btn" onclick="openModal('combo-startup')">Register Now</a>
@@ -707,7 +685,6 @@
         <div class="pricing-block">
           <div class="actual-price">Actual: ₹1,850</div>
           <div class="combo-price">₹1,665</div>
-          <div class="savings-tag">SAVE ₹185</div>
         </div>
 
         <a class="btn btn-gold" onclick="openModal('combo-ultimate')">Register Now</a>
@@ -734,7 +711,6 @@
       <div class="modal-pricing">
         <div class="modal-actual">Actual Price: ₹1,300</div>
         <div class="modal-combo-price">₹1,170</div>
-        <div class="modal-save">You save <strong>₹130</strong> with this combo</div>
       </div>
 
       <a href="https://forms.gle/REPLACE_WITH_COMBO1_LINK" target="_blank" class="btn">Register Now</a>
@@ -757,7 +733,6 @@
       <div class="modal-pricing">
         <div class="modal-actual">Actual Price: ₹450</div>
         <div class="modal-combo-price">₹405</div>
-        <div class="modal-save">You save <strong>₹45</strong> with this combo</div>
       </div>
 
       <a href="https://forms.gle/REPLACE_WITH_COMBO2_LINK" target="_blank" class="btn">Register Now</a>
@@ -783,7 +758,6 @@
       <div class="modal-pricing">
         <div class="modal-actual">Actual Price: ₹1,850</div>
         <div class="modal-combo-price">₹1,665</div>
-        <div class="modal-save">You save <strong>₹185</strong> with this combo</div>
       </div>
 
       <a href="https://forms.gle/REPLACE_WITH_ULTIMATE_LINK" target="_blank" class="btn btn-gold">Register Now</a>
