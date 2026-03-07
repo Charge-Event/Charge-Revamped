@@ -52,7 +52,6 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* background canvas */
     canvas {
       position: fixed;
       top: 0;
@@ -78,14 +77,12 @@
       gap: 16px;
     }
 
-    /* LEFT SIDE: logos + title */
     .header-left {
       display: flex;
       align-items: center;
       gap: 14px;
     }
 
-    /* Logo placeholders */
     .logo-badge {
       width: 44px;
       height: 44px;
@@ -123,7 +120,6 @@
       font-weight: 500;
     }
 
-    /* Thin divider between the two logos */
     .logo-divider {
       width: 1px;
       height: 32px;
@@ -169,13 +165,8 @@
       box-shadow: 0 0 10px var(--cyan);
     }
 
-    nav a:hover {
-      color: #ffffff;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
+    nav a:hover { color: #ffffff; }
+    nav a:hover::after { width: 100%; }
 
     /* HERO */
     .hero {
@@ -208,10 +199,18 @@
       margin-right: auto;
     }
 
+    /* BUTTON ROW */
+    .btn-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    /* BASE BUTTON */
     .btn {
-      padding: 16px 45px;
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      color: #050505;
+      padding: 16px 36px;
       border-radius: 30px;
       font-weight: 600;
       letter-spacing: 0.5px;
@@ -219,30 +218,85 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 40px;
+      gap: 8px;
       transition: all 0.4s var(--easing);
-      border: 1px solid transparent;
-      box-shadow: 0 0 20px rgba(0, 255, 242, 0.2);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      position: relative;
+      white-space: nowrap;
     }
 
-    .btn[href="problem_statements.pdf"] {
-      background: rgba(0, 255, 242, 0.05) !important;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: var(--cyan) !important;
-      border: 1px solid var(--cyan-subtle) !important;
+    /* Register Now — flat, no glow */
+    .btn-register {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: none;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 255, 242, 0.4), 0 0 60px rgba(56, 189, 248, 0.2);
+    .btn-register:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
     }
 
-    .btn[href="problem_statements.pdf"]:hover {
-      background: rgba(0, 255, 242, 0.1) !important;
-      border-color: var(--cyan) !important;
-      box-shadow: 0 0 20px var(--cyan-glow) !important;
+    /* Problem Statements — glowing cyan */
+    .btn-problem {
+      background: rgba(0, 255, 242, 0.07);
+      color: var(--cyan);
+      border: 1px solid rgba(0, 255, 242, 0.35);
+      box-shadow: 0 0 18px rgba(0, 255, 242, 0.2), 0 0 40px rgba(0, 255, 242, 0.08);
+      animation: pulse-cyan 2.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse-cyan {
+      0%, 100% { box-shadow: 0 0 18px rgba(0,255,242,0.2), 0 0 40px rgba(0,255,242,0.08); }
+      50%       { box-shadow: 0 0 30px rgba(0,255,242,0.45), 0 0 70px rgba(0,255,242,0.18); }
+    }
+
+    .btn-problem:hover {
+      background: rgba(0, 255, 242, 0.14);
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(0,255,242,0.5), 0 0 80px rgba(0,255,242,0.2);
+    }
+
+    /* Combos — gold with star badge */
+    .btn-combos {
+      background: rgba(255, 215, 0, 0.07);
+      color: #ffd700;
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      box-shadow: 0 0 16px rgba(255,215,0,0.15);
+    }
+
+    .btn-combos:hover {
+      background: rgba(255, 215, 0, 0.14);
+      border-color: #ffd700;
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(255,215,0,0.4), 0 0 70px rgba(255,215,0,0.15);
+    }
+
+    /* NEW star badge on combos button */
+    .star-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: linear-gradient(135deg, #ffd700, #ffb300);
+      color: #050505;
+      font-size: 9px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      box-shadow: 0 0 12px rgba(255,215,0,0.5);
+      animation: badge-pop 2s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes badge-pop {
+      0%, 100% { transform: scale(1);   box-shadow: 0 0 12px rgba(255,215,0,0.5); }
+      50%       { transform: scale(1.1); box-shadow: 0 0 22px rgba(255,215,0,0.8); }
     }
 
     /* EVENTS SECTION */
@@ -296,10 +350,8 @@
     .event-card::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: radial-gradient(circle at center, rgba(0, 255, 242, 0.1) 0%, transparent 70%);
       opacity: 0;
       transition: opacity 0.5s var(--easing);
@@ -313,9 +365,7 @@
       border-color: rgba(0, 255, 242, 0.4);
     }
 
-    .event-card:hover::before {
-      opacity: 1;
-    }
+    .event-card:hover::before { opacity: 1; }
 
     .event-card h3 {
       font-family: 'Orbitron', sans-serif;
@@ -368,9 +418,7 @@
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
 
-    .info p {
-      margin-bottom: 20px;
-    }
+    .info p { margin-bottom: 20px; }
 
     footer {
       text-align: center;
@@ -384,76 +432,28 @@
 
     /* RESPONSIVE */
     @media(max-width:1024px) {
-      .event-grid {
-        gap: 25px;
-        padding: 0 20px;
-      }
-
-      .event-card {
-        padding: 30px 20px;
-      }
+      .event-grid { gap: 25px; padding: 0 20px; }
+      .event-card { padding: 30px 20px; }
     }
 
     @media(max-width:900px) {
-      .event-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .event-card:last-child:nth-child(3n+1) {
-        grid-column: auto;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
+      .event-grid { grid-template-columns: repeat(2, 1fr); }
+      .event-card:last-child:nth-child(3n+1) { grid-column: auto; }
+      .hero h1 { font-size: 42px; }
     }
 
     @media(max-width:600px) {
-      header {
-        padding: 12px 16px;
-      }
-
-      header h2 {
-        font-size: 17px;
-      }
-
-      .logo-badge {
-        width: 38px;
-        height: 38px;
-      }
-
-      .logo-badge .logo-initials {
-        font-size: 9px;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .event-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .hero {
-        padding: 100px 20px 60px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .section-title {
-        font-size: 36px;
-      }
+      header { padding: 12px 16px; }
+      header h2 { font-size: 17px; }
+      .logo-badge { width: 38px; height: 38px; }
+      .logo-badge .logo-initials { font-size: 9px; }
+      nav { display: none; }
+      .event-grid { grid-template-columns: 1fr; gap: 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .hero h1 { font-size: 36px; }
+      .hero p { font-size: 16px; }
+      .btn { width: 100%; }
+      .section-title { font-size: 36px; }
     }
   </style>
 </head>
@@ -462,18 +462,10 @@
   <canvas id="bg"></canvas>
 
   <header>
-    <!-- LEFT: two logos + site title -->
     <div class="header-left">
-      <!-- Logo 1: SNIST -->
       <img src="TEC_logo-removebg-preview.png" class="logo-img">
-
-      <!-- Thin divider -->
       <div class="logo-divider"></div>
-
-      <!-- Logo 2: Electronix Club -->
-     <img src="charge revamped logo.jpg.jpeg" class="logo-img">
-
-      <!-- Title -->
+      <img src="charge revamped logo.jpg.jpeg" class="logo-img">
       <h2>CHARGE REVAMPED 2026</h2>
     </div>
 
@@ -493,11 +485,19 @@
       CHARGE 2026 is one of the biggest student driven electronics technology events bringing together innovators,
       engineers, and technology enthusiasts.
     </p>
-    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
-      <a href="register.html" class="btn" style="margin-bottom: 0;">Register Now</a>
-      <a href="problem_statements.pdf" target="_blank" class="btn"
-        style="margin-bottom: 0; background: transparent; color: #00fff2; border: 2px solid #00fff2;">Problem
-        Statements</a>
+
+    <div class="btn-row">
+      <!-- Register Now — flat, no glow -->
+      <a href="register.html" class="btn btn-register">Register Now</a>
+
+      <!-- Problem Statements — glowing cyan -->
+      <a href="problem_statements.pdf" target="_blank" class="btn btn-problem">Problem Statements</a>
+
+      <!-- Combo Deals — gold with ★ NEW badge -->
+      <a href="combos.html" class="btn btn-combos">
+        <span class="star-badge">⭐ NEW</span>
+        Combo Deals
+      </a>
     </div>
   </section>
 
@@ -512,8 +512,7 @@
       </a>
       <a href="workshop.html" class="event-card">
         <h3>Workshop</h3>
-        <div class="event-preview">Hands-on learning in IoT, PCB design, embedded systems and hardware development.
-        </div>
+        <div class="event-preview">Hands-on learning in IoT, PCB design, embedded systems and hardware development.</div>
       </a>
       <a href="expo.html" class="event-card">
         <h3>Project Expo</h3>
@@ -568,7 +567,7 @@
         Through workshops, project exhibitions, competitions, and interactive experiences, it has evolved into a hub of
         technical brilliance that reflects the true spirit of <strong>The Electronix Club</strong> — fostering
         innovation, teamwork, and the pursuit of engineering excellence.</p>
-      <a href="about.html" class="btn" style="margin-top:25px;">Know More →</a>
+      <a href="about.html" class="btn btn-register" style="margin-top:25px;">Know More →</a>
     </div>
   </section>
 
@@ -577,14 +576,15 @@
   </footer>
 
   <script>
-    /* PARTICLE BACKGROUND */
     const canvas = document.getElementById("bg")
     const ctx = canvas.getContext("2d")
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     let particles = []
     let particleCount = window.innerWidth < 600 ? 30 : window.innerWidth < 1024 ? 50 : 80
-    for (let i = 0; i < particleCount; i++) { particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 }) }
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 0.5) * 0.5 })
+    }
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       particles.forEach(p => {
