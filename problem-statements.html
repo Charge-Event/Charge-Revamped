@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Problem Statements | CHARGE 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
+color:white;
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+header h2{
+font-family:'Orbitron',sans-serif;
+color:#00fff2;
+}
+
+nav a{
+text-decoration:none;
+color:#cbd5f5;
+margin-left:30px;
+font-size:14px;
+}
+
+section{
+padding:100px 10%;
+max-width:1100px;
+margin:auto;
+text-align:center;
+}
+
+h1{
+font-family:'Orbitron',sans-serif;
+font-size:48px;
+margin-bottom:20px;
+color:#00fff2;
+}
+
+.subtitle{
+color:#cbd5f5;
+margin-bottom:60px;
+font-size:16px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+}
+
+.card{
+
+background:rgba(15,23,42,0.55);
+border:1px solid rgba(0,255,242,0.2);
+border-radius:20px;
+padding:35px;
+backdrop-filter:blur(8px);
+transition:0.4s;
+
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(0,255,242,0.2);
+}
+
+.card h3{
+font-family:'Orbitron',sans-serif;
+margin-bottom:18px;
+color:#00fff2;
+}
+
+.card p{
+font-size:15px;
+line-height:1.7;
+color:#e2e8f0;
+}
+
+.btn{
+
+display:inline-block;
+margin-top:25px;
+padding:12px 28px;
+border-radius:30px;
+background:linear-gradient(135deg,#00fff2,#38bdf8);
+color:#050505;
+text-decoration:none;
+font-weight:600;
+font-family:'Orbitron',sans-serif;
+
+}
+
+.btn:hover{
+box-shadow:0 0 20px rgba(0,255,242,0.5);
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+
+<h2>⚡ CHARGE 2026</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="events.html">Events</a>
+</nav>
+
+</header>
+
+
+<section>
+
+<h1>Problem Statements</h1>
+
+<p class="subtitle">
+Teams participating in the hackathon can either choose from the official problem statements provided by the organizers or work on their own innovative idea through the Open Innovation track.
+</p>
+
+
+<div class="container">
+
+
+<!-- Official Problem Statements -->
+
+<div class="card">
+
+<h3>Official Problem Statements</h3>
+
+<p>
+Participants can select from the curated problem statements prepared by the organizing team. These challenges focus on solving practical technological problems and encourage teams to build impactful solutions using their technical knowledge, creativity, and engineering skills.
+</p>
+
+<a href="problem_statements.pdf" target="_blank" class="btn">
+View Problem Statements
+</a>
+
+</div>
+
+
+<!-- Open Innovation -->
+
+<div class="card">
+
+<h3>Open Innovation</h3>
+
+<p>
+The Open Innovation track allows teams to work on their own original idea instead of selecting a predefined challenge. Participants are encouraged to identify real-world problems and develop innovative technological solutions that can create meaningful impact in society, industry, or everyday life.
+<br><br>
+Projects may involve hardware systems, embedded electronics, intelligent software platforms, or a combination of both. The focus is on creativity, feasibility, and the ability to transform an idea into a working prototype or functional solution during the hackathon.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<script>
+
+const canvas = document.getElementById("bg")
+const ctx = canvas.getContext("2d")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+let particles = []
+
+for(let i=0;i<60;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*0.5,
+vy:(Math.random()-0.5)*0.5
+
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+p.x += p.vx
+p.y += p.vy
+
+if(p.x<0 || p.x>canvas.width) p.vx *= -1
+if(p.y<0 || p.y>canvas.height) p.vy *= -1
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,2,0,Math.PI*2)
+ctx.fillStyle="#00fff2"
+ctx.fill()
+
+particles.forEach(q=>{
+
+let dist = Math.hypot(p.x-q.x,p.y-q.y)
+
+if(dist<120){
+
+ctx.beginPath()
+ctx.moveTo(p.x,p.y)
+ctx.lineTo(q.x,q.y)
+ctx.strokeStyle="rgba(0,255,242,0.15)"
+ctx.stroke()
+
+}
+
+})
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+</script>
+
+</body>
+</html>
