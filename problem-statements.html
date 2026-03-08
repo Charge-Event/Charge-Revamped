@@ -47,16 +47,9 @@ font-family:'Orbitron',sans-serif;
 color:#00fff2;
 }
 
-nav a{
-text-decoration:none;
-color:#cbd5f5;
-margin-left:30px;
-font-size:14px;
-}
-
 section{
 padding:100px 10%;
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 text-align:center;
 }
@@ -77,7 +70,7 @@ font-size:16px;
 .container{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:40px;
+gap:35px;
 }
 
 .card{
@@ -87,7 +80,7 @@ border:1px solid rgba(0,255,242,0.2);
 border-radius:20px;
 padding:35px;
 backdrop-filter:blur(8px);
-transition:0.4s;
+transition:0.35s;
 
 }
 
@@ -126,6 +119,20 @@ font-family:'Orbitron',sans-serif;
 box-shadow:0 0 20px rgba(0,255,242,0.5);
 }
 
+.section-title{
+
+font-family:'Orbitron',sans-serif;
+font-size:32px;
+margin-top:80px;
+margin-bottom:40px;
+color:#00fff2;
+
+}
+
+.highlight{
+border:1px solid rgba(56,189,248,0.35);
+}
+
 </style>
 
 </head>
@@ -136,14 +143,7 @@ box-shadow:0 0 20px rgba(0,255,242,0.5);
 <canvas id="bg"></canvas>
 
 <header>
-
 <h2>⚡ CHARGE 2026</h2>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="events.html">Events</a>
-</nav>
-
 </header>
 
 
@@ -152,21 +152,18 @@ box-shadow:0 0 20px rgba(0,255,242,0.5);
 <h1>Problem Statements</h1>
 
 <p class="subtitle">
-Teams participating in the hackathon can either choose from the official problem statements provided by the organizers or work on their own innovative idea through the Open Innovation track.
+Teams participating in the hackathon can either select from the official problem statements or develop their own innovative idea through the Open Innovation track.
 </p>
 
 
 <div class="container">
-
-
-<!-- Official Problem Statements -->
 
 <div class="card">
 
 <h3>Official Problem Statements</h3>
 
 <p>
-Participants can select from the curated problem statements prepared by the organizing team. These challenges focus on solving practical technological problems and encourage teams to build impactful solutions using their technical knowledge, creativity, and engineering skills.
+Participants can work on curated challenges designed by the organizing team. These problem statements encourage teams to design practical solutions and develop working prototypes that demonstrate technical skills, creativity, and engineering thinking.
 </p>
 
 <a href="problem_statements.pdf" target="_blank" class="btn">
@@ -175,17 +172,35 @@ View Problem Statements
 
 </div>
 
+</div>
 
-<!-- Open Innovation -->
 
-<div class="card">
+<h2 class="section-title">Open Innovation Track</h2>
 
-<h3>Open Innovation</h3>
+<p class="subtitle">
+Teams who wish to build their own idea instead of selecting a predefined challenge can participate under the Open Innovation category. Participants are encouraged to identify real-world challenges and develop meaningful technological solutions.
+</p>
+
+
+<div class="container">
+
+<div class="card highlight">
+
+<h3>⚙ Hardware / Electronics Innovation</h3>
 
 <p>
-The Open Innovation track allows teams to work on their own original idea instead of selecting a predefined challenge. Participants are encouraged to identify real-world problems and develop innovative technological solutions that can create meaningful impact in society, industry, or everyday life.
-<br><br>
-Projects may involve hardware systems, embedded electronics, intelligent software platforms, or a combination of both. The focus is on creativity, feasibility, and the ability to transform an idea into a working prototype or functional solution during the hackathon.
+Teams can design and develop hardware-based solutions using electronics, embedded systems, sensors, IoT devices, robotics platforms, or custom circuits. Projects may involve building intelligent systems, smart devices, automation solutions, or technological tools that address real-world needs and demonstrate practical engineering innovation.
+</p>
+
+</div>
+
+
+<div class="card highlight">
+
+<h3>💻 Software Innovation</h3>
+
+<p>
+Participants may also develop software-driven solutions such as intelligent platforms, applications, or digital systems. Projects can involve areas like artificial intelligence, data analytics, web or mobile applications, IoT platforms, or other software technologies that create useful and impactful digital solutions.
 </p>
 
 </div>
